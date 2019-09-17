@@ -178,18 +178,18 @@
 <meta property="og:site_name" content="liuminggui&#39;s home">
 <meta property="og:description" content="论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论文下载: 点击下载 摘要：在训练过程中，加入定位信息。可是提升yolov2 map 3.8个点， yolov3 map 2.2个点。这个方法适用于大多数single-stage 目标检测器。只改变了训">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/1.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/2.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/3.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/5.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/6.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/7.jpg">
-<meta property="og:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/4.jpg">
-<meta property="og:updated_time" content="2019-09-17T04:36:53.700Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.5.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.6.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.7.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.4.jpg">
+<meta property="og:updated_time" content="2019-09-17T11:21:59.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="yolo改进">
 <meta name="twitter:description" content="论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论文下载: 点击下载 摘要：在训练过程中，加入定位信息。可是提升yolov2 map 3.8个点， yolov3 map 2.2个点。这个方法适用于大多数single-stage 目标检测器。只改变了训">
-<meta name="twitter:image" content="http://yoursite.com/2019/09/17/yolo改进/yolo改进/1.jpg">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20190917.1.jpg">
 
 
 
@@ -501,7 +501,7 @@
                 
               
 
-              <time title="创建时间：2019-09-17 10:21:42 / 修改时间：12:36:53" itemprop="dateCreated datePublished" datetime="2019-09-17T10:21:42+08:00">2019-09-17</time>
+              <time title="创建时间：2019-09-17 10:21:42 / 修改时间：19:21:59" itemprop="dateCreated datePublished" datetime="2019-09-17T10:21:42+08:00">2019-09-17</time>
             
 
             
@@ -547,19 +547,19 @@
 <p>1.同时做检测和分割，提升两个任务的表现。</p>
 <p>2.只加入segmentation features来提高检测的精度。</p>
 <p>本文提出的方法，在<strong>训练</strong>检测器时加入weak segmentation ground-truth(即bounding box，从而避免单独引入分割标注，更加简单),并没有增加额外的损失函数。</p>
-<p><img src="yolo改进\1.jpg" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.1.jpg" alt=""></p>
 <p>如上图所示，只在训练时增加了一个Assisted Excitation层。</p>
-<p><img src="yolo改进\2.jpg" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.2.jpg" alt=""></p>
 <p>具体过程：</p>
-<p><img src="yolo改进\3.jpg" alt="1"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.3.jpg" alt=""></p>
 <p>最终期望的生成特征如下，其中alpha是关于时间的函数用于控制训练中的强度衰减，l+1代表第l+1层，式中c为通道数，e是增强特征：</p>
-<p><img src="yolo改进\5.jpg" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.5.jpg" alt=""></p>
 <p>bbox内的像素位置为1，生成一个0-1mask。可见只在bbox内的区域做增强：</p>
-<p><img src="yolo改进\6.jpg" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.6.jpg" alt=""></p>
 <p>增强是按照通道去平均等量加上去的（作者的实验证明该效果最好）：</p>
-<p><img src="yolo改进\7.jpg" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.7.jpg" alt=""></p>
 <p><strong>实验结果：</strong></p>
-<p><img src="yolo改进\4.jpg" alt="2"></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20190917.4.jpg" alt=""></p>
 <p>​        从上左边的图可以看到，AE强化过的网络有全面的提升，其中在大尺度上的提升更加明显，推测原因是：大物体上加了分割强化后能够获得更强的辨认度，小物体由于本身尺度不大所以增加后也不明显。结果而言印证了这种强化的有效性，但是也完全地陷入了小目标检测的弊端了–像素内容少而被忽视。   </p>
 <p>​        右图的信息不太好辨认。先看yolov2的曲线来说，低iou阈值能够得到更高的改进的精度，说明其召回更好了，但是精度一高就趋于重合，改进失效，说明这种增强提高了低质量bbox的精度。再看yolov3，全IoU都有少量的提高，但是不特别大且没有明显的趋势，说明其采用的多尺度预测能一定程度地解决问题，并在其基础上能对全部精度都有增益。</p>
 
