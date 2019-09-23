@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[全卷积网络]]></title>
+    <url>%2F2019%2F09%2F23%2F%E5%85%A8%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%2F</url>
+    <content type="text"><![CDATA[论文题目：Fully Convolutional Networks for Semantic Segmentation论文下载: 点击下载 Intorduction: FCN毫无疑问是语义分割领域的经典之作，在FCN出现之前，传统的CNN分割是将像素周围一个小区域作为CNN输入，做训练和预测，这样低效且不准确（忽略整体信息）。FCN主要有三点创新： 卷积化：即将传统CNN结构（文中提到的Alexnet、VGG）最后的全连接层改成卷积层，以便进行直接分割，这是十分有创造性的。这样，使得网络可以接受任意大小的图片，并输出和原图一样大小的分割图。只有这样，才能为每个像素做分类。(像素分类使用图像分类模型（如AlexNet VGGNet等pre-trained model）做迁移学习。) 上采样 or 反卷积：由于网络过程中进行了一系列下采样，使得特征层大小减小，了最后得到的预测层和原图一致，需要采用上采样。 并联跳跃结构：想法类似于resnet和inception，在进行分类预测时利用多层信息。 下图是传统分类CNN和FCN的对比，简单的说，FCN与CNN的区别在于FCN把CNN最后的全连接层换成卷积层，输出一张已经label好的图。 框架如如下，采用了skip connection 上图不够清晰，可以看下图 不同层次对比，其中FCN-8s效果最好 不足：对细节不敏感，没有充分考虑像素之间的关系，缺乏空间一致性。]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[yolo改进]]></title>
     <url>%2F2019%2F09%2F17%2Fyolo%E6%94%B9%E8%BF%9B%2F</url>
     <content type="text"><![CDATA[论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论文下载: 点击下载 摘要：在训练过程中，加入定位信息。可是提升yolov2 map 3.8个点， yolov3 map 2.2个点。这个方法适用于大多数single-stage 目标检测器。只改变了训练过程，推断过程没有任何改变。 Introduction:yolo难以解决得两个痛点：a. difficulty in localization原因：因为yolo同时做分类和定位，最后一层卷积层，更多语义信息，对分类有益。但是spatially course for localization.b. 训练时，前景与背景类别不平衡原因：不同于two-stage 检测器，没有预先减少候选框搜索空间到一个受限制的数目。大多数是简单的负样本。 Related Work: 加入辅助信息到CNN，主要分类两类： 1.同时做检测和分割，提升两个任务的表现。 2.只加入segmentation features来提高检测的精度。 本文提出的方法，在训练检测器时加入weak segmentation ground-truth(即bounding box，从而避免单独引入分割标注，更加简单),并没有增加额外的损失函数。 如上图所示，只在训练时增加了一个Assisted Excitation层。 具体过程： 最终期望的生成特征如下，其中alpha是关于时间的函数用于控制训练中的强度衰减，l+1代表第l+1层，式中c为通道数，e是增强特征： bbox内的像素位置为1，生成一个0-1mask。可见只在bbox内的区域做增强： 增强是按照通道去平均等量加上去的（作者的实验证明该效果最好）： 实验结果： ​ 从上左边的图可以看到，AE强化过的网络有全面的提升，其中在大尺度上的提升更加明显，推测原因是：大物体上加了分割强化后能够获得更强的辨认度，小物体由于本身尺度不大所以增加后也不明显。结果而言印证了这种强化的有效性，但是也完全地陷入了小目标检测的弊端了–像素内容少而被忽视。 ​ 右图的信息不太好辨认。先看yolov2的曲线来说，低iou阈值能够得到更高的改进的精度，说明其召回更好了，但是精度一高就趋于重合，改进失效，说明这种增强提高了低质量bbox的精度。再看yolov3，全IoU都有少量的提高，但是不特别大且没有明显的趋势，说明其采用的多尺度预测能一定程度地解决问题，并在其基础上能对全部精度都有增益。]]></content>
@@ -56,8 +61,8 @@
         <category>Pytorch</category>
       </categories>
       <tags>
-        <tag>pytorch</tag>
         <tag>summary</tag>
+        <tag>pytorch</tag>
       </tags>
   </entry>
   <entry>
