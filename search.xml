@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title></title>
+    <url>%2F2019%2F09%2F25%2FUnet%2F</url>
+    <content type="text"><![CDATA[title: Unetdate: 2019-09-25 00:02:14tags: 论文题目：U-Net: Convolutional Networks for Biomedical Image Segmentation 下载：点击下载 Introduction: 作者提出一个基于FCN改进的U型结构的网络（U-net）和一个依赖strong use of data augmentation的训练策略，可以更充分利用训练样本。 相较于FCN的改进： 1.可以在更少的图片上训练 2.有更精确的分割 与FCN逐点相加不同，U-Net采用将特征在channel维度拼接在一起，形成更“厚”的特征 注：直接复制过来再裁剪到与上采样图片一样大小 该方法允许任意大图片的无缝分割通过一个overlap-tile策略。为了预测框中图像，缺失区域通过镜像输入图像扩张。这种tiling方法对于应用网络到大图像很重要，因为否则结果会被gpu内存限制。为了预测黄色区域的分割，需要蓝色区域作为输入。 数据增强：elastic deformations (弹性形变) 数据增强在训练样本比较少的时候,能够让神经网络学习一些不变性，弹性变换是本文使用的方法。（因为弹性形变是实际细胞中比较常见的一种形变，如果我们能采取数据增强的算法去使网络学习这种形变的不变性，就可以在分割数据集很小的情况下，使网络具有遇见弹性形变还是可以准确的检测出，相当于就是把原图，做了下弹性变形，然后，就相当于扩大了数据集嘛，自然网络就能适应这种弹性变化了，在遇见弹性变形的时候一样可以正确的分类分割） 增加touching cell之间border的权重， 参考： https://blog.csdn.net/jianyuchen23/article/details/79349694]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[全卷积网络]]></title>
     <url>%2F2019%2F09%2F23%2F%E5%85%A8%E5%8D%B7%E7%A7%AF%E7%BD%91%E7%BB%9C%2F</url>
     <content type="text"><![CDATA[论文题目：Fully Convolutional Networks for Semantic Segmentation论文下载: 点击下载 Intorduction: FCN毫无疑问是语义分割领域的经典之作，在FCN出现之前，传统的CNN分割是将像素周围一个小区域作为CNN输入，做训练和预测，这样低效且不准确（忽略整体信息）。FCN主要有三点创新： 卷积化：即将传统CNN结构（文中提到的Alexnet、VGG）最后的全连接层改成卷积层，以便进行直接分割，这是十分有创造性的。这样，使得网络可以接受任意大小的图片，并输出和原图一样大小的分割图。只有这样，才能为每个像素做分类。(像素分类使用图像分类模型（如AlexNet VGGNet等pre-trained model）做迁移学习。) 上采样 or 反卷积：由于网络过程中进行了一系列下采样，使得特征层大小减小，了最后得到的预测层和原图一致，需要采用上采样。 并联跳跃结构：想法类似于resnet和inception，在进行分类预测时利用多层信息。 下图是传统分类CNN和FCN的对比，简单的说，FCN与CNN的区别在于FCN把CNN最后的全连接层换成卷积层，输出一张已经label好的图。 框架如如下，采用了skip connection 上图不够清晰，可以看下图 不同层次对比，其中FCN-8s效果最好 不足：对细节不敏感，没有充分考虑像素之间的关系，缺乏空间一致性。]]></content>
@@ -61,8 +66,8 @@
         <category>Pytorch</category>
       </categories>
       <tags>
-        <tag>pytorch</tag>
         <tag>summary</tag>
+        <tag>pytorch</tag>
       </tags>
   </entry>
   <entry>
