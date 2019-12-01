@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[相册更新]]></title>
+    <url>%2F2019%2F12%2F01%2F%E7%9B%B8%E5%86%8C%E6%9B%B4%E6%96%B0%2F</url>
+    <content type="text"><![CDATA[将图片放入photos文件夹下 运行tool.py将相册上传至七牛云photov1 hexo clean hexo d -g 注意：每30天需要将photov1备份到一个新的存储空间，获得30天域名后，修改source/js/src/photo.js的域名]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Unet]]></title>
     <url>%2F2019%2F09%2F25%2FUnet%2F</url>
     <content type="text"><![CDATA[论文题目：U-Net: Convolutional Networks for Biomedical Image Segmentation 下载：点击下载 Introduction: 作者提出一个基于FCN改进的U型结构的网络（U-net）和一个依赖strong use of data augmentation的训练策略，可以更充分利用训练样本。 相较于FCN的改进： 1.可以在更少的图片上训练 2.有更精确的分割 与FCN逐点相加不同，U-Net采用将特征在channel维度拼接在一起，形成更“厚”的特征 注：直接复制过来再裁剪到与上采样图片一样大小 该方法允许任意大图片的无缝分割通过一个overlap-tile策略。为了预测框中图像，缺失区域通过镜像输入图像扩张。这种tiling方法对于应用网络到大图像很重要，因为否则结果会被gpu内存限制。为了预测黄色区域的分割，需要蓝色区域作为输入。 数据增强：elastic deformations (弹性形变) 数据增强在训练样本比较少的时候,能够让神经网络学习一些不变性，弹性变换是本文使用的方法。（因为弹性形变是实际细胞中比较常见的一种形变，如果我们能采取数据增强的算法去使网络学习这种形变的不变性，就可以在分割数据集很小的情况下，使网络具有遇见弹性形变还是可以准确的检测出，相当于就是把原图，做了下弹性变形，然后，就相当于扩大了数据集嘛，自然网络就能适应这种弹性变化了，在遇见弹性变形的时候一样可以正确的分类分割） 增加touching cell之间border的权重， 参考： https://blog.csdn.net/jianyuchen23/article/details/79349694]]></content>
@@ -66,8 +71,8 @@
         <category>Pytorch</category>
       </categories>
       <tags>
-        <tag>summary</tag>
         <tag>pytorch</tag>
+        <tag>summary</tag>
       </tags>
   </entry>
   <entry>
