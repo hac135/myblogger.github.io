@@ -179,7 +179,9 @@
 <meta property="og:description" content="事务：指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 ACID 1.原子性（Atomicity）要么都成功，要么都失败,即事务是最小单位，不允许切割 eg: A账户给B账户转账，A扣100元钱，B增加100元钱 2.一致性（Consistency） 数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/2020_03_13.1.png?raw=true">
-<meta property="og:updated_time" content="2020-03-13T06:58:54.730Z">
+<meta property="og:image" content="https://camo.githubusercontent.com/3045b900b49be903108147297e99499ee4168b94/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d362f2545362539352542302545362538442541452545352542412539332545352539452538322545372539422542342545352538382538362545352538432542412e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/3e93efc1212224996fe7d54a89a4894ab99c853c/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d362f2545362539352542302545362538442541452545352542412539332545362542302542342545352542392542332545362538422538362545352538382538362e706e67">
+<meta property="og:updated_time" content="2020-03-13T09:02:21.799Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql回顾">
 <meta name="twitter:description" content="事务：指的是满足 ACID 特性的一组操作，可以通过 Commit 提交一个事务，也可以使用 Rollback 进行回滚。 ACID 1.原子性（Atomicity）要么都成功，要么都失败,即事务是最小单位，不允许切割 eg: A账户给B账户转账，A扣100元钱，B增加100元钱 2.一致性（Consistency） 数据库在事务执行前后都保持一致性状态。在一致性状态下，所有事务对同一个数据的读取">
@@ -495,7 +497,7 @@
                 
               
 
-              <time title="创建时间：2020-03-13 11:44:04 / 修改时间：14:58:54" itemprop="dateCreated datePublished" datetime="2020-03-13T11:44:04+08:00">2020-03-13</time>
+              <time title="创建时间：2020-03-13 11:44:04 / 修改时间：17:02:21" itemprop="dateCreated datePublished" datetime="2020-03-13T11:44:04+08:00">2020-03-13</time>
             
 
             
@@ -559,7 +561,34 @@
 <p>explain:在可重复读中，该sql第一次读取到数据后，就将这些数据加锁（悲观锁），其它事务无法修改这些数据，就可以实现可重复读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免。需要Serializable隔离级别 ，读用读锁，写用写锁，读锁和写锁互斥，这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。</p>
 <p>4.<strong>SERIALIZABLE(可串行化)：</strong> 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。</p>
 <p><img src="https://github.com/hac135/my_images/blob/master/2020_03_13.1.png?raw=true" alt=""></p>
-
+<p>MySQL InnoDB 存储引擎的<strong>默认</strong>支持的隔离级别是 <strong>REPEATABLE-READ（可重读）</strong></p>
+<h3 id="锁机制与InnoDB锁算法"><a href="#锁机制与InnoDB锁算法" class="headerlink" title="锁机制与InnoDB锁算法"></a>锁机制与InnoDB锁算法</h3><p><strong>MyISAM和InnoDB存储引擎使用的锁：</strong></p>
+<ul>
+<li>MyISAM采用表级锁(table-level locking)。</li>
+<li>InnoDB支持行级锁(row-level locking)和表级锁,默认为行级锁 </li>
+</ul>
+<p><strong>表级锁和行级锁对比：</strong></p>
+<ul>
+<li><strong>表级锁：</strong> MySQL中锁定 <strong>粒度最大</strong> 的一种锁，对当前操作的整张表加锁，实现简单，资源消耗也比较少，加锁快，<strong>不会出现死锁</strong>。其锁定粒度最大，触发锁冲突的概率最高，并发度最低，MyISAM和 InnoDB引擎都支持表级锁。</li>
+<li><strong>行级锁：</strong> MySQL中锁定 <strong>粒度最小</strong> 的一种锁，只针对当前操作的行进行加锁。 行级锁能大大减少数据库操作的冲突。其加锁粒度最小，并发度高，但加锁的开销也最大，加锁慢，<strong>会出现死锁</strong>（why?）。</li>
+</ul>
+<h3 id="大表优化"><a href="#大表优化" class="headerlink" title="大表优化"></a>大表优化</h3><p>当MySQL单表记录数过大时，数据库的CRUD性能会明显下降，一些常见的优化措施如下：</p>
+<h4 id="1-限定数据的范围"><a href="#1-限定数据的范围" class="headerlink" title="1. 限定数据的范围"></a>1. 限定数据的范围</h4><p>务必禁止不带任何限制数据范围条件的查询语句。比如：我们当用户在查询订单历史的时候，我们可以控制在一个月的范围内；</p>
+<h4 id="2-读-写分离"><a href="#2-读-写分离" class="headerlink" title="2. 读/写分离"></a>2. 读/写分离</h4><p>经典的数据库拆分方案，主库负责写，从库负责读；</p>
+<h4 id="3-垂直分区"><a href="#3-垂直分区" class="headerlink" title="3. 垂直分区"></a>3. 垂直分区</h4><p><strong>根据数据库里面数据表的相关性进行拆分。</strong> 例如，用户表中既有用户的登录信息又有用户的基本信息，可以将用户表拆分成两个单独的表，甚至放到单独的库做分库。</p>
+<p><strong>简单来说垂直拆分是指数据表列的拆分，把一张列比较多的表拆分为多张表。</strong> 如下图所示，这样来说大家应该就更容易理解了。</p>
+<ul>
+<li><p><strong>垂直拆分的优点：</strong> 可以使得列数据变小，在查询时减少读取的Block数，减少I/O次数。此外，垂直分区可以简化表的结构，易于维护。</p>
+</li>
+<li><p><strong>垂直拆分的缺点：</strong> 主键会出现冗余，需要管理冗余列，并会引起Join操作，可以通过在应用层进行Join来解决。此外，垂直分区会让事务变得更加复杂；</p>
+<p><img src="https://camo.githubusercontent.com/3045b900b49be903108147297e99499ee4168b94/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d362f2545362539352542302545362538442541452545352542412539332545352539452538322545372539422542342545352538382538362545352538432542412e706e67" alt=""></p>
+</li>
+</ul>
+<h4 id="4-水平分区"><a href="#4-水平分区" class="headerlink" title="4. 水平分区"></a>4. 水平分区</h4><p><strong>保持数据表结构不变，通过某种策略存储数据分片。这样每一片数据分散到不同的表或者库中，达到了分布式的目的。 水平拆分可以支撑非常大的数据量。</strong></p>
+<p>水平拆分是指数据表行的拆分，表的行数超过200万行时，就会变慢，这时可以把一张的表的数据拆成多张表来存放。举个例子：我们可以将用户信息表拆分成多个用户信息表，这样就可以避免单一表数据量过大对性能造成影响。</p>
+<p><img src="https://camo.githubusercontent.com/3e93efc1212224996fe7d54a89a4894ab99c853c/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d362f2545362539352542302545362538442541452545352542412539332545362542302542342545352542392542332545362538422538362545352538382538362e706e67" alt=""></p>
+<p>水平拆分可以支持非常大的数据量。需要注意的一点是：分表仅仅是解决了单一表数据过大的问题，但由于表的数据还是在同一台机器上，其实对于提升MySQL并发能力没有什么意义，所以 <strong>水平拆分最好分库</strong> 。</p>
+<h1 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h1>
       
     </div>
 
@@ -646,8 +675,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -785,6 +823,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#锁机制与InnoDB锁算法"><span class="nav-number">1.</span> <span class="nav-text">锁机制与InnoDB锁算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大表优化"><span class="nav-number">2.</span> <span class="nav-text">大表优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-限定数据的范围"><span class="nav-number">2.1.</span> <span class="nav-text">1. 限定数据的范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-读-写分离"><span class="nav-number">2.2.</span> <span class="nav-text">2. 读/写分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-垂直分区"><span class="nav-number">2.3.</span> <span class="nav-text">3. 垂直分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-水平分区"><span class="nav-number">2.4.</span> <span class="nav-text">4. 水平分区</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number"></span> <span class="nav-text">索引</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
