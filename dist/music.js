@@ -18,40 +18,23 @@ const ap = new APlayer({
 	  {
         name: 'meet',
         artist: 'SunYanzi',
-        url: 'http://www.ytmp3.cn/down/52946.mp3',
+        url: 'http://rn01.sycdn.kuwo.cn/9255b078fe5a86e76a19e3e75c198ce4/5e709b1e/resource/n3/20/58/242205905.mp3',
         cover: 'https://www.vxotu.com/u/20200315/19190110.jpg',
       },
 	
-	  {
-        name: 'flower sea',
-        artist: 'Jay',
-        url: 'http://www.ytmp3.cn/down/69854.mp3',
-        cover: 'https://github.com/hac135/BlogPhotos/blob/master/Images/001.jpg?raw=true',
-      },
-	  {
-        name: 'go back',
-        artist: 'Jay',
-        url: 'http://www.ytmp3.cn/down/69851.mp3',
-        cover: 'https://github.com/hac135/BlogPhotos/blob/master/Images/001.jpg?raw=true',
-      },
 	  
-      {
-        name: 'need company',
-        artist: 'WangLihong',
-        url: 'http://www.ytmp3.cn/down/54719.mp3',
-        cover: 'https://github.com/hac135/BlogPhotos/blob/master/Images/001.jpg?raw=true',
-      },
+	
 	  {
         name: 'someone like me',
         artist: 'MaoBuyi',
-        url: 'http://www.ytmp3.cn/down/50667.mp3',
+        url: 'http://mp.111ttt.cn/mp3music/40471965.mp3',
         cover: 'https://github.com/hac135/my_images/blob/master/self.jpg?raw=true',
       },
 	  {
         name: 'anhe brige',
         artist: 'yuxi',
         url: 'http://www.ytmp3.cn/down/58164.mp3',
-        cover: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1555079532171&di=31d764aca0d6ee908f2da070f19730c2&imgtype=0&src=http%3A%2F%2Fi1.hdslb.com%2Fbfs%2Farchive%2F1a12ae8139070f08928b944ebd863e252e51fe18.jpg',
+        cover: 'https://www.vxotu.com/u/20200315/19190110.jpg',
       },
 	  {
         name: 'snail',
