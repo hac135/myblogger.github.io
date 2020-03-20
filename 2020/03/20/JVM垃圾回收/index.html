@@ -171,12 +171,12 @@
 
 
 
-  <meta name="description" content="title: JVM垃圾回收date: 2020-03-20 18:31:37tags: 揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于">
+  <meta name="description" content="揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细">
 <meta property="og:type" content="article">
-<meta property="og:title" content="liuminggui&#39;s home">
+<meta property="og:title" content="JVM垃圾回收">
 <meta property="og:url" content="http://yoursite.com/2020/03/20/JVM垃圾回收/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
-<meta property="og:description" content="title: JVM垃圾回收date: 2020-03-20 18:31:37tags: 揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于">
+<meta property="og:description" content="揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/20/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d33e5a086e7bb93e69e842e706e672d6729fc2ad0fb88.md.png">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/20/_202003201841326753e0152d82a0c1.png">
@@ -189,10 +189,10 @@
 <meta property="og:image" content="https://privacypic.com/images/2020/03/20/serial8b2665752d53d13d.png">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/20/partnewsabb8031666320d5c.png">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/20/CMSpng67b7e2730e555320.md.png">
-<meta property="og:updated_time" content="2020-03-20T12:01:55.857Z">
+<meta property="og:updated_time" content="2020-03-20T12:05:17.643Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="liuminggui&#39;s home">
-<meta name="twitter:description" content="title: JVM垃圾回收date: 2020-03-20 18:31:37tags: 揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于">
+<meta name="twitter:title" content="JVM垃圾回收">
+<meta name="twitter:description" content="揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。 Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细">
 <meta name="twitter:image" content="https://privacypic.com/images/2020/03/20/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d33e5a086e7bb93e69e842e706e672d6729fc2ad0fb88.md.png">
 
 
@@ -210,7 +210,7 @@
   };
 </script>
 
-  <title> | liuminggui's home</title>
+  <title>JVM垃圾回收 | liuminggui's home</title>
   
 
 
@@ -480,7 +480,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
+          <h1 class="post-title" itemprop="name headline">JVM垃圾回收
               
             
           </h1>
@@ -505,7 +505,7 @@
                 
               
 
-              <time title="创建时间：2020-03-20 18:31:37 / 修改时间：20:01:55" itemprop="dateCreated datePublished" datetime="2020-03-20T18:31:37+08:00">2020-03-20</time>
+              <time title="创建时间：2020-03-20 18:31:37 / 修改时间：20:05:17" itemprop="dateCreated datePublished" datetime="2020-03-20T18:31:37+08:00">2020-03-20</time>
             
 
             
@@ -543,8 +543,7 @@
       
 
       
-        <p>title: JVM垃圾回收<br>date: 2020-03-20 18:31:37<br>tags:</p>
-<h2 id="揭开-JVM-内存分配与回收的神秘面纱"><a href="#揭开-JVM-内存分配与回收的神秘面纱" class="headerlink" title="揭开 JVM 内存分配与回收的神秘面纱"></a>揭开 JVM 内存分配与回收的神秘面纱</h2><p>Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 <strong>堆</strong> 内存中对象的分配与回收。</p>
+        <h2 id="揭开-JVM-内存分配与回收的神秘面纱"><a href="#揭开-JVM-内存分配与回收的神秘面纱" class="headerlink" title="揭开 JVM 内存分配与回收的神秘面纱"></a>揭开 JVM 内存分配与回收的神秘面纱</h2><p>Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 <strong>堆</strong> 内存中对象的分配与回收。</p>
 <p>Java 堆是垃圾收集器管理的主要区域，因此也被称作<strong>GC 堆（Garbage Collected Heap）</strong>.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细致一点有：Eden 空间、From Survivor、To Survivor 空间等。<strong>进一步划分的目的是更好地回收内存，或者更快地分配内存。</strong></p>
 <p><strong>堆空间的基本结构</strong></p>
 <p><a href="https://privacypic.com/image/0QKhQa" target="_blank" rel="noopener"><img src="https://privacypic.com/images/2020/03/20/68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d33e5a086e7bb93e69e842e706e672d6729fc2ad0fb88.md.png" alt="68747470733a2f2f6d792d626c6f672d746f2d7573652e6f73732d636e2d6265696a696e672e616c6979756e63732e636f6d2f323031392d33e5a086e7bb93e69e842e706e672d6729fc2ad0fb88.md.png"></a></p>
