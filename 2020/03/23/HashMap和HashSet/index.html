@@ -171,18 +171,18 @@
 
 
 
-  <meta name="description" content="HashMap HashMap结构   hashmap.put(“1”,”2”) // entry—&amp;gt;key—&amp;gt;—&amp;gt;hash—&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： length=16 00">
+  <meta name="description" content="HashMap HashMap结构   1hashmap.put(&quot;1&quot;,&quot;2&quot;) // entry---&amp;gt;key---&amp;gt;---&amp;gt;hash---&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： len">
 <meta property="og:type" content="article">
 <meta property="og:title" content="HashMap和HashSet">
 <meta property="og:url" content="http://yoursite.com/2020/03/23/HashMap和HashSet/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
-<meta property="og:description" content="HashMap HashMap结构   hashmap.put(“1”,”2”) // entry—&amp;gt;key—&amp;gt;—&amp;gt;hash—&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： length=16 00">
+<meta property="og:description" content="HashMap HashMap结构   1hashmap.put(&quot;1&quot;,&quot;2&quot;) // entry---&amp;gt;key---&amp;gt;---&amp;gt;hash---&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： len">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200323_hashmap1.png?raw=true">
-<meta property="og:updated_time" content="2020-03-23T09:26:42.762Z">
+<meta property="og:updated_time" content="2020-03-23T09:32:47.503Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HashMap和HashSet">
-<meta name="twitter:description" content="HashMap HashMap结构   hashmap.put(“1”,”2”) // entry—&amp;gt;key—&amp;gt;—&amp;gt;hash—&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： length=16 00">
+<meta name="twitter:description" content="HashMap HashMap结构   1hashmap.put(&quot;1&quot;,&quot;2&quot;) // entry---&amp;gt;key---&amp;gt;---&amp;gt;hash---&amp;gt;index 会把key, value包装成一个entry对象，entry里面还需next属性。  为什么HashMap里数组的容量必须是2的幂次方   求数组下标： hashcode 与数组length-1 与操作 eg： len">
 <meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200323_hashmap1.png?raw=true">
 
 
@@ -495,7 +495,7 @@
                 
               
 
-              <time title="创建时间：2020-03-23 17:26:03 / 修改时间：17:26:42" itemprop="dateCreated datePublished" datetime="2020-03-23T17:26:03+08:00">2020-03-23</time>
+              <time title="创建时间：2020-03-23 17:26:03 / 修改时间：17:32:47" itemprop="dateCreated datePublished" datetime="2020-03-23T17:26:03+08:00">2020-03-23</time>
             
 
             
@@ -534,32 +534,32 @@
 
       
         <h2 id="HashMap"><a href="#HashMap" class="headerlink" title="HashMap"></a>HashMap</h2><ol>
-<li><p>HashMap结构 </p>
-<p><img src="https://github.com/hac135/my_images/blob/master/20200323_hashmap1.png?raw=true" style="zoom: 80%;"></p>
-<p>hashmap.put(“1”,”2”) // entry—&gt;key—&gt;—&gt;hash—&gt;index</p>
+<li><p><strong>HashMap结构</strong> </p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200323_hashmap1.png?raw=true" style="zoom: 67%;"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hashmap.put(<span class="string">"1"</span>,<span class="string">"2"</span>) <span class="comment">// entry---&gt;key---&gt;---&gt;hash---&gt;index</span></span><br></pre></td></tr></table></figure>
 <p>会把key, value包装成一个entry对象，entry里面还需next属性。</p>
 </li>
-<li><p>为什么HashMap里数组的容量必须是2的幂次方</p>
+<li><p><strong>为什么HashMap里数组的容量必须是2的幂次方</strong></p>
 </li>
 </ol>
 <p>求数组下标： hashcode 与数组length-1 与操作</p>
 <p>eg： length=16</p>
-<p>0000 1111 与hashcode与操作后，得到的值从0-15</p>
+<p>0000 1111 与hashcode与操作后，得到的值会从0-15,符合我们的要求。</p>
 <p>但如果数组容量是17</p>
 <p>0001 0000 与hashcode与操作后，得到的值要么是0，要么是16，其它空间都浪费了。</p>
 <ol start="2">
-<li>JDK1.8为什么不用链表了</li>
+<li><strong>JDK1.8为什么不用链表了</strong></li>
 </ol>
 <p>链表查询（get）效率太低</p>
 <p>其实还是用的，当链表长度增加大于等于8时，将采用红黑树。</p>
 <p>当链表长度（删除）   小于6时，改回链表。</p>
 <ol start="3">
-<li>为什么用红黑树，不用完全平衡二叉树</li>
+<li><strong>为什么用红黑树，不用完全平衡二叉树</strong></li>
 </ol>
 <p>AVL树是更加严格的平衡，因此可以提供更快的查找速度，一般读取查找密集型任务，适用AVL树。</p>
 <p>但平衡AVL树可能需要O（log n）旋转，而红黑树将需要最多两次旋转使其达到平衡(所以AVL插入复杂度更高)</p>
 <ol start="4">
-<li>JDK1.7是头插法，1.8是尾插法</li>
+<li><strong>JDK1.7是头插法，1.8是尾插法</strong></li>
 </ol>
 <p>主要原因在于并发下发生扩容时，可能会造成元素之间会形成一个循环链表。不过，jdk 1.8 后解决了这个问题，但是还是不建议在多线程下使用 HashMap,因为多线程下使用 HashMap 还是会存在其他问题比如数据丢失。并发环境下推荐使用 ConcurrentHashMap 。</p>
 <h2 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h2><p>HashSet 底层就是基于 HashMap 实现的.</p>

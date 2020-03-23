@@ -493,7 +493,7 @@
                 
               
 
-              <time title="创建时间：2020-03-23 17:26:03 / 修改时间：17:26:42" itemprop="dateCreated datePublished" datetime="2020-03-23T17:26:03+08:00">2020-03-23</time>
+              <time title="创建时间：2020-03-23 17:26:03 / 修改时间：17:32:47" itemprop="dateCreated datePublished" datetime="2020-03-23T17:26:03+08:00">2020-03-23</time>
             
 
             
@@ -536,7 +536,7 @@
           HashMap
 HashMap结构 
 
-hashmap.put(“1”,”2”) // entry—&gt;key—&gt;—&gt;hash—&gt;index
+1hashmap.put("1","2") // entry---&gt;key---&gt;---&gt;hash---&gt;index
 会把key, value包装成一个entry对象，entry里面还需next属性。
 
 为什么HashMap里数组的容量必须是2的幂次方
@@ -544,11 +544,9 @@ hashmap.put(“1”,”2”) // entry—&gt;key—&gt;—&gt;hash—&gt;index
 
 求数组下标： hashcode 与数组length-1 与操作
 eg： length=16
-0000 1111 与hashcode与操作后，得到的值从0-15
+0000 1111 与hashcode与操作后，得到的值会从0-15,符合我们的要求。
 但如果数组容量是17
-0001 0000 与hashcode与操作后，得到的值要么是0，要么是16，其它空间都浪费了。
-
-JDK1.8为
+0001 0000 与hashcode与操作后，得到的值要么是0，要么是16
           ...
           <!--noindex-->
           
