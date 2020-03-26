@@ -178,10 +178,13 @@
 <meta property="og:site_name" content="liuminggui&#39;s home">
 <meta property="og:description" content="Java中的锁乐观锁总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-25T10:34:04.923Z">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_synchronized.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_threadlocal1.jpg?raw=true">
+<meta property="og:updated_time" content="2020-03-26T07:45:32.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发2">
 <meta name="twitter:description" content="Java中的锁乐观锁总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就">
+<meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200326_synchronized.png?raw=true">
 
 
 
@@ -493,12 +496,24 @@
                 
               
 
-              <time title="创建时间：2020-03-25 15:40:21 / 修改时间：18:34:04" itemprop="dateCreated datePublished" datetime="2020-03-25T15:40:21+08:00">2020-03-25</time>
+              <time title="创建时间：2020-03-25 15:40:21" itemprop="dateCreated datePublished" datetime="2020-03-25T15:40:21+08:00">2020-03-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-26 15:45:32" itemprop="dateModified" datetime="2020-03-26T15:45:32+08:00">2020-03-26</time>
               
             
           </span>
@@ -564,6 +579,8 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// setup to use Unsafe.compareAndSwapInt for updates（更新操作时提供“比较并替换”的作用）</span></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Unsafe unsafe = Unsafe.getUnsafe();</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> valueOffset;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        valueOffset = unsafe.objectFieldOffset</span><br><span class="line">            (AtomicInteger.class.getDeclaredField(<span class="string">"value"</span>));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ex) &#123; <span class="keyword">throw</span> <span class="keyword">new</span> Error(ex); &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span> <span class="keyword">volatile</span> <span class="keyword">int</span> value;</span><br></pre></td></tr></table></figure>
 <p>AtomicInteger 类主要利用 CAS (compare and swap) + volatile 和 native 方法来保证原子操作，从而避免 synchronized 的高开销，执行效率大为提升。</p>
 <p>CAS的原理是拿期望的值和原本的一个值作比较，如果相同则更新成新的值。UnSafe 类的 objectFieldOffset() 方法是一个本地方法，这个方法是用来拿到“原来的值”的内存地址。另外 value 是一个volatile变量，在内存中可见，因此 JVM 可以保证任何时刻任何线程总能拿到该变量的最新值。</p>
+<h2 id="synchronized与Lock"><a href="#synchronized与Lock" class="headerlink" title="synchronized与Lock"></a>synchronized与Lock</h2><p>Java中有两种加锁的方式：一种是用<strong>synchronized关键字</strong>，另一种是用<strong>Lock接口</strong>的实现类。</p>
+<p>形象地说，synchronized关键字是<strong>自动档</strong>，可以满足一切日常驾驶需求。但是如果你想要玩漂移或者各种骚操作，就需要<strong>手动档</strong>了——各种Lock的实现类。</p>
 <h2 id="synchronized关键字"><a href="#synchronized关键字" class="headerlink" title="synchronized关键字"></a>synchronized关键字</h2><p><strong>synchronized关键字主要的三种使用方式：</strong></p>
 <ul>
 <li><p>synchronized修饰非静态方法（普通方法）时，锁住的是对象的实例，即this对象</p>
@@ -576,6 +593,88 @@
 <li>synchronized修饰代码块，锁住的是在括号里面的对象。</li>
 </ul>
 <p><strong>总结：</strong> synchronized 关键字加到 static 静态方法和 synchronized(class)代码块上都是是给 Class 类上锁。synchronized 关键字加到实例方法上是给对象实例上锁。尽量不要使用 synchronized(String a) 因为JVM中，字符串常量池具有缓存功能！(会带来很不好的后果，如synchronized(a)和synchronized(b)，可能a和b指向的是同一个对象。)</p>
+<p><strong>synchronized 关键字底层原理属于 JVM 层面。</strong></p>
+<p><strong>① synchronized 同步语句块的情况</strong></p>
+<p><strong>synchronized 同步语句块的实现使用的是 monitorenter 和 monitorexit 指令，其中 monitorenter 指令指向同步代码块的开始位置，monitorexit 指令则指明同步代码块的结束位置。</strong> 当执行 monitorenter 指令时，线程试图获取锁也就是获取 monitor(monitor对象存在于每个Java对象的对象头中，synchronized 锁便是通过这种方式获取锁的，也是为什么Java中任意对象可以作为锁的原因) 的持有权。当计数器为0则可以成功获取，获取后将锁计数器设为1也就是加1。相应的在执行 monitorexit 指令后，将锁计数器设为0，表明锁被释放。如果获取对象锁失败，那当前线程就要阻塞等待，直到锁被另外一个线程释放为止。</p>
+<p><strong>② synchronized 修饰方法的的情况</strong></p>
+<p>synchronized 修饰的方法并没有 monitorenter 指令和 monitorexit 指令，取得代之的确实是 ACC_SYNCHRONIZED 标识，该标识指明了该方法是一个同步方法，JVM 通过该 ACC_SYNCHRONIZED 访问标志来辨别一个方法是否声明为同步方法，从而执行相应的同步调用。</p>
+<h3 id="JDK1-6-之后的synchronized-关键字底层做了哪些优化，可以详细介绍一下这些优化吗"><a href="#JDK1-6-之后的synchronized-关键字底层做了哪些优化，可以详细介绍一下这些优化吗" class="headerlink" title="JDK1.6 之后的synchronized 关键字底层做了哪些优化，可以详细介绍一下这些优化吗"></a>JDK1.6 之后的synchronized 关键字底层做了哪些优化，可以详细介绍一下这些优化吗</h3><p>JDK1.6 对锁的实现引入了大量的优化，如偏向锁、轻量级锁、自旋锁、适应性自旋锁、锁消除、锁粗化等技术来减少锁操作的开销。</p>
+<p>锁主要存在四种状态，依次是：无锁状态、偏向锁状态、轻量级锁状态、重量级锁状态，他们会随着竞争的激烈而逐渐升级。注意<strong>锁可以升级不可降级</strong>，这种策略是为了提高获得锁和释放锁的效率。</p>
+<h2 id="synchronized锁升级：偏向锁-→-轻量级锁-→-重量级锁"><a href="#synchronized锁升级：偏向锁-→-轻量级锁-→-重量级锁" class="headerlink" title="synchronized锁升级：偏向锁 → 轻量级锁 → 重量级锁"></a>synchronized锁升级：偏向锁 → 轻量级锁 → 重量级锁</h2><p>偏向锁：</p>
+<p>初次执行到synchronized代码块的时候，锁对象变成<strong>偏向锁</strong>（通过CAS修改对象头里的锁标志位），字面意思是“偏向于第一个获得它的线程”的锁。执行完同步代码块后，线程并<strong>不会主动释放偏向锁</strong>。当第二次到达同步代码块时，线程会判断此时持有锁的线程是否就是自己（持有锁的线程ID也在对象头里），如果是则正常往下执行。<strong>由于之前没有释放锁，这里也就不需要重新加锁。</strong>如果自始至终使用锁的线程只有一个，很明显偏向锁几乎没有额外开销，性能极高。</p>
+<p>偏向锁，顾名思义，它会偏向于第一个访问锁的线程，如果在运行过程中，同步锁只有一个线程访问，不存在多线程争用的情况，则线程是不需要触发同步的，这种情况下，就会给线程加一个偏向锁。<br>如果在运行过程中，遇到了其他线程抢占锁，则持有偏向锁的线程会被挂起，JVM会消除它身上的偏向锁，将锁恢复到标准的轻量级锁。</p>
+<p>轻量级锁：</p>
+<p>轻量级锁是由偏向所升级来的，偏向锁运行在一个线程进入同步块的情况下，当第二个线程加入锁争用的时候，偏向锁就会升级为轻量级锁。在轻量级锁状态下继续锁竞争，没有抢到锁的线程将<strong>自旋</strong>，即不停地循环判断锁是否能够被成功获取。获取锁的操作，其实就是通过CAS修改对象头里的锁标志位。先<strong>比较</strong>当前锁标志位是否为“释放”，如果是则将其<strong>设置</strong>为“锁定”，比较并设置是<strong>原子性</strong>发生的。这就算抢到锁了，然后线程将当前锁的持有者信息修改为自己。</p>
+<p>重量级锁</p>
+<p>如果锁竞争情况严重，某个达到最大自旋次数的线程，会将轻量级锁升级为<strong>重量级锁</strong>（依然是CAS修改锁标志位，但不修改持有锁的线程ID）。当后续线程尝试获取锁时，发现被占用的锁是重量级锁，则直接将自己挂起。</p>
+<p><strong>自旋锁(spin lock)与互斥量(mutex)的比较</strong></p>
+<ul>
+<li><p>自旋锁是一种非阻塞锁，也就是说，如果某线程需要获取自旋锁，但该锁已经被其他线程占用时，该线程不会被挂起，而是在不断的消耗CPU的时间，不停的试图获取自旋锁。</p>
+</li>
+<li><p>互斥量是阻塞锁，当某线程无法获取互斥量时，该线程会被直接挂起，该线程不再消耗CPU时间，当其他线程释放互斥量后，操作系统会激活那个被挂起的线程，让其投入运行。</p>
+</li>
+</ul>
+<p>互斥同步对性能最大的影响就是阻塞的实现，因为挂起线程/恢复线程的操作都需要转入内核态中完成（用户态转换到内核态会耗费时间）。<strong>一般线程持有锁的时间都不是太长，所以仅仅为了这一点时间去挂起线程/恢复线程是得不偿失的</strong>。<strong>在 JDK1.6 中引入了自适应的自旋锁。自适应的自旋锁带来的改进就是：自旋的时间（次数）不在固定了，而是和前一次同一个锁上的自旋时间以及锁的拥有者的状态来决定，虚拟机变得越来越“聪明”了</strong>。</p>
+<p>锁清除</p>
+<p>锁消除理解起来很简单，它指的就是虚拟机即使编译器在运行时，如果检测到那些共享数据不可能存在竞争，那么就执行锁消除。锁消除可以节省毫无意义的请求锁的时间（没必要就不要加锁嘛）。</p>
+<p>锁粗化</p>
+<p>把关联性强的锁操作合并成一个，避免频繁获取锁和释放锁，反而影响性能。</p>
+<p>减少锁粒度</p>
+<p>它的思想是将物理上的一个锁，拆成逻辑上的多个锁，增加并行度，从而降低锁竞争。它的思想也是用空间来换时间；java中很多数据结构都是采用这种方法提高并发操作的效率：如<strong>ConcurrentHashMap</strong></p>
+<h4 id="Synchronized的实现"><a href="#Synchronized的实现" class="headerlink" title="Synchronized的实现"></a>Synchronized的实现</h4><p>它有多个队列，当多个线程一起访问某个对象监视器的时候，对象监视器会将这些线程存储在不同的容器中。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200326_synchronized.png?raw=true" alt=""></p>
+<ol>
+<li>Contention List：竞争队列，所有请求锁的线程首先被放在这个竞争队列中；</li>
+<li>Entry List：Contention List中那些有资格成为候选资源的线程被移动到Entry List中；</li>
+<li>Wait Set：哪些调用wait方法被阻塞的线程被放置在这里；</li>
+<li>OnDeck：任意时刻，最多只有一个线程正在竞争锁资源，该线程被成为OnDeck；</li>
+<li>Owner：当前已经获取到所资源的线程被称为Owner；</li>
+<li>!Owner：当前释放锁的线程。</li>
+</ol>
+<p>Synchronized是非公平锁。 Synchronized在线程进入ContentionList时，等待的线程会先尝试自旋获取锁，如果获取不到就进入ContentionList，这明显对于已经进入队列的线程是不公平的，还有一个不公平的事情就是自旋获取锁的线程还可能直接抢占OnDeck线程的锁资源。</p>
+<h3 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h3><p>ReentrantLock继承了Lock接口，是一个可重入的独占锁。</p>
+<p>需要显示获取和释放锁。</p>
+<p>支持公平锁和非公平锁的实现（先来先服务）。</p>
+<p>不但提供了synchronized对锁的操作功能，还提供了诸如响应中断，可轮询锁，定时锁等避免多线程死锁。</p>
+<h3 id="谈谈-synchronized和ReentrantLock-的区别"><a href="#谈谈-synchronized和ReentrantLock-的区别" class="headerlink" title="谈谈 synchronized和ReentrantLock 的区别"></a>谈谈 synchronized和ReentrantLock 的区别</h3><p><strong>① 两者都是可重入锁</strong></p>
+<p>支持一个线程对同一个资源执行多次加锁操作。</p>
+<p><strong>② synchronized 依赖于 JVM 而 ReentrantLock 依赖于 API</strong></p>
+<p><strong>③ ReentrantLock 比 synchronized 增加了一些高级功能</strong></p>
+<p>如可以实现公平锁，而synchronized是非公平锁；还可以定时锁，响应中断等。</p>
+<h2 id="volatile关键字"><a href="#volatile关键字" class="headerlink" title="volatile关键字"></a>volatile关键字</h2><h3 id="并发编程的三个重要特性"><a href="#并发编程的三个重要特性" class="headerlink" title="并发编程的三个重要特性"></a>并发编程的三个重要特性</h3><ol>
+<li><strong>原子性</strong> : 一个的操作或者多次操作，要么所有的操作全部都得到执行并且不会收到任何因素的干扰而中断，要么所有的操作都执行，要么都不执行。<code>synchronized</code>和Lock可以保证代码片段的原子性。(由于synchronized和Lock能够保证任一时刻只有一个线程执行该代码块，那么自然就不存在原子性问题了，从而保证了原子性。)</li>
+<li><strong>可见性</strong> ：当一个变量对共享变量进行了修改，那么另外的线程都是立即可以看到修改后的最新值。<code>volatile</code> 关键字可以保证共享变量的可见性。</li>
+<li><strong>有序性</strong> ：代码在执行的过程中的先后顺序，Java 在编译器以及运行期间的优化，代码的执行顺序未必就是编写代码时候的顺序。<code>volatile</code> 关键字可以禁止指令进行重排序优化。</li>
+</ol>
+<p>在Java中，对基本数据类型的变量的<strong>读取</strong>和<strong>赋值</strong>操作是原子性操作，即这些操作是不可被中断的，要么执行，要么不执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">10</span>; <span class="comment">//赋值操作，直接将数值10写入到工作内存，是原子性操作</span></span><br><span class="line">y = x;  <span class="comment">//实际上包含2个操作，它先要去读取x的值，再将x的值写入工作内存，不是原子性操作</span></span><br><span class="line">x++;   <span class="comment">//语句3</span></span><br><span class="line">x = x + <span class="number">1</span>;  <span class="comment">//语句4 包括3个操作：读取x的值，进行加1操作，写入新的值。</span></span><br></pre></td></tr></table></figure>
+<h3 id="说说-synchronized-关键字和-volatile-关键字的区别"><a href="#说说-synchronized-关键字和-volatile-关键字的区别" class="headerlink" title="说说 synchronized 关键字和 volatile 关键字的区别"></a>说说 synchronized 关键字和 volatile 关键字的区别</h3><p><strong>volatile关键字能保证数据的可见性，但不能保证数据的原子性。synchronized关键字两者都能保证。</strong></p>
+<p><strong>volatile关键字主要用于解决变量在多个线程之间的可见性，而 synchronized关键字解决的是多个线程之间访问资源的同步性。</strong></p>
+<p><strong>多线程访问volatile关键字不会发生阻塞，而synchronized关键字可能会发生阻塞</strong></p>
+<p><strong>volatile在一定程度上保证有序性：在进行指令优化时，不能将在对volatile变量访问的语句放在其后面执行，也不能把volatile变量后面的语句放到其前面执行。但前面和后面那块可能无序。</strong></p>
+<h3 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a><strong>使用条件</strong></h3><p>您只能在有限的一些情形下使用 volatile 变量替代锁。要使 volatile 变量提供理想的线程安全，必须同时满足下面两个条件：</p>
+<ul>
+<li>对变量的写操作不依赖于当前值。</li>
+<li>该变量没有包含在具有其他变量的不变式中。</li>
+</ul>
+<p>实际上，这些条件表明，可以被写入 volatile 变量的这些有效值独立于任何程序的状态，包括变量的当前状态。</p>
+<p>事实上，我的理解就是上面的2个条件需要保证操作是原子性操作，才能保证使用volatile关键字的程序在并发时能够正确执行。</p>
+<h2 id="volatile的适用场景"><a href="#volatile的适用场景" class="headerlink" title="volatile的适用场景"></a>volatile的适用场景</h2><p>不适用：第一个条件的限制使 volatile 变量<strong>不能用作线程安全计数器</strong>。虽然增量操作（<code>x++</code>）看上去类似一个单独操作，实际上它是一个由（读取－修改－写入）操作序列组成的组合操作，必须以原子方式执行，而 volatile 不能提供必须的原子特性。实现正确的操作需要使<code>x</code> 的值在操作期间保持不变，而 volatile 变量无法实现这点。</p>
+<p>适用：比如实现一个布尔状态标志，用于指示发生了一个重要的一次性事件，例如完成初始化或请求停机。</p>
+<h2 id="ThreadLocal"><a href="#ThreadLocal" class="headerlink" title="ThreadLocal"></a>ThreadLocal</h2><h3 id="ThreadLocal简介"><a href="#ThreadLocal简介" class="headerlink" title="ThreadLocal简介"></a>ThreadLocal简介</h3><p>通常情况下，我们创建的变量是可以被任何一个线程访问并修改的。<strong>如果想实现每一个线程都有自己的专属本地变量该如何解决呢？</strong> JDK中提供的<code>ThreadLocal</code>类正是为了解决这样的问题。 <strong>ThreadLocal类主要解决的就是让每个线程绑定自己的值，可以将ThreadLocal类形象的比喻成存放数据的盒子，盒子中可以存储每个线程的私有数据。</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal&lt;String&gt; localName = <span class="keyword">new</span> ThreadLocal();</span><br><span class="line">localName.set(<span class="string">"小狼"</span>);</span><br><span class="line">String name = localName.get();</span><br></pre></td></tr></table></figure>
+<p>在线程1中初始化了一个ThreadLocal对象localName，并通过set方法，保存了一个值<code>小狼</code>，同时在线程1中通过<code>localName.get()</code>可以拿到之前设置的值，但是如果在线程2中，拿到的将是一个null。</p>
+<p><strong>如果你创建了一个ThreadLocal变量，那么访问这个变量的每个线程都会有这个变量的本地副本，这也是ThreadLocal变量名的由来。他们可以使用 get（） 和 set（） 方法来获取默认值或将其值更改为当前线程所存的副本的值，从而避免了线程安全问题。</strong></p>
+<p>原理：<strong>每个Thread中都具备一个ThreadLocalMap</strong>（ThreadLocalMap并没有实现Map接口，而是自己用数组”实现”了一个Map），<strong>而ThreadLocalMap可以存储以ThreadLocal对象为key ，Object 对象为 value的键值对。</strong></p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200326_threadlocal1.jpg?raw=true" alt=""></p>
+<h2 id="内存泄露"><a href="#内存泄露" class="headerlink" title="内存泄露"></a>内存泄露</h2><p>ThreadLocal可能导致内存泄漏，为什么？ 先看看Entry的实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Entry</span> <span class="keyword">extends</span> <span class="title">WeakReference</span>&lt;<span class="title">ThreadLocal</span>&lt;?&gt;&gt; </span>&#123;</span><br><span class="line">    <span class="comment">/** The value associated with this ThreadLocal. */</span></span><br><span class="line">    Object value;</span><br><span class="line">    Entry(ThreadLocal&lt;?&gt; k, Object v) &#123;</span><br><span class="line">        <span class="keyword">super</span>(k);</span><br><span class="line">        value = v;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过之前的分析已经知道，当使用ThreadLocal保存一个value时，会在ThreadLocalMap中的数组插入一个Entry对象，按理说key-value都应该以强引用保存在Entry对象中，但在ThreadLocalMap的实现中，key被保存到了WeakReference(<strong>弱引用</strong>)对象中。</p>
+<p>这就导致了一个问题，ThreadLocal在没有外部强引用时，发生GC时会被回收，如果创建ThreadLocal的线程一直持续运行，那么这个Entry对象中的value就有可能一直得不到回收，发生内存泄露。</p>
+<p>解决</p>
+<p>既然已经发现有内存泄露的隐患，自然有应对的策略，在调用ThreadLocal的get()、set()可能会清除ThreadLocalMap中key为null的Entry对象，这样对应的value就没有GC Roots可达了，下次GC的时候就可以被回收，当然如果调用remove方法，肯定会删除对应的Entry对象。</p>
+<p>如果使用ThreadLocal的set方法之后，没有显示的调用remove方法，就有可能发生内存泄露，所以养成良好的编程习惯十分重要，使用完ThreadLocal之后，记得调用remove方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ThreadLocal&lt;String&gt; localName = <span class="keyword">new</span> ThreadLocal();</span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">    localName.set(<span class="string">"小狼"</span>);</span><br><span class="line">    <span class="comment">// 其它业务逻辑</span></span><br><span class="line">&#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">    localName.remove();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -821,7 +920,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">1.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.0.1.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.0.2.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种锁的使用场景"><span class="nav-number">1.0.3.</span> <span class="nav-text">两种锁的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁常见的两种实现方式"><span class="nav-number">1.0.4.</span> <span class="nav-text">乐观锁常见的两种实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CAS算法"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1.CAS算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-版本号机制"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2.版本号机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁的缺点"><span class="nav-number">1.0.5.</span> <span class="nav-text">乐观锁的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ABA-问题"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">1 ABA 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-循环时间长开销大"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">2 循环时间长开销大</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-只能保证一个共享变量的原子操作"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">3 只能保证一个共享变量的原子操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atomic-原子类介绍"><span class="nav-number">1.0.6.</span> <span class="nav-text">Atomic 原子类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型原子类的优势"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">基本数据类型原子类的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AtomicInteger-线程安全原理简单分析"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">AtomicInteger 线程安全原理简单分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized关键字"><span class="nav-number">1.1.</span> <span class="nav-text">synchronized关键字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Java中的锁"><span class="nav-number">1.</span> <span class="nav-text">Java中的锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁"><span class="nav-number">1.0.1.</span> <span class="nav-text">乐观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#悲观锁"><span class="nav-number">1.0.2.</span> <span class="nav-text">悲观锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种锁的使用场景"><span class="nav-number">1.0.3.</span> <span class="nav-text">两种锁的使用场景</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁常见的两种实现方式"><span class="nav-number">1.0.4.</span> <span class="nav-text">乐观锁常见的两种实现方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CAS算法"><span class="nav-number">1.0.4.1.</span> <span class="nav-text">1.CAS算法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-版本号机制"><span class="nav-number">1.0.4.2.</span> <span class="nav-text">2.版本号机制</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乐观锁的缺点"><span class="nav-number">1.0.5.</span> <span class="nav-text">乐观锁的缺点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-ABA-问题"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">1 ABA 问题</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-循环时间长开销大"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">2 循环时间长开销大</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-只能保证一个共享变量的原子操作"><span class="nav-number">1.0.5.3.</span> <span class="nav-text">3 只能保证一个共享变量的原子操作</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Atomic-原子类介绍"><span class="nav-number">1.0.6.</span> <span class="nav-text">Atomic 原子类介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基本数据类型原子类的优势"><span class="nav-number">1.0.6.1.</span> <span class="nav-text">基本数据类型原子类的优势</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#AtomicInteger-线程安全原理简单分析"><span class="nav-number">1.0.6.2.</span> <span class="nav-text">AtomicInteger 线程安全原理简单分析</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized与Lock"><span class="nav-number">1.1.</span> <span class="nav-text">synchronized与Lock</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized关键字"><span class="nav-number">1.2.</span> <span class="nav-text">synchronized关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-6-之后的synchronized-关键字底层做了哪些优化，可以详细介绍一下这些优化吗"><span class="nav-number">1.2.1.</span> <span class="nav-text">JDK1.6 之后的synchronized 关键字底层做了哪些优化，可以详细介绍一下这些优化吗</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#synchronized锁升级：偏向锁-→-轻量级锁-→-重量级锁"><span class="nav-number">1.3.</span> <span class="nav-text">synchronized锁升级：偏向锁 → 轻量级锁 → 重量级锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Synchronized的实现"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">Synchronized的实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ReentrantLock"><span class="nav-number">1.3.1.</span> <span class="nav-text">ReentrantLock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#谈谈-synchronized和ReentrantLock-的区别"><span class="nav-number">1.3.2.</span> <span class="nav-text">谈谈 synchronized和ReentrantLock 的区别</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile关键字"><span class="nav-number">1.4.</span> <span class="nav-text">volatile关键字</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#并发编程的三个重要特性"><span class="nav-number">1.4.1.</span> <span class="nav-text">并发编程的三个重要特性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#说说-synchronized-关键字和-volatile-关键字的区别"><span class="nav-number">1.4.2.</span> <span class="nav-text">说说 synchronized 关键字和 volatile 关键字的区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用条件"><span class="nav-number">1.4.3.</span> <span class="nav-text">使用条件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile的适用场景"><span class="nav-number">1.5.</span> <span class="nav-text">volatile的适用场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ThreadLocal"><span class="nav-number">1.6.</span> <span class="nav-text">ThreadLocal</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ThreadLocal简介"><span class="nav-number">1.6.1.</span> <span class="nav-text">ThreadLocal简介</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#内存泄露"><span class="nav-number">1.7.</span> <span class="nav-text">内存泄露</span></a></li></div>
             
 
           </div>
