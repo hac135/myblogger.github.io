@@ -181,7 +181,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashtable.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.7.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.8.png?raw=true">
-<meta property="og:updated_time" content="2020-03-27T02:10:31.589Z">
+<meta property="og:updated_time" content="2020-03-27T03:55:08.392Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器">
 <meta name="twitter:description" content="说说List,Set,Map三者的区别？ List(对付顺序的好帮手)： List接口存储一组不唯一（可以有多个元素引用相同的对象），有序的对象 Set(注重独一无二的性质): 不允许重复的集合。不会有多个元素引用相同的对象。 Map(用Key来搜索的专家): 使用键值对存储。Map会维护与Key有关联的值。两个Key可以引用相同的对象，但Key不能重复，典型的Key是String类型，但也可以是">
@@ -497,7 +497,7 @@
                 
               
 
-              <time title="创建时间：2020-03-27 08:08:10 / 修改时间：10:10:31" itemprop="dateCreated datePublished" datetime="2020-03-27T08:08:10+08:00">2020-03-27</time>
+              <time title="创建时间：2020-03-27 08:08:10 / 修改时间：11:55:08" itemprop="dateCreated datePublished" datetime="2020-03-27T08:08:10+08:00">2020-03-27</time>
             
 
             
@@ -571,6 +571,21 @@
 <p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.7.png?raw=true" alt=""></p>
 <p><strong>JDK1.8的ConcurrentHashMap（TreeBin: 红黑二叉树节点 Node: 链表节点）：</strong></p>
 <p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.8.png?raw=true" alt=""></p>
+<h2 id="ConcurrentHashMap线程安全的具体实现方式-底层具体实现"><a href="#ConcurrentHashMap线程安全的具体实现方式-底层具体实现" class="headerlink" title="ConcurrentHashMap线程安全的具体实现方式/底层具体实现"></a>ConcurrentHashMap线程安全的具体实现方式/底层具体实现</h2><h3 id="JDK1-7（上面有示意图）"><a href="#JDK1-7（上面有示意图）" class="headerlink" title="JDK1.7（上面有示意图）"></a>JDK1.7（上面有示意图）</h3><p>首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他线程访问。</p>
+<p><strong>ConcurrentHashMap 是由 Segment 数组结构和 HashEntry 数组结构组成</strong>。</p>
+<p>Segment 实现了 ReentrantLock,所以 Segment 是一种可重入锁，扮演锁的角色。HashEntry 用于存储键值对数据。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Segment</span>&lt;<span class="title">K</span>,<span class="title">V</span>&gt; <span class="keyword">extends</span> <span class="title">ReentrantLock</span> <span class="keyword">implements</span> <span class="title">Serializable</span> </span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>一个 ConcurrentHashMap 里包含一个 Segment 数组。Segment 的结构和HashMap类似，是一种数组和链表结构，一个 Segment 包含一个 HashEntry 数组，每个 HashEntry 是一个链表结构的元素，每个 Segment 守护着一个HashEntry数组里的元素，当对 HashEntry 数组的数据进行修改时，必须首先获得对应的 Segment的锁。</p>
+<h3 id="JDK1-8-（上面有示意图）"><a href="#JDK1-8-（上面有示意图）" class="headerlink" title="JDK1.8 （上面有示意图）"></a>JDK1.8 （上面有示意图）</h3><p>ConcurrentHashMap取消了Segment分段锁，采用CAS和synchronized来保证并发安全。数据结构跟HashMap1.8的结构类似，数组+链表/红黑二叉树。Java 8在链表长度超过一定阈值（8）时将链表（寻址时间复杂度为O(N)）转换为红黑树（寻址时间复杂度为O(log(N))）</p>
+<p>synchronized只锁定当前链表或红黑二叉树的首节点，这样只要hash不冲突，就不会产生并发，效率又提升N倍。</p>
+<h2 id="JDK-提供的并发容器总结"><a href="#JDK-提供的并发容器总结" class="headerlink" title="JDK 提供的并发容器总结"></a>JDK 提供的并发容器总结</h2><p>JDK 提供的这些容器大部分在 <code>java.util.concurrent</code> 包中。</p>
+<ul>
+<li><strong>ConcurrentHashMap:</strong> 线程安全的 HashMap</li>
+<li><strong>CopyOnWriteArrayList:</strong> 线程安全的 List，在读多写少的场合性能非常好，远远好于 Vector.</li>
+<li><strong>ConcurrentLinkedQueue:</strong> 高效的并发队列，使用链表实现。可以看做一个线程安全的 LinkedList，这是一个非阻塞队列。</li>
+<li><strong>BlockingQueue:</strong> 这是一个接口，JDK 内部通过链表、数组等方式实现了这个接口。表示阻塞队列，非常适合用于作为数据共享的通道。</li>
+<li><strong>ConcurrentSkipListMap:</strong> 跳表的实现。这是一个 Map，使用跳表的数据结构进行快速查找。</li>
+</ul>
 
       
     </div>
@@ -816,7 +831,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说说List-Set-Map三者的区别？"><span class="nav-number">1.</span> <span class="nav-text">说说List,Set,Map三者的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arraylist"><span class="nav-number">2.</span> <span class="nav-text">Arraylist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arraylist-与-LinkedList-区别"><span class="nav-number">3.</span> <span class="nav-text">Arraylist 与 LinkedList 区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList-与-Vector-区别呢-为什么要用Arraylist取代Vector呢？"><span class="nav-number">4.</span> <span class="nav-text">ArrayList 与 Vector 区别呢?为什么要用Arraylist取代Vector呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-和-Hashtable-的区别"><span class="nav-number">5.</span> <span class="nav-text">HashMap 和 Hashtable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap-和-Hashtable-的区别"><span class="nav-number">6.</span> <span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#说说List-Set-Map三者的区别？"><span class="nav-number">1.</span> <span class="nav-text">说说List,Set,Map三者的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arraylist"><span class="nav-number">2.</span> <span class="nav-text">Arraylist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Arraylist-与-LinkedList-区别"><span class="nav-number">3.</span> <span class="nav-text">Arraylist 与 LinkedList 区别?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ArrayList-与-Vector-区别呢-为什么要用Arraylist取代Vector呢？"><span class="nav-number">4.</span> <span class="nav-text">ArrayList 与 Vector 区别呢?为什么要用Arraylist取代Vector呢？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HashMap-和-Hashtable-的区别"><span class="nav-number">5.</span> <span class="nav-text">HashMap 和 Hashtable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap-和-Hashtable-的区别"><span class="nav-number">6.</span> <span class="nav-text">ConcurrentHashMap 和 Hashtable 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ConcurrentHashMap线程安全的具体实现方式-底层具体实现"><span class="nav-number">7.</span> <span class="nav-text">ConcurrentHashMap线程安全的具体实现方式/底层具体实现</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-7（上面有示意图）"><span class="nav-number">7.1.</span> <span class="nav-text">JDK1.7（上面有示意图）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JDK1-8-（上面有示意图）"><span class="nav-number">7.2.</span> <span class="nav-text">JDK1.8 （上面有示意图）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JDK-提供的并发容器总结"><span class="nav-number">8.</span> <span class="nav-text">JDK 提供的并发容器总结</span></a></li></ol></div>
             
 
           </div>
