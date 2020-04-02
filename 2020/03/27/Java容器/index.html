@@ -181,7 +181,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashtable.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.7.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.8.png?raw=true">
-<meta property="og:updated_time" content="2020-03-27T03:55:08.392Z">
+<meta property="og:updated_time" content="2020-03-27T06:55:23.312Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java容器">
 <meta name="twitter:description" content="说说List,Set,Map三者的区别？ List(对付顺序的好帮手)： List接口存储一组不唯一（可以有多个元素引用相同的对象），有序的对象 Set(注重独一无二的性质): 不允许重复的集合。不会有多个元素引用相同的对象。 Map(用Key来搜索的专家): 使用键值对存储。Map会维护与Key有关联的值。两个Key可以引用相同的对象，但Key不能重复，典型的Key是String类型，但也可以是">
@@ -497,7 +497,7 @@
                 
               
 
-              <time title="创建时间：2020-03-27 08:08:10 / 修改时间：11:55:08" itemprop="dateCreated datePublished" datetime="2020-03-27T08:08:10+08:00">2020-03-27</time>
+              <time title="创建时间：2020-03-27 08:08:10 / 修改时间：14:55:23" itemprop="dateCreated datePublished" datetime="2020-03-27T08:08:10+08:00">2020-03-27</time>
             
 
             
@@ -566,11 +566,11 @@
 </li>
 </ul>
 <p><strong>HashTable:</strong></p>
-<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashtable.png?raw=true" alt=""></p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashtable.png?raw=true" style="zoom:33%;"></p>
 <p><strong>JDK1.7的ConcurrentHashMap</strong>：</p>
-<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.7.png?raw=true" alt=""></p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.7.png?raw=true" style="zoom: 50%;"></p>
 <p><strong>JDK1.8的ConcurrentHashMap（TreeBin: 红黑二叉树节点 Node: 链表节点）：</strong></p>
-<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.8.png?raw=true" alt=""></p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200327_hashmap1.8.png?raw=true" style="zoom:80%;"></p>
 <h2 id="ConcurrentHashMap线程安全的具体实现方式-底层具体实现"><a href="#ConcurrentHashMap线程安全的具体实现方式-底层具体实现" class="headerlink" title="ConcurrentHashMap线程安全的具体实现方式/底层具体实现"></a>ConcurrentHashMap线程安全的具体实现方式/底层具体实现</h2><h3 id="JDK1-7（上面有示意图）"><a href="#JDK1-7（上面有示意图）" class="headerlink" title="JDK1.7（上面有示意图）"></a>JDK1.7（上面有示意图）</h3><p>首先将数据分为一段一段的存储，然后给每一段数据配一把锁，当一个线程占用锁访问其中一个段数据时，其他段的数据也能被其他线程访问。</p>
 <p><strong>ConcurrentHashMap 是由 Segment 数组结构和 HashEntry 数组结构组成</strong>。</p>
 <p>Segment 实现了 ReentrantLock,所以 Segment 是一种可重入锁，扮演锁的角色。HashEntry 用于存储键值对数据。</p>
@@ -625,6 +625,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/30/Java基础/" rel="prev" title="Java基础">
+                Java基础 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -700,7 +704,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">26</span>
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
