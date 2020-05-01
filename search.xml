@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[五月天1]]></title>
+    <url>%2F2020%2F05%2F01%2F%E4%BA%94%E6%9C%88%E5%A4%A91%2F</url>
+    <content type="text"><![CDATA[Dubbo框架图 sharding-jdbc实现读写分离 事务的传播机制REQUIRED（默认）：支持使用当前事务，如果当前事务不存在，创建一个新事务。SUPPORTS：支持使用当前事务，如果当前事务不存在，则不使用事务。MANDATORY：中文翻译为强制，支持使用当前事务，如果当前事务不存在，则抛出Exception。REQUIRES_NEW：创建一个新事务，如果当前事务存在，把当前事务挂起。NOT_SUPPORTED：无事务执行，如果当前事务存在，把当前事务挂起。NEVER：无事务执行，如果当前有事务则抛出Exception。NESTED：嵌套事务（事务里开启一个事务），如果当前事务存在，那么在嵌套的事务中执行。如果当前事务不存在，创建一个新事物。 例子 1234567外事务&#123; A();//事务.Required: 跟着回滚,和外事务是一个事务 B();//事务.Requires_new: 不会滚，创建了一个新事物 //给数据库插入数据 int i = 10/0;&#125;]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[约瑟夫环题解]]></title>
     <url>%2F2020%2F04%2F30%2F%E7%BA%A6%E7%91%9F%E5%A4%AB%E7%8E%AF%E9%A2%98%E8%A7%A3%2F</url>
     <content type="text"><![CDATA[问题描述：编号为 1-N 的 N 个士兵围坐在一起形成一个圆圈，从编号为 1 的士兵开始依次报数（1，2，3…这样依次报），数到 m 的 士兵会被杀死出列，之后的士兵再从 1 开始报数。直到最后剩下一士兵，求这个士兵的编号。 1.方法一:数组 用一个数组来存放 1，2，3 … n 这 n 个编号，出局可以用-1标记。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647public class Main01 &#123; public static void main(String[] args) &#123; fun1(11,3);&#125; public static void fun1(int n, int m)&#123; int[] array = new int[n];//定义数组存放最开始的顺序1,2,3...n for(int i=1;i&lt;=n;i++)&#123; array[i-1]=i; &#125; print_array(array); int taotai=0;//当前淘汰人数 int current=0;//当前下标，从0开始 while(taotai!=n-1)&#123;//淘汰人数等于十个人的时候退出循环 int move=1;//向后移动次数,默认已经在第一位 while(move!=m)&#123; current=move_forward(array,current);//向后移动一位 move++; &#125; taotai++; array[current]=-1; current = move_forward(array,current);//淘汰current位置后，到第一个位置 print_array(array); &#125; &#125; private static int move_forward(int[] array, int current) &#123;//向后报数一位 current++; if(current==array.length)&#123;// current=0; &#125; while(array[current]==-1)&#123;//已经出局 current=move_forward(array,current); &#125; return current; &#125; public static void print_array(int[] nums)&#123;//打印数组 for(int num:nums)&#123; System.out.print(num+" "); &#125; System.out.println(); &#125;&#125; 2.方法二：用循环链表模拟，出局直接移除该链表节点。 3.方法三：递推公式 递推公式： f(N,M)=(f(N−1,M)+M)%N f(N,M) 表示，N个人报数，每报到M时杀掉那个人，最终胜利者的编号 f(N−1,M)表示，N-1个人报数，每报到M时杀掉那个人，最终胜利者的编号 将上面表格的每一行看成数组，这个公式描述的是：幸存者在这一轮的下标位置 f(1,3)=0：只有1个人了，那个人就是获胜者，他的下标位置是0 f(2,3)=(f(1,3)+3)%2=3%2=1：在有2个人的时候，胜利者的下标位置为1 f(3,3)=(f(2,3)+3)%3=4%3=1：在有3个人的时候，胜利者的下标位置为1 f(4,3)=(f(3,3)+3)%4=4%4=0：在有4个人的时候，胜利者的下标位置为0 …… f(11,3)=6 很神奇吧！现在你还怀疑这个公式的正确性吗？上面这个例子验证了这个递推公式的确可以计算出胜利者的下标，下面将讲解怎么推导这个公式。 问题1：假设我们已经知道11个人时，胜利者的下标位置为6。那下一轮10个人时，胜利者的下标位置为多少？答：其实吧，第一轮删掉编号为3的人后，之后的人都往前面移动了3位，胜利这也往前移动了3位，所以他的下标位置由6变成3。 问题2：假设我们已经知道10个人时，胜利者的下标位置为3。那下一轮11个人时，胜利者的下标位置为多少？答：这可以看错是上一个问题的逆过程，大家都往后移动3位，所以f(11,3)=f(10,3)+3。不过有可能数组会越界，所以最后模上当前人数的个数，f(11,3)=（f(10,3)+3）%11 问题3：现在改为人数改为N，报到M时，把那个人杀掉，那么数组是怎么移动的？答：每杀掉一个人，下一个人成为头，相当于把数组向前移动M位。若已知N-1个人时，胜利者的下标位置位f(N−1,M)f(N−1,M)，则N个人的时候，就是往后移动M为，(因为有可能数组越界，超过的部分会被接到头上，所以还要模N)，既f(N,M)=(f(N−1,M)+M)%N 注：理解这个递推式的核心在于关注胜利者的下标位置是怎么变的。每杀掉一个人，其实就是把这个数组向前移动了M位。然后逆过来，就可以得到这个递推式。]]></content>
@@ -131,8 +136,8 @@
         <category>Pytorch</category>
       </categories>
       <tags>
-        <tag>pytorch</tag>
         <tag>summary</tag>
+        <tag>pytorch</tag>
       </tags>
   </entry>
   <entry>
