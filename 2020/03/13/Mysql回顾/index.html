@@ -184,7 +184,7 @@
 <meta property="og:image" content="https://privacypic.com/images/2020/03/16/25519f0421704f5db.md.jpg">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/16/B346d0af0dcb2cf33.png">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/16/B96c6017a36489bf8.png">
-<meta property="og:updated_time" content="2020-03-31T09:01:01.795Z">
+<meta property="og:updated_time" content="2020-05-01T03:45:51.928Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql回顾">
 <meta name="twitter:description" content="MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是InnoDB 提供事务支持事务，外部">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-03-31 17:01:01" itemprop="dateModified" datetime="2020-03-31T17:01:01+08:00">2020-03-31</time>
+                <time title="修改时间：2020-05-01 11:45:51" itemprop="dateModified" datetime="2020-05-01T11:45:51+08:00">2020-05-01</time>
               
             
           </span>
@@ -583,8 +583,8 @@
 <p>同不可重复读一样，T2可能增加了几行，T1蒙蔽了，出现了幻觉。</p>
 <p>事务的隔离级别</p>
 <p>1.<strong>READ-UNCOMMITTED(读取未提交)：</strong> 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读。</p>
-<p><strong>2.READ-COMMITTED(读取已提交)： </strong>允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。<em>**</em></p>
-<p>3.<strong>REPEATABLE-READ(可重复读)：</strong> 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。</p>
+<p><strong>2.READ-COMMITTED(读取已提交)： </strong>允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生。<em>**</em>（先读一次，别人提交，再读一次，不一样我擦，不可重复读）</p>
+<p>3.<strong>REPEATABLE-READ(可重复读)：</strong> 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。（读的时候加锁，别人就改不了了，可自己可能会改）</p>
 <p>explain:在可重复读中，该sql第一次读取到数据后，就将这些数据加锁（悲观锁），其它事务无法修改这些数据，就可以实现可重复读了。但这种方法却无法锁住insert的数据，所以当事务A先前读取了数据，或者修改了全部数据，事务B还是可以insert数据提交，这时事务A就会发现莫名其妙多了一条之前没有的数据，这就是幻读，不能通过行锁来避免。需要Serializable隔离级别 ，读用读锁，写用写锁，读锁和写锁互斥，这么做可以有效的避免幻读、不可重复读、脏读等问题，但会极大的降低数据库的并发能力。</p>
 <p>4.<strong>SERIALIZABLE(可串行化)：</strong> 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。</p>
 <p><img src="https://github.com/hac135/my_images/blob/master/2020_03_13.1.png?raw=true" alt=""></p>
