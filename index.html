@@ -448,6 +448,172 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/分布式锁/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuminggui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mycat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuminggui's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2020/05/07/分布式锁/" class="post-title-link" itemprop="http://yoursite.com/index.html">分布式锁</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-05-07 15:43:04" itemprop="dateCreated datePublished" datetime="2020-05-07T15:43:04+08:00">2020-05-07</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-05-08 14:59:05" itemprop="dateModified" datetime="2020-05-08T14:59:05+08:00">2020-05-08</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。
+但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）
+
+一般采用redis来实现分布式锁。
+123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798
+          ...
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2020/05/07/分布式锁/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/01/全排列/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -664,7 +830,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-05-02 15:59:15" itemprop="dateModified" datetime="2020-05-02T15:59:15+08:00">2020-05-02</time>
+                <time title="修改时间：2020-05-02 16:06:09" itemprop="dateModified" datetime="2020-05-02T16:06:09+08:00">2020-05-02</time>
               
             
           </span>
@@ -820,12 +986,24 @@ PUT customer/external/1   {  “name”: “John Doe”  }；
                 
               
 
-              <time title="创建时间：2020-05-01 09:48:07 / 修改时间：12:23:36" itemprop="dateCreated datePublished" datetime="2020-05-01T09:48:07+08:00">2020-05-01</time>
+              <time title="创建时间：2020-05-01 09:48:07" itemprop="dateCreated datePublished" datetime="2020-05-01T09:48:07+08:00">2020-05-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-05-03 16:42:18" itemprop="dateModified" datetime="2020-05-03T16:42:18+08:00">2020-05-03</time>
               
             
           </span>
@@ -861,8 +1039,17 @@ PUT customer/external/1   {  “name”: “John Doe”  }；
         
           
           Dubbo框架图
+Dubbo集群容错使用：在@Service注解上
+
+Failover(失败自动切换)
+Failsafe(失败安全)
+Failfast(快速失败)
+Failback(失败自动恢复)
+Forking(并行调用)
+Broadcast(广播调用)
+
 sharding-jdbc实现读写分离
-事务的传播机制REQUIRED（默认）：支持使用当前事务，如果当前事务不存在，创建一个新事务。SUPPORTS：支持使用当前事务，如果当前事务不存在，则不使用事务。MANDATORY：中文翻译为强制，支持使用当前事务，如果当前事务不存在，则抛出Exception。REQUIRES_NEW：创建一个新事务，如果当前事务存在，把当前事务挂起。NOT_SUPPORTED：无事务执行，如果当前事务存在，把当前事务挂起。NEVER：无事务执行，如果当前有事务则抛出Exception。NESTED：嵌套事务（事务里开启一个事务），如果当前事务存在，
+事务的传播机制REQUIRED（默认）：支持使用当前事务，如果当前事务不存在，创建一个新事务。SUPPORTS：支持使用当前事务，如果当前事务不存在，则不使用事务。MANDATORY：中文翻译为强制，支持使用当前事务，如果当前事务不存在，则抛出Exception。REQUIRES_NEW：创建一个新
           ...
           <!--noindex-->
           
@@ -1868,181 +2055,6 @@ ArraylistJava的动态数组
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/23/HashMap和HashSet/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="liuminggui">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/mycat.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="liuminggui's home">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2020/03/23/HashMap和HashSet/" class="post-title-link" itemprop="http://yoursite.com/index.html">HashMap和HashSet</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2020-03-23 17:26:03" itemprop="dateCreated datePublished" datetime="2020-03-23T17:26:03+08:00">2020-03-23</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2020-03-26 18:02:39" itemprop="dateModified" datetime="2020-03-26T18:02:39+08:00">2020-03-26</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          HashMap
-HashMap结构 
-
-1hashmap.put("1","2") // entry---&gt;key---&gt;---&gt;hash---&gt;index
-会把key, value包装成一个entry对象，entry里面还需next属性。
-
-为什么HashMap里数组的容量必须是2的幂次方
-
-
-求数组下标： hashcode 与数组length-1 与操作
-eg： length=16
-0000 1111 与hashcode与操作后，得到的值会从0-15,符合我们的要求。
-但如果数组容量是17
-0001 0000 与hashcode与操作后，得到的值要么是0，要么是16
-          ...
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2020/03/23/HashMap和HashSet/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-       
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2092,7 +2104,7 @@ eg： length=16
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-count">33</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
