@@ -173,15 +173,15 @@
 
   <meta name="description" content="Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。 但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）  一般采用redis来实现分布式锁。 12345678910111213141516171819202122232425262728293">
 <meta property="og:type" content="article">
-<meta property="og:title" content="分布式锁">
-<meta property="og:url" content="http://yoursite.com/2020/05/07/分布式锁/index.html">
+<meta property="og:title" content="分布式锁与缓存">
+<meta property="og:url" content="http://yoursite.com/2020/05/07/分布式锁与缓存/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
 <meta property="og:description" content="Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。 但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）  一般采用redis来实现分布式锁。 12345678910111213141516171819202122232425262728293">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200507_%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%811.png?raw=true">
-<meta property="og:updated_time" content="2020-05-08T06:59:05.733Z">
+<meta property="og:updated_time" content="2020-05-12T02:51:03.307Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分布式锁">
+<meta name="twitter:title" content="分布式锁与缓存">
 <meta name="twitter:description" content="Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。 但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）  一般采用redis来实现分布式锁。 12345678910111213141516171819202122232425262728293">
 <meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200507_%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%811.png?raw=true">
 
@@ -190,7 +190,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/05/07/分布式锁/">
+  <link rel="canonical" href="http://yoursite.com/2020/05/07/分布式锁与缓存/">
 
 
 
@@ -200,7 +200,7 @@
   };
 </script>
 
-  <title>分布式锁 | liuminggui's home</title>
+  <title>分布式锁与缓存 | liuminggui's home</title>
   
 
 
@@ -453,7 +453,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/分布式锁/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/07/分布式锁与缓存/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="liuminggui">
@@ -470,7 +470,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">分布式锁
+          <h1 class="post-title" itemprop="name headline">分布式锁与缓存
               
             
           </h1>
@@ -512,7 +512,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-05-08 14:59:05" itemprop="dateModified" datetime="2020-05-08T14:59:05+08:00">2020-05-08</time>
+                <time title="修改时间：2020-05-12 10:51:03" itemprop="dateModified" datetime="2020-05-12T10:51:03+08:00">2020-05-12</time>
               
             
           </span>
@@ -556,6 +556,25 @@
 <h3 id="读写锁"><a href="#读写锁" class="headerlink" title="读写锁"></a>读写锁</h3><p>基于Redis的Redisson分布式可重入读写锁<a href="http://static.javadoc.io/org.redisson/redisson/3.4.3/org/redisson/api/RReadWriteLock.html" target="_blank" rel="noopener"><code>RReadWriteLock</code></a> Java对象实现了<code>java.util.concurrent.locks.ReadWriteLock</code>接口。其中读锁和写锁都继承了<a href="https://github.com/redisson/redisson/wiki/8.-分布式锁和同步器#81-可重入锁reentrant-lock" target="_blank" rel="noopener">RLock</a>接口。</p>
 <p>分布式可重入读写锁允许同时有多个读锁和一个写锁处于加锁状态。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">RReadWriteLock rwlock = redisson.getReadWriteLock(<span class="string">"anyRWLock"</span>);</span><br><span class="line"><span class="comment">// 最常见的使用方法</span></span><br><span class="line">rwlock.readLock().lock();<span class="comment">//一般会设置过期时间</span></span><br><span class="line"><span class="comment">// 或</span></span><br><span class="line">rwlock.writeLock().lock();</span><br></pre></td></tr></table></figure>
+<h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>1.问题：查询效率高，数据变化频率不是太快的。我们进缓存。<strong>如何让缓存和数据库同步</strong>？</p>
+<p>答：</p>
+<p>写场景：更新数据库成功后，同步更新缓存；</p>
+<p>读场景：先从缓存中读，没有再从数据库读，放入缓存。</p>
+<p>你只要用缓存，就可能会涉及到缓存与数据库双存储双写，你只要是双写，就一定会有数据一致性的问题，那么你如何解决一致性问题？</p>
+<p>1）：一般来说，如果允许缓存可以稍微的跟数据库偶尔有不一致的情况，也就是说如果你的系统<strong>不是严格要求</strong> “缓存+数据库” 必须保持一致性的话，最好不要做这个方案，即：<strong>读请求和写请求串行化</strong>，串到一个<strong>内存队列</strong>里去。</p>
+<p>2）：可以用个读写锁。  性能慢，可以用粒度细点的锁。  </p>
+<h2 id="Redis和ElasticSearch"><a href="#Redis和ElasticSearch" class="headerlink" title="Redis和ElasticSearch"></a>Redis和ElasticSearch</h2><h3 id="redis优缺点"><a href="#redis优缺点" class="headerlink" title="redis优缺点"></a>redis优缺点</h3><blockquote>
+<p>1、redis最大特点是key-value存储，简单且性能高  一种key-value数据库中功能最全，最简单易用的款。<br>2、redis会把所有数据加载到内存中。<br>2、redis还支持数据持久化，list，set等多种数据结构，master-slave 复制备份。</p>
+</blockquote>
+<p><strong>redis缺点：</strong></p>
+<blockquote>
+<p>1、由于去掉了表字段，所有查询都用来key，  所以无法支持常规的多列查询，区段查询。<br>2、由于Redis需要把数据存在内存中，这也大大限制了Redis可存储的数据量，这也决定了Redis难以用在数据规模很大的应用场景中</p>
+</blockquote>
+<h3 id="ES-ElasticSearch"><a href="#ES-ElasticSearch" class="headerlink" title="ES(ElasticSearch)"></a>ES(ElasticSearch)</h3><p>ES：ElasticSearch 是一个分布式、高扩展、高实时的搜索与数据分析引擎。严格来说，他不是一个数据库，是个搜索引擎,即搜索服务器。es提供了一种分布式多用户能力的全文搜索引擎。</p>
+<p>Elasticsearch是分布式的，这意味着索引可以被分成分片，每个分片可以有0个或多个副本。每个节点托管一个或多个分片，并充当协调器将操作委托给正确的分片。再平衡和路由是自动完成的。“相关数据通常存储在同一个索引中，该索引由一个或多个主分片和零个或多个复制分片组成。一旦创建了索引，就不能更改主分片的数量。</p>
+<p>优点：能够达到实时搜索，稳定，可靠，快速，安装使用方便<br> 缺点：也有很多，自己查</p>
+<p><a href="https://www.php.cn/redis/425065.html" target="_blank" rel="noopener"><strong>redis和ElasticSearch的区别</strong></a></p>
+
       
     </div>
 
@@ -800,7 +819,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">Redis实现分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redisson"><span class="nav-number">2.</span> <span class="nav-text">Redisson</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">Redis实现分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redisson"><span class="nav-number">2.</span> <span class="nav-text">Redisson</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">3.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis和ElasticSearch"><span class="nav-number">4.</span> <span class="nav-text">Redis和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis优缺点"><span class="nav-number">4.1.</span> <span class="nav-text">redis优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES-ElasticSearch"><span class="nav-number">4.2.</span> <span class="nav-text">ES(ElasticSearch)</span></a></li></ol></li></ol></div>
             
 
           </div>
