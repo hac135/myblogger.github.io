@@ -541,9 +541,7 @@
           实例域private修饰和public
 public : 允许程序中的任何方法对其进行修改和读取
 private: 只有该类自身的方法能够访问这些实例域
-私有方法：除了类自身方法，还可以通过反射访问。反射访问私有方法
-static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。
-12345public class Math&#123;public static final double PI = 3.1415926;&#125;//程序可以使用Math.PI获得这个常量，如果忽略static，PI就变成了Math类的一个实例域。需要通过Math类的对象访问PI，而且每一个Math
+私有方法：除了类自身方法，还可以通过反射访问。
           ...
           <!--noindex-->
           
@@ -707,11 +705,7 @@ static修饰实例域：这个类的实例共享这个实例域，它属于类�
           
           接口式编程原生：       Dao     ==========&gt;   DaoImpl
 mybatis:   Mapper  ========&gt;    xxMapper.xml
-Mapper是一个接口，并没有实现类，而是有一个与之对应得配置文件。这个配置文件就相当于Mapper得实现。
-具体过程：mapper接口没有实现类，但是mybatis会为这个接口生成一个代理对象。(将接口和xml进行绑定)
-EmployeeMapper empMapper = sqlSession.getMapper(EmployeeMapper.class); 
-Mybatis第一天讲义
-Mybatis
+Mapp
           ...
           <!--noindex-->
           
@@ -883,7 +877,7 @@ TCP连接
 浏览器解析渲染页面
 连接结束
 
-HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HTTP做一次加密就可以解决这个问题了。HTTPS协议的本质就是HTTP + SSL(or TLS)。在HTTP报文进入TCP报文之前，先使用SSL对HTTP报文进行加密。从网络的层级结构看它位于HT
+HTTPS和HTTP的区别HTTP报
           ...
           <!--noindex-->
           
@@ -1010,7 +1004,7 @@ HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端�
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-13 16:01:43" itemprop="dateModified" datetime="2020-06-13T16:01:43+08:00">2020-06-13</time>
+                <time title="修改时间：2020-06-13 16:12:25" itemprop="dateModified" datetime="2020-06-13T16:12:25+08:00">2020-06-13</time>
               
             
           </span>
@@ -1045,9 +1039,7 @@ HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端�
       
         
           
-          RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。
-
-资源（Resource） ：我们可以把真实的对象数据称为资源。一个资源既可以是一个集合，也可以是单个个体。比如我们的班级 classes 是代表一个集合形式的资源，而特定的 class 代表单个个体资源。每一种资源都有特定的 URI
+          RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称
           ...
           <!--noindex-->
           
@@ -1200,13 +1192,7 @@ HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端�
           面试题1：软件产品质量特性是什么？
 答：软件产品的质量属性有8个，分别为：
 1、功能性：功能完备性、功能正确性、功能适合性、功能性的依从性。
-2、性能效率：时间特性、资源利用率、容量、性能效率的依从性。
-3、兼容性：共存性、互操作性、兼容性的依从性。
-4、易用性：可辨识性、易学性、易操作性、用户差错防御性、用户界面舒适性、易访问性、易用性的依从性。
-5、可靠性：成熟性、可用性、容错性、易恢复性、可靠性的依从性。
-6、信息安全性：保密性、完整性、抗抵赖性、可核查性、真实性、信息安全性的依从性。
-7、维护性：模块化、可重用性、易分析性、易修改性、易测试性、维护性的依从性。
-8、可移植性：适应性、易
+2、性能效率：时间特性、资源利用率、容量、性能效率的依从性
           ...
           <!--noindex-->
           
@@ -1357,9 +1343,7 @@ HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端�
         
           
           最初级的用法使用官方包安装，安装非常简单，但效果一般hexo live-2d地址：https://github.com/xiazeyu/live2d-widget-modelsgit命令行中输入：
-12npm install --save hexo-helper-live2d npm install live2d-widget-model-epsilon2_1 # 安装某个模型
-同时在博客配置文件中修改：
-增加的宠物功能123456789101112131415161718live2d:  enable: true  pluginRootPath: live2dw/  pluginJsPath
+1
           ...
           <!--noindex-->
           
@@ -1524,13 +1508,7 @@ HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端�
           单点登录SSO英文全称Single Sign On，单点登录；
 SSO是在多个应用系统中，用户只需要登录一次就可以访问所有相互信任的应用系统。
 1）、任何系统都必须去登陆服务器进行登录
-2）、服务器就记住了登录状态
-3）、其他系统访问受保护资源，需要再次登录，跳转到sso_server登录的时候，服务器告诉客户端，已经登录过，无须登录。登录过得信息
-单点登录流程图
-社交登录OAuth2.0协议
-OAuth：OAuth（开放授权）是一个开放标准，允许用户授权第三方网站访问他们存储在另外的服务提供者上的信息，而不需要将用户名和密码提供给第三方网站或分享他们数据的所有内容。
-
-OAuth2.0：对于
+2）、服务器就
           ...
           <!--noindex-->
           
@@ -1693,10 +1671,7 @@ OAuth2.0：对于
         
           
           Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。
-但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）
-
-一般采用redis来实现分布式锁。
-123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798
+但是，在分布式下，这些锁都会失效。（分布式下以前的所有
           ...
           <!--noindex-->
           
@@ -1848,9 +1823,7 @@ OAuth2.0：对于
           
           给定一个 没有重复 数字的序列，返回其所有可能的全排列。
 示例:
-输入: [1,2,3]输出:[ [1,2,3],  [1,3,2],  [2,1,3], [2,3,1], [3,1,2], [3,2,1]]链接：https://leetcode-cn.com/problems/permutations
-回溯法
-1234567891011121314151617181920212223242526272829303132333435363738394041424344454647class Solution &#123;    public  List&lt;List&lt;Integer&g
+输入: [1,2,3]输出:[ [1,2,3],  [1,3,2],  [2,1,3], [2,3,1], [3,1,2], [3,2
           ...
           <!--noindex-->
           
@@ -2018,12 +1991,7 @@ Index（索引）
 名词，相当于MySQL中的Database
 Type（类型）
 在 Index（索引）中，可以定义一个或多个类型。
-类似于MySQL中的Table；每一种类型的数据放在一起；
-Document（文档）
-保存在某个索引（Index）下，某种类型（Type）下的一个数据（Document），文档是JSON格式。
-索引一个文档保存一个数据，保存在哪个索引的哪个类型下，指定用哪个唯一标识
-PUT customer/external/1   {  “name”: “John Doe”  }；
-在customer索引下的external类型下保
+类似于MySQL中的T
           ...
           <!--noindex-->
           

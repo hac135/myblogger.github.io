@@ -550,8 +550,7 @@
       
         
           
-          论文题目：Application of artificial intelligence using a convolutional neural network for detecting gastric cancer in endoscopic images论文下载: 点击下载
-测试集：13584张胃癌图片，包含2639个胃癌病变（经组织学验证）测试集： 2296张胃癌图片，包含69个病人，77个胃癌病变(62 cases had 1 gastric cancer lesion, 6 had 2 lesions, and 1 had 3 lesions)，每个病人18~69张图片。速度： 共
+          论文题目：Application of artificial intelligence using a convolutional neural network for detecting gastr
           ...
           <!--noindex-->
           
@@ -719,9 +718,8 @@
       
         
           
-          1.Huang_SpeedAccuracy_Trade-Offs_for_CVPR_2017_paper.pdf点击下载2.Johnson_DenseCap_Fully_Convolutional_CVPR_2016_paper.pdf点击下载3.yolov3点击下载
-
-          
+          1.Huang_SpeedAccuracy_Trade-Offs_for_CVPR_2017_paper.pdf点击下载2.Johnson_DenseCap_Fully_Convolutional_C
+          ...
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -900,7 +898,7 @@
       
         
           
-          损失函数1. CrossEntropylossa.交叉熵损失函数，常用于分类b.用这个loss前面不需要加 softmax层c.该函数限制了target的类型为torch.LongTensor1234567891011import torch as tfrom torch import nnfrom torch.autograd import Variable as V# batch_size=4, 计算每个类别分数（二分类）output = V(t.randn(4,2)) # batch_size * C=(batch_size, C)# target必须是LongTensor!target
+          损失函数1. CrossEntropylossa.交叉熵损失函数，常用于分类b.用这个loss前面不需要加 softmax层c.该函数限制了target的类型为torch.LongTensor1234
           ...
           <!--noindex-->
           
@@ -1080,9 +1078,7 @@
       
         
           
-          ROC曲线根据机器学习中分类器的预测得分对样例(每个样例的阳性概率)进行排序，按照顺序逐个把样本的概率作为阈值thresholds进行预测，计算出FPR和TPR。分别以FPR、TPR为横纵坐标作图即可得到ROC曲线。所以作ROC曲线时，需要先求出FPR和TPR。这两个变量的定义：FPR = TP/(TP+FN)
-TPR = TP/(TP+FP)
-将样本输入分类器，每个样本将得到一个预测得分。我们通过设置不同的截断点，即可截取不同的信息。对应此示例图中，每个阈值的识别结果对应一个点(FPR，TPR)。当阈值取最大时，所有样本都被识别成负样本，对应于坐下角的点(0,0); 当阈值取最小时，所有样本
+          ROC曲线根据机器学习中分类器的预测得分对样例(每个样例的阳性概率)进行排序，按照顺序逐个把样本的概率作为阈值thresholds进行预测，计算出FPR和TPR。分别以FPR、TPR为横纵坐标作图即可
           ...
           <!--noindex-->
           
@@ -1263,10 +1259,7 @@ TPR = TP/(TP+FP)
         
           
           对象识别和定位，可以看成两个任务：找到图片中某个存在对象的区域，然后识别出该区域中具体是哪个对象。
-对象识别这件事（一张图片仅包含一个对象，且基本占据图片的整个范围），最近几年基于CNN卷积神经网络的各种方法已经能达到不错的效果了。所以主要需要解决的问题是，对象在哪里。
-最简单的想法，就是遍历图片中所有可能的位置，地毯式搜索不同大小，不同宽高比，不同位置的每个区域，逐一检测其中是否存在某个对象，挑选其中概率最大的结果作为输出。显然这种方法效率太低。
-
-RCNN提出候选区(Region Proposals)的方法，先从图片中搜索出一些可能存在对象的候选区（Selective Search），然后
+对象识别这件事（一张图片仅包含一个对象，且基本占据图片的整个范围），最近几年基于CNN卷积神经网络的
           ...
           <!--noindex-->
           
@@ -1428,8 +1421,7 @@ RCNN提出候选区(Region Proposals)的方法，先从图片中搜索出一些�
       
         
           
-          Dermatologist-level classification of skin cancer with deep neural networks背景  以往的皮肤癌分类器往往缺乏好的泛化能力，由于缺少数据和focus on 标准任务，如只对专用医学设备产生的图片进行分类。无法对如手机拍摄的等因为缩放，角度，光线问题的照片进行分类。该文提出一种端对端的CNN，对皮肤癌进行分类。可以达到专家水平甚至更好。
-数据  用了129450张图像（比以往的数据集大两个数量级）包含2032种不同的疾病。测试数据是由21位皮肤科专家标注的。 将数据划分： 127,463用于训练和validation 1,
+          Dermatologist-level classification of skin cancer with deep neural networks背景  以往的皮肤癌分类器往往缺乏好的泛化能力，由
           ...
           <!--noindex-->
           
@@ -1609,9 +1601,8 @@ RCNN提出候选区(Region Proposals)的方法，先从图片中搜索出一些�
       
         
           
-          1.2018.3.8 early gastric cancer.ppt点击下载  论文题目：Automatic detection of early gastric cancer in endoscopic images点击下载
-
-          
+          1.2018.3.8 early gastric cancer.ppt点击下载  论文题目：Automatic detection of early gastric cancer in endosco
+          ...
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1790,7 +1781,7 @@ RCNN提出候选区(Region Proposals)的方法，先从图片中搜索出一些�
       
         
           
-          1.一种基于原型学习的多示例卷积神经网络点击下载2.Deep Multi-instance Networks with Sparse Label Assignment for Whole Mammogram Classification点击下载3.2018.12.12小组会PPT点击下载4.自然语言处理paper reading点击下载5.Prototypical Networks for Few-shot Learning点击下载6.Automatic detection of early gastric cancer in endoscopic images点击下载7.what is th
+          1.一种基于原型学习的多示例卷积神经网络点击下载2.Deep Multi-instance Networks with Sparse Label Assignment for Whole Mammog
           ...
           <!--noindex-->
           

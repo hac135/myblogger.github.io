@@ -539,10 +539,7 @@
         
           
           揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。
-Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的角度，由于现在收集器基本都采用分代垃圾收集算法，所以 Java 堆还可以细分为：新生代和老年代：再细致一点有：Eden 空间、From Survivor、To Survivor 空间等。进一步划分的目的是更好地回收内存，或者更快地分配内存。
-堆空间的基本结构
-
-上图所示的 eden 区、s0(“Fr
+Java 堆是垃圾收集
           ...
           <!--noindex-->
           
@@ -707,26 +704,7 @@ Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Gar
           JVM(java virtual machine)
 JVM的类加载机制 &amp;&amp; 类加载过程
 
-Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚拟机是如何加载这些 Class 文件呢？
-
-
-加载
-
-
-通过全类名获取定义此类的二进制字节流(如硬盘——&gt;内存)
-将字节流所代表的静态存储结构转换为方法区的运行时数据结构
-在内存中生成一个代表该类的Class 对象,作为方法区这些数据的访问入口
-
-
-连接（Linking）
-验证
-
-
-主要用于确保Class文件的字节流中包含信息符合JVM要求
-
-准备
-
-主要工作实在方法区中为类变量分配内存空间，并设置该类变量的初始默认值，即
+Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚拟机是如何加载这些 Class 
           ...
           <!--noindex-->
           
@@ -890,8 +868,7 @@ Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚�
           
           MyISAM和InnoDB区别两者的对比：
 
-是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。
-是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是InnoDB 提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID
+是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和
           ...
           <!--noindex-->
           
@@ -1047,11 +1024,8 @@ Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚�
 运行tool.py将相册上传至七牛云photov1
 
 hexo clean   hexo d -g
-注意：每30天需要将photov1备份到一个新的存储空间，获得30天域名后，修改source/js/src/photo.js的域名
-
-
-
-          
+注意：每30天需要将photov1备份到一个新的存储空间，获得3
+          ...
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1203,15 +1177,7 @@ hexo clean   hexo d -g
           论文题目：U-Net: Convolutional Networks for Biomedical Image Segmentation
 下载：点击下载
 Introduction:
-作者提出一个基于FCN改进的U型结构的网络（U-net）和一个依赖strong use of data augmentation的训练策略，可以更充分利用训练样本。
-相较于FCN的改进：
-1.可以在更少的图片上训练
-2.有更精确的分割
-
-与FCN逐点相加不同，U-Net采用将特征在channel维度拼接在一起，形成更“厚”的特征
-注：直接复制过来再裁剪到与上采样图片一样大小
-
-该方法允许任意大图片的无缝分割通过一个
+作者提出一个基于F
           ...
           <!--noindex-->
           
@@ -1363,9 +1329,7 @@ Introduction:
           
           论文题目：Fully Convolutional Networks for Semantic Segmentation论文下载: 点击下载
 Intorduction:
-FCN毫无疑问是语义分割领域的经典之作，在FCN出现之前，传统的CNN分割是将像素周围一个小区域作为CNN输入，做训练和预测，这样低效且不准确（忽略整体信息）。FCN主要有三点创新：
-
-卷积化：即将传统CNN结构（文中提到的Alexnet、VGG）最后的全连接层改成卷积层，以便进行直接分割，这是十分有创造性的。这样，使得网络可以接受任意大小的图片，并输出和原图一样大小的分割图。只有这样，才能为每个像素做分类。(像素分类使用图像分
+FCN毫无疑问是语义分割领域的经
           ...
           <!--noindex-->
           
@@ -1515,9 +1479,7 @@ FCN毫无疑问是语义分割领域的经典之作，在FCN出现之前，传�
       
         
           
-          论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论文下载: 点击下载
-摘要：在训练过程中，加入定位信息。可是提升yolov2 map 3.8个点， yolov3 map 2.2个点。这个方法适用于大多数single-stage 目标检测器。只改变了训练过程，推断过程没有任何改变。
-Introduction:yolo难以解决得两个痛点：a. difficulty in localization原因：因为yolo同时做分类和定位，最后一层卷积层，更多
+          论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论
           ...
           <!--noindex-->
           
@@ -1697,7 +1659,7 @@ Introduction:yolo难以解决得两个痛点：a. difficulty in localization原�
       
         
           
-          先操作一波123456789path = &quot;images/&quot;for filenames in os.walk(pathh):    filenames = list(filenames)    filenames = filenames[2]    for filename in filenames:        print(filename)        with open (&quot;class_train1.txt&quot;,&apos;a&apos;) as f:            f.write(path+filename+&apos;\n&apos;
+          先操作一波123456789path = &quot;images/&quot;for filenames in os.walk(pathh):    filenames = list(filenam
           ...
           <!--noindex-->
           
@@ -1877,7 +1839,7 @@ Introduction:yolo难以解决得两个痛点：a. difficulty in localization原�
       
         
           
-          对内境图片裁剪，去除黑边，效果如下图所示原图标出矩形框结果123456789101112131415161718192021222324252627282930313233343536373839404142import cv2import osdef main01():    root = &quot;C:\\Users\\liuminggui\\Desktop\\rename\\all\\&quot;  # 图片来源路径    save_path = &quot;C:\\Users\\liuminggui\\Desktop\\rename\\save\\&quot;  # 图片修改后的保存
+          对内境图片裁剪，去除黑边，效果如下图所示原图标出矩形框结果12345678910111213141516171819202122232425262728293031323334353637383940
           ...
           <!--noindex-->
           
@@ -2039,15 +2001,7 @@ Introduction:yolo难以解决得两个痛点：a. difficulty in localization原�
       
         
           
-          论文题目：Automatic detection of early gastric cancer in endoscopic images using a transferring convolutional neural network
-摘要： Accuracy :87.6%  heat map accuracy: 82.8%网络：GoogLeNet, 22 conv layers, pretrained on ImageNet
-方法：
-数据集处理
-CNN迁移学习
-judge normal vs cancer
-visualization – heat map
-
-数据集处理（most impo
+          论文题目：Automatic detection of early gastric cancer in endoscopic images using a transferring convoluti
           ...
           <!--noindex-->
           
