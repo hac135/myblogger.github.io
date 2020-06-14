@@ -539,7 +539,7 @@
         
           
           揭开 JVM 内存分配与回收的神秘面纱Java 的自动内存管理主要是针对对象内存的回收和对象内存的分配。同时，Java 自动内存管理最核心的功能是 堆 内存中对象的分配与回收。
-Java 堆是垃圾收集
+Java 堆是垃圾收集器管理的主要区域，因此也被称作GC 堆（Garbage Collected Heap）.从垃圾回收的
           ...
           <!--noindex-->
           
@@ -704,7 +704,14 @@ Java 堆是垃圾收集
           JVM(java virtual machine)
 JVM的类加载机制 &amp;&amp; 类加载过程
 
-Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚拟机是如何加载这些 Class 
+Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚拟机是如何加载这些 Class 文件呢？
+
+
+加载
+
+
+通过全类名获取定义此类的二进制字节流(如硬盘——&gt;内存)
+将字节流所代
           ...
           <!--noindex-->
           
@@ -868,7 +875,8 @@ Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚�
           
           MyISAM和InnoDB区别两者的对比：
 
-是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和
+是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。
+是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原
           ...
           <!--noindex-->
           
@@ -1024,8 +1032,11 @@ Class 文件需要加载到虚拟机中之后才能运行和使用，那么虚�
 运行tool.py将相册上传至七牛云photov1
 
 hexo clean   hexo d -g
-注意：每30天需要将photov1备份到一个新的存储空间，获得3
-          ...
+注意：每30天需要将photov1备份到一个新的存储空间，获得30天域名后，修改source/js/src/photo.js的域名
+
+
+
+          
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1177,7 +1188,7 @@ hexo clean   hexo d -g
           论文题目：U-Net: Convolutional Networks for Biomedical Image Segmentation
 下载：点击下载
 Introduction:
-作者提出一个基于F
+作者提出一个基于FCN改进的U型结构的网络（U-net）和一个依赖strong use of data augment
           ...
           <!--noindex-->
           
@@ -1329,7 +1340,7 @@ Introduction:
           
           论文题目：Fully Convolutional Networks for Semantic Segmentation论文下载: 点击下载
 Intorduction:
-FCN毫无疑问是语义分割领域的经
+FCN毫无疑问是语义分割领域的经典之作，在FCN出现之前，传统的CNN分割是将像素周围一个小区域作为CNN输入，做训练和预测，这样低
           ...
           <!--noindex-->
           
@@ -1479,7 +1490,8 @@ FCN毫无疑问是语义分割领域的经
       
         
           
-          论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论
+          论文题目：Assisted Excitation of Activations: A Learning Technique to Improve Object Detectors（CVPR2019）论文下载: 点击下载
+摘要：在训练过程中，加入定位信息。可是提升yolov2 map 3.8个点， y
           ...
           <!--noindex-->
           
@@ -1659,7 +1671,7 @@ FCN毫无疑问是语义分割领域的经
       
         
           
-          先操作一波123456789path = &quot;images/&quot;for filenames in os.walk(pathh):    filenames = list(filenam
+          先操作一波123456789path = &quot;images/&quot;for filenames in os.walk(pathh):    filenames = list(filenames)    filenames = filenames[2]    for filename in
           ...
           <!--noindex-->
           
@@ -1839,7 +1851,7 @@ FCN毫无疑问是语义分割领域的经
       
         
           
-          对内境图片裁剪，去除黑边，效果如下图所示原图标出矩形框结果12345678910111213141516171819202122232425262728293031323334353637383940
+          对内境图片裁剪，去除黑边，效果如下图所示原图标出矩形框结果123456789101112131415161718192021222324252627282930313233343536373839404142import cv2import osdef main01():    root = &qu
           ...
           <!--noindex-->
           
@@ -2001,7 +2013,8 @@ FCN毫无疑问是语义分割领域的经
       
         
           
-          论文题目：Automatic detection of early gastric cancer in endoscopic images using a transferring convoluti
+          论文题目：Automatic detection of early gastric cancer in endoscopic images using a transferring convolutional neural network
+摘要： Accuracy :87.6%  heat map 
           ...
           <!--noindex-->
           
