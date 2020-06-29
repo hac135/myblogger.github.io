@@ -183,7 +183,7 @@
 <meta property="og:description" content="RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。  资源（Resource） ：我们">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200520_mvc%E7%AE%80%E5%8D%95.jpg?raw=true">
-<meta property="og:updated_time" content="2020-06-13T08:12:25.210Z">
+<meta property="og:updated_time" content="2020-06-29T03:24:26.307Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring常见面试题">
 <meta name="twitter:description" content="RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。  资源（Resource） ：我们">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-13 16:12:25" itemprop="dateModified" datetime="2020-06-13T16:12:25+08:00">2020-06-13</time>
+                <time title="修改时间：2020-06-29 11:24:26" itemprop="dateModified" datetime="2020-06-29T11:24:26+08:00">2020-06-29</time>
               
             
           </span>
@@ -571,6 +571,10 @@
 </li>
 <li><p>DELETE ：从服务器删除特定的资源。举个例子：<code>DELETE /classes/12</code>（删除编号为 12 的班级）</p>
 </li>
+</ul>
+<h4 id="get和post的区别"><a href="#get和post的区别" class="headerlink" title="get和post的区别"></a>get和post的区别</h4><ul>
+<li>GET 用于获取信息，是无副作用的，是幂等的，且可缓存。数据在URL中对全部人可见。</li>
+<li>POST 用于修改服务器上的数据，有副作用，非幂等，不可缓存。数据不显示在URL中。比get更安全。</li>
 </ul>
 <p><strong>状态码范围：</strong></p>
 <table>
@@ -947,7 +951,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射："><span class="nav-number">3.2.</span> <span class="nav-text">反射：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式："><span class="nav-number">3.3.</span> <span class="nav-text">Spirng依赖注入的两种注入方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.4.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.4.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.4.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post的区别"><span class="nav-number">2.1.</span> <span class="nav-text">get和post的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射："><span class="nav-number">3.2.</span> <span class="nav-text">反射：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式："><span class="nav-number">3.3.</span> <span class="nav-text">Spirng依赖注入的两种注入方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.4.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.4.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.4.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li></ol></div>
             
 
           </div>
