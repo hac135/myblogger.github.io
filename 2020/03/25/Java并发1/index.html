@@ -185,7 +185,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B.png?raw=true">
-<meta property="og:updated_time" content="2020-06-28T11:23:00.040Z">
+<meta property="og:updated_time" content="2020-07-01T14:05:25.292Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发1">
 <meta name="twitter:description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独立存在。 举个例子：">
@@ -519,7 +519,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-28 19:23:00" itemprop="dateModified" datetime="2020-06-28T19:23:00+08:00">2020-06-28</time>
+                <time title="修改时间：2020-07-01 22:05:25" itemprop="dateModified" datetime="2020-07-01T22:05:25+08:00">2020-07-01</time>
               
             
           </span>
@@ -605,15 +605,12 @@
 <p>join方法也可以带参数。如A线程中调用B.join(10)，则表示A线程会等待B线程执行10毫秒，10毫秒过后，A、B线程并发执行。需要注意的是，jdk规定，join(0)的意思不是A线程等待B线程0秒，而是A线程等待B线程无限时间，直到B线程执行完毕，即join(0)等价于join()。</p>
 <p><strong>线程唤醒：notify方法</strong></p>
 <ol>
-<li><p>wait()、notify/notifyAll() 方法是Object的本地final方法，无法被重写。</p>
-</li>
-<li><p>wait()使当前线程阻塞，前提是必须先获得锁，一般配合synchronized 关键字使用，即，一般在synchronized 同步代码块里使用 wait()、notify/notifyAll() 方法。</p>
-</li>
-<li><p>由于 wait()、notify/notifyAll() 在synchronized 代码块执行，说明当前线程一定是获取了锁的。</p>
-</li>
-<li><p>notify/notifyAll() 的执行只是唤醒沉睡的线程，而不会立即释放锁</p>
-</li>
+<li>wait()、notify/notifyAll() 方法是<strong>Object的</strong>本地final方法，无法被重写。</li>
+<li>wait()使当前线程阻塞，前提是必须先获得锁，一般<strong>配合synchronized 关键字使用</strong>，即，一般在synchronized 同步代码块里使用 wait()、notify/notifyAll() 方法。</li>
+<li>由于 wait()、notify/notifyAll() 在synchronized 代码块执行，说明当前线程一定是获取了锁的。</li>
+<li>notify/notifyAll() 的执行只是唤醒沉睡的线程，而不会立即释放锁。</li>
 </ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> Object lock = <span class="keyword">new</span> Object();</span><br><span class="line"><span class="keyword">static</span> <span class="keyword">boolean</span> flag = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Wait</span> <span class="title">inplements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//加锁，拥有lock的Monitor</span></span><br><span class="line">        <span class="keyword">synchronized</span> (lock)&#123;</span><br><span class="line">            <span class="comment">//当条件不满足的时候，继续wait,同时释放了lock的锁</span></span><br><span class="line">            <span class="keyword">while</span>(flag)&#123;</span><br><span class="line">                lock.wait();<span class="comment">//会释放锁</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//条件满足，完成工作</span></span><br><span class="line">            <span class="comment">//do something</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Notifly</span> <span class="title">inplements</span> <span class="title">Runnable</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">//加锁，拥有lock的Monitor</span></span><br><span class="line">        <span class="keyword">synchronized</span> (lock)&#123;</span><br><span class="line">            <span class="comment">//获取lock的锁，然后进行通知，通知时不会释放lock的锁，直到</span></span><br><span class="line">            <span class="comment">//当前线程释放了lock后，wait线程才能起来。</span></span><br><span class="line">            lock.notify();</span><br><span class="line">            flag = <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//Wait线程首先获取了lock对象的锁，然后调用对象的wait()方法，放弃了锁并进入了对象的等待队列中，进入等待状态。</span></span><br><span class="line"><span class="comment">//由于Wait线程释放了对象的锁，Notify线程获取了对象的锁，并调用对象的notify()方法，将Wait线程从等待队列移至同步队列，此时Wait线程的状态变为阻塞状态。</span></span><br><span class="line"><span class="comment">//Notify线程释放锁之后，Wait线程再次获取到锁并开始完成工作。</span></span><br></pre></td></tr></table></figure>
 <p>后台守护进程：setDaemon方法</p>
 <p>setDaemon方法用于定义一个守护进程，也叫做“服务进程”，该线程时后台进程，有一个特性，即为用户线程提供公共服务，在没有用户线程时会自动离开。如垃圾回收线程。</p>
 <h3 id="说说-sleep-方法和-wait-方法区别和共同点"><a href="#说说-sleep-方法和-wait-方法区别和共同点" class="headerlink" title="说说 sleep() 方法和 wait() 方法区别和共同点?"></a>说说 sleep() 方法和 wait() 方法区别和共同点?</h3><ul>
@@ -646,7 +643,8 @@
 <p>实现Callable接口，并重写call方法。<strong>可以实现有返回值的线程</strong>。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallableThreadTest</span> <span class="keyword">implements</span> <span class="title">Callable</span>&lt;<span class="title">Integer</span>&gt;  </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> Integer <span class="title">call</span><span class="params">()</span> <span class="keyword">throws</span> Exception  </span>&#123;</span><br><span class="line">     &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><strong>4.基于线程池</strong></p>
-<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><h3 id="为什么要用线程池？"><a href="#为什么要用线程池？" class="headerlink" title="为什么要用线程池？"></a>为什么要用线程池？</h3><blockquote>
+<h2 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h2><p>线程池的本质就是使用了一个<strong>线程安全的工作队列(jobs)</strong>连接工作者线程和客户端线程，客户端线程讲任务放入工作队列后便返回，而工作者线程则不断从工作队列中取出工作并执行。当工作队列为空时，所有的工作者线程均<strong>等待在工作队列上</strong>(jobs.wait())，当有客户端提交一个任务之后会通知任意一个工作者线程（notify），随着大量的任务被提交，更多的工作者线程会被<strong>唤醒</strong>。</p>
+<h3 id="为什么要用线程池？"><a href="#为什么要用线程池？" class="headerlink" title="为什么要用线程池？"></a>为什么要用线程池？</h3><blockquote>
 <p><strong>池化技术相比大家已经屡见不鲜了，线程池、数据库连接池、Http 连接池等等都是对这个思想的应用。池化技术的思想主要是为了减少每次获取资源的消耗，提高对资源的利用率。</strong></p>
 </blockquote>
 <ul>
