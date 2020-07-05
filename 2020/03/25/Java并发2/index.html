@@ -186,8 +186,10 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_threadlocal1.jpg?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_AQS1.jpg?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_AQS2.jpg?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/2020070201.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200702.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200326_AQS3.jpg?raw=true">
-<meta property="og:updated_time" content="2020-07-02T08:55:13.464Z">
+<meta property="og:updated_time" content="2020-07-05T07:02:40.475Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发2">
 <meta name="twitter:description" content="Java中的锁乐观锁总是假设最好的情况，每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据，可以使用版本号机制和CAS算法实现。乐观锁适用于多读的应用类型，这样可以提高吞吐量，像数据库提供的类似于write_condition机制，其实都是提供的乐观锁。在Java中java.util.concurrent.atomic包下面的原子变量类就">
@@ -521,7 +523,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-02 16:55:13" itemprop="dateModified" datetime="2020-07-02T16:55:13+08:00">2020-07-02</time>
+                <time title="修改时间：2020-07-05 15:02:40" itemprop="dateModified" datetime="2020-07-05T15:02:40+08:00">2020-07-05</time>
               
             
           </span>
@@ -701,6 +703,11 @@
 <p>接着线程跑过来调用ReentrantLock的lock()方法尝试进行加锁，这个加锁的过程，直接就是用CAS操作将state值从0变为1。如果成功，会设置state=1，代表已加锁。</p>
 <p>大家看明白了那个state变量之后，就知道了如何进行可重入加锁！</p>
 <p>其实每次线程1可重入加锁一次，会判断一下当前加锁线程就是自己，那么他自己就可以可重入多次加锁，每次加锁就是把state的值给累加1，别的没啥变化。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/2020070201.png?raw=true" alt=""></p>
+<p>AQS维护一个同步队列，线程获取同步状态失败后，<strong>CAS加入队列尾部</strong>，然后<strong>CAS自旋前驱是否是头节点</strong>。移出队列的条件是：前驱节点是头节点<strong>且</strong>成功获取了同步状态。</p>
+<p>头节点是获取同步状态成功的节点，首节点的线程在释放同步状态后，将会唤醒后继节点。如果当前节点的前驱为头节点，尝试获取同步状态。</p>
+<p>加入队列尾部的过程必须要保证线程安全(CAS)，防止多个线程同时加入出现问题。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200702.png?raw=true" alt=""></p>
 <p><img src="https://github.com/hac135/my_images/blob/master/20200326_AQS3.jpg?raw=true" alt=""></p>
 <h3 id="AQS定义两种资源共享方式"><a href="#AQS定义两种资源共享方式" class="headerlink" title="AQS定义两种资源共享方式"></a><strong>AQS定义两种资源共享方式</strong></h3><ul>
 <li><p><strong>Exclusive</strong></p>
