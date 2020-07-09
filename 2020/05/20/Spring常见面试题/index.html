@@ -183,7 +183,7 @@
 <meta property="og:description" content="RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。  资源（Resource） ：我们">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200520_mvc%E7%AE%80%E5%8D%95.jpg?raw=true">
-<meta property="og:updated_time" content="2020-06-29T03:24:26.307Z">
+<meta property="og:updated_time" content="2020-07-09T07:41:15.825Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring常见面试题">
 <meta name="twitter:description" content="RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。  资源（Resource） ：我们">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-29 11:24:26" itemprop="dateModified" datetime="2020-06-29T11:24:26+08:00">2020-06-29</time>
+                <time title="修改时间：2020-07-09 15:41:15" itemprop="dateModified" datetime="2020-07-09T15:41:15+08:00">2020-07-09</time>
               
             
           </span>
@@ -700,6 +700,19 @@
 <p>2、视图与控制器间的过于紧密的连接</p>
 <p>3、视图对模型数据的低效率访问</p>
 <p><strong>缺点：简单的小型项目，使用MVC设计反而会降低开发效率，层和层虽然相互分离，但是之间关联性太强，没有做到独立的重用。</strong>（视图与控制器是相互分离，但却是联系紧密的部件，视图没有控制器的存在，其应用是很有限的，反之亦然，这样就妨碍了他们的独立重用。【例如，不可能总是在jsp页面中直接访问模型，一般放在逻辑控制层进行处理，servlet】）</p>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><h4 id="1-Spring-框架中用到了哪些设计模式？"><a href="#1-Spring-框架中用到了哪些设计模式？" class="headerlink" title="1.Spring 框架中用到了哪些设计模式？"></a>1.Spring 框架中用到了哪些设计模式？</h4><p><strong>工厂设计模式</strong> : Spring使用工厂模式通过 <code>BeanFactory</code>、<code>ApplicationContext</code> 创建 bean 对象。</p>
+<p><strong>代理设计模式</strong> : Spring AOP 功能的实现。</p>
+<p><strong>单例设计模式</strong> : Spring 中的 Bean 默认都是单例的。</p>
+<p><strong>模板方法模式</strong> : Spring 中 <code>jdbcTemplate</code>、<code>hibernateTemplate</code> 等以 Template 结尾的对数据库操作的类，它们就使用到了模板模式。</p>
+<p><strong>包装器设计模式</strong> : 我们的项目需要连接多个数据库，而且不同的客户在每次访问中根据需要会去访问不同的数据库。这种模式让我们可以根据客户的需求能够动态切换不同的数据源。</p>
+<p><strong>观察者模式:</strong> Spring 事件驱动模型就是观察者模式很经典的一个应用。</p>
+<p><strong>适配器模式</strong> :Spring AOP 的增强或通知(Advice)使用到了适配器模式、spring MVC 中也是用到了适配器模式适配</p>
+<p><a href="https://juejin.im/post/5ce69379e51d455d877e0ca0" target="_blank" rel="noopener">详细请看博客</a></p>
+<h4 id="2-Bean的生命周期"><a href="#2-Bean的生命周期" class="headerlink" title="2.Bean的生命周期"></a>2.Bean的生命周期</h4><p>2.</p>
+<ol>
+<li>工厂模式都有哪几种？怎么实现？</li>
+<li>介绍下单例模式，都怎么实现？</li>
+</ol>
 
       
     </div>
@@ -951,7 +964,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post的区别"><span class="nav-number">2.1.</span> <span class="nav-text">get和post的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射："><span class="nav-number">3.2.</span> <span class="nav-text">反射：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式："><span class="nav-number">3.3.</span> <span class="nav-text">Spirng依赖注入的两种注入方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.4.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.4.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.4.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post的区别"><span class="nav-number">2.1.</span> <span class="nav-text">get和post的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#反射："><span class="nav-number">3.2.</span> <span class="nav-text">反射：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式："><span class="nav-number">3.3.</span> <span class="nav-text">Spirng依赖注入的两种注入方式：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.4.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.4.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.4.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">6.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring-框架中用到了哪些设计模式？"><span class="nav-number">6.1.</span> <span class="nav-text">1.Spring 框架中用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-Bean的生命周期"><span class="nav-number">6.2.</span> <span class="nav-text">2.Bean的生命周期</span></a></li></ol></li></ol></div>
             
 
           </div>

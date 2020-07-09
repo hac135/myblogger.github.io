@@ -175,12 +175,12 @@
 
 
 
-  <meta name="description" content="MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是InnoDB 提供事务支持事务，外部">
+  <meta name="description" content="Mysql服务器的默认端口是3306。 MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mysql回顾">
 <meta property="og:url" content="http://yoursite.com/2020/03/13/Mysql回顾/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
-<meta property="og:description" content="MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是InnoDB 提供事务支持事务，外部">
+<meta property="og:description" content="Mysql服务器的默认端口是3306。 MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/2020_03_13.1.png?raw=true">
 <meta property="og:image" content="https://privacypic.com/images/2020/03/19/dead_lock6c1f6e395b3db072.png">
@@ -191,10 +191,10 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200519_%E7%AC%AC%E4%B8%80%E8%8C%83%E5%BC%8F.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200519_%E7%AC%AC%E4%BA%8C%E8%8C%83%E5%BC%8F.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200519_%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F.png?raw=true">
-<meta property="og:updated_time" content="2020-06-29T05:48:55.351Z">
+<meta property="og:updated_time" content="2020-07-08T11:50:16.880Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql回顾">
-<meta name="twitter:description" content="MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是InnoDB 提供事务支持事务，外部">
+<meta name="twitter:description" content="Mysql服务器的默认端口是3306。 MyISAM和InnoDB区别两者的对比：  是否支持行级锁 : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。 是否支持事务和崩溃后的安全恢复： MyISAM 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。">
 <meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/2020_03_13.1.png?raw=true">
 
 
@@ -525,7 +525,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-06-29 13:48:55" itemprop="dateModified" datetime="2020-06-29T13:48:55+08:00">2020-06-29</time>
+                <time title="修改时间：2020-07-08 19:50:16" itemprop="dateModified" datetime="2020-07-08T19:50:16+08:00">2020-07-08</time>
               
             
           </span>
@@ -558,7 +558,8 @@
       
 
       
-        <h4 id="MyISAM和InnoDB区别"><a href="#MyISAM和InnoDB区别" class="headerlink" title="MyISAM和InnoDB区别"></a>MyISAM和InnoDB区别</h4><p><strong>两者的对比：</strong></p>
+        <p><strong>Mysql服务器的默认端口是3306。</strong></p>
+<h4 id="MyISAM和InnoDB区别"><a href="#MyISAM和InnoDB区别" class="headerlink" title="MyISAM和InnoDB区别"></a>MyISAM和InnoDB区别</h4><p><strong>两者的对比：</strong></p>
 <ol>
 <li><strong>是否支持行级锁</strong> : MyISAM 只有表级锁(table-level locking)，而InnoDB 支持行级锁(row-level locking)和表级锁,默认为行级锁。</li>
 <li><strong>是否支持事务和崩溃后的安全恢复： MyISAM</strong> 强调的是性能，每次查询具有原子性,其执行速度比InnoDB类型更快，但是不提供事务支持。但是<strong>InnoDB</strong> 提供事务支持事务，外部键等高级数据库功能。 具有事务(commit)、回滚(rollback)和崩溃修复能力(crash recovery capabilities)的事务安全(transaction-safe (ACID compliant))型表。</li>
@@ -650,7 +651,7 @@
 <ul>
 <li><h3 id="BTree索引-和-B-Tree索引"><a href="#BTree索引-和-B-Tree索引" class="headerlink" title="BTree索引  和 B+Tree索引"></a>BTree索引  和 <strong>B+Tree索引</strong></h3></li>
 </ul>
-<p><strong>1.B树的所有节点既存放 键(key) 也存放 数据(data);而B+树只有叶子节点存放 key 和 data，其他内节点只存放key。</strong></p>
+<p><strong>1.B树的所有节点既存放 键(key) 也存放 数据(data);而B+树只有叶子节点存放 key 和 data，其他内节点只存放key。（只针对聚集索引，如主键索引。不然data可能存放的是数据的指针或主键）</strong></p>
 <p><strong>2.B树的叶子节点都是独立的;B+树的叶子节点有一条引用链指向与它相邻的叶子节点。</strong></p>
 <p>3.B树的检索的过程相当于对范围内的每个节点的关键字做二分查找，可能还没有到达叶子节点，检索就结束了。而B+树的检索效率就很稳定了，任何查找都是从根节点到叶子节点的过程，叶子节点的顺序检索很明显（大大提升<strong>范围查询</strong>的效率）。</p>
 <p><img src="https://privacypic.com/images/2020/03/16/B346d0af0dcb2cf33.png" alt="B346d0af0dcb2cf33.png"></p>
@@ -689,6 +690,21 @@
 <h3 id="覆盖索引使用实例"><a href="#覆盖索引使用实例" class="headerlink" title="覆盖索引使用实例"></a>覆盖索引使用实例</h3><p>现在我创建了索引(username,age)，我们执行下面的 sql 语句</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> username , age <span class="keyword">from</span> <span class="keyword">user</span> <span class="keyword">where</span> username = <span class="string">'Java'</span> <span class="keyword">and</span> age = <span class="number">22</span></span><br></pre></td></tr></table></figure>
 <p>在查询数据的时候：要查询出的列在叶子节点都存在！所以，就不用回表。</p>
+<h2 id="联合索引最左前缀匹配原则"><a href="#联合索引最左前缀匹配原则" class="headerlink" title="联合索引最左前缀匹配原则"></a>联合索引最左前缀匹配原则</h2><p>在MySQL建立联合索引时会遵循最左前缀匹配原则。</p>
+<p>联合索引的有点</p>
+<ul>
+<li><p>减少开销</p>
+<p>建一个联合索引(col1,col2,col3)，实际相当于建了(col1),(col1,col2),(col1,col2,col3)三个索引。每多一个索引，都会增加写操作的开销和磁盘空间的开销。对于大量数据的表，使用联合索引会大大的减少开销！</p>
+</li>
+<li><p>覆盖索引</p>
+<p>对联合索引(col1,col2,col3)，如果有如下的sql: select col1,col2,col3 from test where col1=1 and col2=2。那么MySQL可以直接通过遍历索引取得数据，而无需回表，</p>
+</li>
+<li><p>效率高</p>
+<p>对col1、col2、col3三列分别创建索引，MySQL只会选择辨识度高的一列作为索引。假设有100w的数据，一个索引筛选出10%的数据，那么可以筛选出10w的数据；对于联合索引而言，可以筛选出100w<em>10%</em>10%*10%=1000条数据。</p>
+</li>
+</ul>
+<p>假设我们创建（col1，col2，col3）这样的一个组合索引，那么相当于对col1列进行排序，也就是我们创建组合索引，以最左边的为准，只要查询条件中带有最左边的列，那么查询就会使用到索引。</p>
+<p>最频繁使用的列放在左边；查看列的选择性（即该列的索引值数量与记录数量的比值），比值越高，效果越好；</p>
 <h2 id="MySQL查询优化"><a href="#MySQL查询优化" class="headerlink" title="MySQL查询优化"></a>MySQL查询优化</h2><h3 id="使用-Explain-进行分析"><a href="#使用-Explain-进行分析" class="headerlink" title="使用 Explain 进行分析"></a>使用 Explain 进行分析</h3><p>Explain 用来分析 SELECT 查询语句，开发人员可以通过分析 Explain 结果来优化查询语句。</p>
 <p>比较重要的字段有：</p>
 <ul>
@@ -714,7 +730,32 @@
 <p><strong>第三范式（3NF）：在2NF基础上，任何非主属性不依赖于其它非主属性（在2NF基础上消除传递依赖）</strong></p>
 <p><strong>第三范式需要确保数据表中的每一列数据都和主键直接相关，而不能间接相关。</strong></p>
 <p><img src="https://github.com/hac135/my_images/blob/master/20200519_%E7%AC%AC%E4%B8%89%E8%8C%83%E5%BC%8F.png?raw=true" alt=""></p>
-<h4 id="2-内连接-外连接-笛卡尔连接"><a href="#2-内连接-外连接-笛卡尔连接" class="headerlink" title="2.内连接 外连接 笛卡尔连接"></a>2.内连接 外连接 笛卡尔连接</h4><h4 id="3-视图"><a href="#3-视图" class="headerlink" title="3.视图"></a>3.视图</h4>
+<h4 id="2-内连接-外连接-笛卡尔连接"><a href="#2-内连接-外连接-笛卡尔连接" class="headerlink" title="2.内连接 外连接 笛卡尔连接"></a>2.内连接 外连接 笛卡尔连接</h4><p>z</p>
+<h4 id="3-视图"><a href="#3-视图" class="headerlink" title="3.视图"></a>3.视图</h4><h4 id="4-CHAR和VARCHAR的区别"><a href="#4-CHAR和VARCHAR的区别" class="headerlink" title="4.CHAR和VARCHAR的区别"></a>4.CHAR和VARCHAR的区别</h4><p>CHAR：表示的是定长的字符串，当你输入小于指定的数目，比如你指定的数目是 <code>char(6)</code>，当你输入小于 6 个字符的时候，char 会在你最后一个字符后面补空值。当你输入超过指定允许最大长度后，MySQL 会报错</p>
+<p>VARCHAR：varchar 指的是长度为 n 个字节的可变长度，并且是<code>非Unicode</code>的字符数据。n 的值是介于 1 - 8000 之间的数值。存储大小为实际大小。</p>
+<p>使用 char 存储定长的数据非常方便、char 检索效率高，无论你存储的数据是否到了 10 个字节，都要去占用 10 字节的空间</p>
+<p>使用 varchar 可以存储变长的数据，但存储效率没有 char 高。</p>
+<h4 id="5-谈谈-SQL-优化的经验"><a href="#5-谈谈-SQL-优化的经验" class="headerlink" title="5.谈谈 SQL 优化的经验"></a>5.谈谈 SQL 优化的经验</h4><ul>
+<li>查询语句无论是使用哪种判断条件 <strong>等于、小于、大于</strong>， <code>WHERE</code> 左侧的条件查询字段不要使用函数或者表达式</li>
+<li>使用 <code>EXPLAIN</code> 命令优化你的 SELECT 查询，对于复杂、效率低的 sql 语句，我们通常是使用 explain sql 来分析这条 sql 语句，这样方便我们分析，进行优化。</li>
+<li>当你的 SELECT 查询语句只需要使用一条记录时，要使用 <code>LIMIT 1</code></li>
+<li>不要直接使用 <code>SELECT *</code>，而应该使用具体需要查询的表字段，因为使用 EXPLAIN 进行分析时，SELECT * 使用的是全表扫描，也就是 <code>type = all</code>。</li>
+<li>为搜索字段创建索引</li>
+<li><p>选择合适的字段类型，选择标准是 <strong>尽可能小、尽可能定长、尽可能使用整数</strong>。</p>
+</li>
+<li><p>进行水平切割或者垂直分割</p>
+</li>
+</ul>
+<blockquote>
+<p>水平分割：通过建立结构相同的几张表分别存储数据</p>
+<p>垂直分割：将经常一起使用的字段放在一个单独的表中，分割后的表记录之间是一一对应关系。</p>
+</blockquote>
+<h4 id="6-Mysql中有哪几种锁？"><a href="#6-Mysql中有哪几种锁？" class="headerlink" title="6.Mysql中有哪几种锁？"></a>6.<strong>Mysql中有哪几种锁？</strong></h4><ul>
+<li>MyISAM支持表锁，InnoDB支持表锁和行锁，默认为行锁</li>
+<li>表级锁：开销小，加锁快，<strong>不会出现死锁</strong>。锁定粒度大，发生锁冲突的概率最高，并发量最低</li>
+<li>行级锁：开销大，加锁慢，<strong>会出现死锁</strong>。锁力度小，发生锁冲突的概率小，并发度最高</li>
+</ul>
+
       
     </div>
 
@@ -965,7 +1006,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyISAM和InnoDB区别"><span class="nav-number">1.</span> <span class="nav-text">MyISAM和InnoDB区别</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#锁机制与InnoDB锁算法"><span class="nav-number"></span> <span class="nav-text">锁机制与InnoDB锁算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大表优化"><span class="nav-number"></span> <span class="nav-text">大表优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-限定数据的范围"><span class="nav-number">1.</span> <span class="nav-text">1. 限定数据的范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-读-写分离"><span class="nav-number">2.</span> <span class="nav-text">2. 读/写分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-垂直分区"><span class="nav-number">3.</span> <span class="nav-text">3. 垂直分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-水平分区"><span class="nav-number">4.</span> <span class="nav-text">4. 水平分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分库分表之后-id-主键如何处理？"><span class="nav-number"></span> <span class="nav-text">分库分表之后,id 主键如何处理？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number"></span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql索引主要使用的两种数据结构"><span class="nav-number"></span> <span class="nav-text">Mysql索引主要使用的两种数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希索引-O-1"><span class="nav-number"></span> <span class="nav-text">哈希索引  O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BTree索引-和-B-Tree索引"><span class="nav-number"></span> <span class="nav-text">BTree索引  和 B+Tree索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集索引与非聚集索引"><span class="nav-number"></span> <span class="nav-text">聚集索引与非聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集索引"><span class="nav-number"></span> <span class="nav-text">聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引的优点"><span class="nav-number">1.</span> <span class="nav-text">聚集索引的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引的缺点"><span class="nav-number">2.</span> <span class="nav-text">聚集索引的缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非聚集索引"><span class="nav-number"></span> <span class="nav-text">非聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引的优点"><span class="nav-number">1.</span> <span class="nav-text">非聚集索引的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引的缺点"><span class="nav-number">2.</span> <span class="nav-text">非聚集索引的缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非聚集索引一定回表查询吗-覆盖索引"><span class="nav-number"></span> <span class="nav-text">非聚集索引一定回表查询吗(覆盖索引)?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖索引介绍"><span class="nav-number"></span> <span class="nav-text">覆盖索引介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是覆盖索引"><span class="nav-number"></span> <span class="nav-text">什么是覆盖索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖索引使用实例"><span class="nav-number"></span> <span class="nav-text">覆盖索引使用实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL查询优化"><span class="nav-number"></span> <span class="nav-text">MySQL查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Explain-进行分析"><span class="nav-number"></span> <span class="nav-text">使用 Explain 进行分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化数据访问"><span class="nav-number"></span> <span class="nav-text">优化数据访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-减少请求的数据量"><span class="nav-number">1.</span> <span class="nav-text">1. 减少请求的数据量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-减少服务器端扫描的行数"><span class="nav-number">2.</span> <span class="nav-text">2. 减少服务器端扫描的行数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重构查询方式"><span class="nav-number"></span> <span class="nav-text">重构查询方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-切分大查询"><span class="nav-number">1.</span> <span class="nav-text">1. 切分大查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分解大连接查询"><span class="nav-number">2.</span> <span class="nav-text">2. 分解大连接查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库常问面试题"><span class="nav-number"></span> <span class="nav-text">数据库常问面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-三大范式"><span class="nav-number">1.</span> <span class="nav-text">1.三大范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内连接-外连接-笛卡尔连接"><span class="nav-number">2.</span> <span class="nav-text">2.内连接 外连接 笛卡尔连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-视图"><span class="nav-number">3.</span> <span class="nav-text">3.视图</span></a></li></ol></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#MyISAM和InnoDB区别"><span class="nav-number">1.</span> <span class="nav-text">MyISAM和InnoDB区别</span></a></li></ol><li class="nav-item nav-level-3"><a class="nav-link" href="#锁机制与InnoDB锁算法"><span class="nav-number"></span> <span class="nav-text">锁机制与InnoDB锁算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#大表优化"><span class="nav-number"></span> <span class="nav-text">大表优化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-限定数据的范围"><span class="nav-number">1.</span> <span class="nav-text">1. 限定数据的范围</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-读-写分离"><span class="nav-number">2.</span> <span class="nav-text">2. 读/写分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-垂直分区"><span class="nav-number">3.</span> <span class="nav-text">3. 垂直分区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-水平分区"><span class="nav-number">4.</span> <span class="nav-text">4. 水平分区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分库分表之后-id-主键如何处理？"><span class="nav-number"></span> <span class="nav-text">分库分表之后,id 主键如何处理？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#索引"><span class="nav-number"></span> <span class="nav-text">索引</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Mysql索引主要使用的两种数据结构"><span class="nav-number"></span> <span class="nav-text">Mysql索引主要使用的两种数据结构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#哈希索引-O-1"><span class="nav-number"></span> <span class="nav-text">哈希索引  O(1)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BTree索引-和-B-Tree索引"><span class="nav-number"></span> <span class="nav-text">BTree索引  和 B+Tree索引</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#聚集索引与非聚集索引"><span class="nav-number"></span> <span class="nav-text">聚集索引与非聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#聚集索引"><span class="nav-number"></span> <span class="nav-text">聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引的优点"><span class="nav-number">1.</span> <span class="nav-text">聚集索引的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#聚集索引的缺点"><span class="nav-number">2.</span> <span class="nav-text">聚集索引的缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非聚集索引"><span class="nav-number"></span> <span class="nav-text">非聚集索引</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引的优点"><span class="nav-number">1.</span> <span class="nav-text">非聚集索引的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#非聚集索引的缺点"><span class="nav-number">2.</span> <span class="nav-text">非聚集索引的缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#非聚集索引一定回表查询吗-覆盖索引"><span class="nav-number"></span> <span class="nav-text">非聚集索引一定回表查询吗(覆盖索引)?</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#覆盖索引介绍"><span class="nav-number"></span> <span class="nav-text">覆盖索引介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是覆盖索引"><span class="nav-number"></span> <span class="nav-text">什么是覆盖索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#覆盖索引使用实例"><span class="nav-number"></span> <span class="nav-text">覆盖索引使用实例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联合索引最左前缀匹配原则"><span class="nav-number"></span> <span class="nav-text">联合索引最左前缀匹配原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL查询优化"><span class="nav-number"></span> <span class="nav-text">MySQL查询优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Explain-进行分析"><span class="nav-number"></span> <span class="nav-text">使用 Explain 进行分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化数据访问"><span class="nav-number"></span> <span class="nav-text">优化数据访问</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-减少请求的数据量"><span class="nav-number">1.</span> <span class="nav-text">1. 减少请求的数据量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-减少服务器端扫描的行数"><span class="nav-number">2.</span> <span class="nav-text">2. 减少服务器端扫描的行数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重构查询方式"><span class="nav-number"></span> <span class="nav-text">重构查询方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-切分大查询"><span class="nav-number">1.</span> <span class="nav-text">1. 切分大查询</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-分解大连接查询"><span class="nav-number">2.</span> <span class="nav-text">2. 分解大连接查询</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库常问面试题"><span class="nav-number"></span> <span class="nav-text">数据库常问面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-三大范式"><span class="nav-number">1.</span> <span class="nav-text">1.三大范式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内连接-外连接-笛卡尔连接"><span class="nav-number">2.</span> <span class="nav-text">2.内连接 外连接 笛卡尔连接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-视图"><span class="nav-number">3.</span> <span class="nav-text">3.视图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-CHAR和VARCHAR的区别"><span class="nav-number">4.</span> <span class="nav-text">4.CHAR和VARCHAR的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-谈谈-SQL-优化的经验"><span class="nav-number">5.</span> <span class="nav-text">5.谈谈 SQL 优化的经验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Mysql中有哪几种锁？"><span class="nav-number">6.</span> <span class="nav-text">6.Mysql中有哪几种锁？</span></a></li></ol></li></ol></li></div>
             
 
           </div>
