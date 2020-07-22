@@ -187,7 +187,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_TCP&UDP.jpg?raw=true">
-<meta property="og:updated_time" content="2020-07-09T07:30:20.647Z">
+<meta property="og:updated_time" content="2020-07-21T10:53:27.632Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络常见面试题">
 <meta name="twitter:description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
@@ -521,7 +521,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-09 15:30:20" itemprop="dateModified" datetime="2020-07-09T15:30:20+08:00">2020-07-09</time>
+                <time title="修改时间：2020-07-21 18:53:27" itemprop="dateModified" datetime="2020-07-21T18:53:27+08:00">2020-07-21</time>
               
             
           </span>
@@ -614,7 +614,7 @@
 <p>TCP通过字节流传输，即TCP将应用程序看成是一连串的无结构的字节流。每个TCP套接口有一个发送缓冲区，如果字节流太长时，<strong>TCP会将其拆分进行发送</strong>,当字节流太短时，TCP会等待缓冲区中的字节流达到一定程度时再构成报文发送出去</p>
 <h2 id="ARQ协议"><a href="#ARQ协议" class="headerlink" title="ARQ协议"></a>ARQ协议</h2><p><strong>自动重传请求</strong>（Automatic Repeat-reQuest，ARQ）是OSI模型中数据链路层和传输层的错误纠正协议之一。它通过使用确认和超时这两个机制，在不可靠服务的基础上实现可靠的信息传输。如果发送方在发送后一段时间之内没有收到确认帧，它通常会重新发送。ARQ包括停止等待ARQ协议和连续ARQ协议。</p>
 <h4 id="停止等待ARQ协议"><a href="#停止等待ARQ协议" class="headerlink" title="停止等待ARQ协议"></a>停止等待ARQ协议</h4><ul>
-<li>停止等待协议是为了实现可靠传输的，它的基本原理就是每发完一个分组就停止发送，等待对方确认（回复ACK）。如果过了一段时间（超时时间后），还是没有收到 ACK 确认，说明没有发送成功，需要重新发送，直到收到确认后再发下一个分组；</li>
+<li>停止等待协议是为了实现<strong>可靠传输</strong>的，它的基本原理就是每发完一个分组就停止发送，等待对方确认（回复ACK）。如果过了一段时间（超时时间后），还是没有收到 ACK 确认，说明没有发送成功，需要重新发送，直到收到确认后再发下一个分组；</li>
 <li>在停止等待协议中，若接收方收到重复分组，就丢弃该分组，但同时还要发送确认；</li>
 </ul>
 <p><strong>优点：</strong> 简单</p>
@@ -633,7 +633,7 @@
 <li>GET 用于获取信息，是无副作用的，是<strong>幂等</strong>的，且<strong>可缓存</strong>。数据在URL中对全部人可见。</li>
 <li>POST 用于修改服务器上的数据，有副作用，<strong>非幂等</strong>，不可缓存。数据不显示在URL中。比get更安全。</li>
 </ul>
-<p>3.HTTPS</p>
+<h4 id="3-什么是子网掩码？"><a href="#3-什么是子网掩码？" class="headerlink" title="3.什么是子网掩码？"></a>3.什么是子网掩码？</h4><p>子网掩码，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成<strong>网络地址</strong>和<strong>主机地址</strong>两部分。</p>
 
       
     </div>
@@ -885,7 +885,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li></ol></li></div>
             
 
           </div>
