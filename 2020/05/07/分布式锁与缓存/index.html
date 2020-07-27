@@ -183,7 +183,8 @@
 <meta property="og:description" content="Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。 但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）  一般采用redis来实现分布式锁。 12345678910111213141516171819202122232425262728293">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200507_%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%811.png?raw=true">
-<meta property="og:updated_time" content="2020-07-09T07:30:09.815Z">
+<meta property="og:image" content="https://gitee.com/chenjiabing666/Blog-file/raw/master/repeat/1.png">
+<meta property="og:updated_time" content="2020-07-27T01:33:45.964Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式锁与缓存">
 <meta name="twitter:description" content="Redis实现分布式锁单机模式下，Synchronized和ReetrantLock都可以很好的处理锁问题，即使有多用户并发请求也可以运行正常。 但是，在分布式下，这些锁都会失效。（分布式下以前的所有锁都不能用，分布式系统JVM都是互不相关的，加不上同一把锁）  一般采用redis来实现分布式锁。 12345678910111213141516171819202122232425262728293">
@@ -517,7 +518,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-09 15:30:09" itemprop="dateModified" datetime="2020-07-09T15:30:09+08:00">2020-07-09</time>
+                <time title="修改时间：2020-07-27 09:33:45" itemprop="dateModified" datetime="2020-07-27T09:33:45+08:00">2020-07-27</time>
               
             
           </span>
@@ -610,6 +611,33 @@
 <p>Elasticsearch是分布式的，这意味着索引可以被分成分片，每个分片可以有0个或多个副本。每个节点托管一个或多个分片，并充当协调器将操作委托给正确的分片。再平衡和路由是自动完成的。“相关数据通常存储在同一个索引中，该索引由一个或多个主分片和零个或多个复制分片组成。一旦创建了索引，就不能更改主分片的数量。</p>
 <p>优点：能够达到实时搜索，稳定，可靠，快速，安装使用方便<br> 缺点：也有很多，自己查</p>
 <p><a href="https://www.php.cn/redis/425065.html" target="_blank" rel="noopener"><strong>redis和ElasticSearch的区别</strong></a></p>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p><strong>CAP定理</strong>：Consistency（一致性）, Availability（可用性）和Partition tolerance（分区容错）这三个指标不可能同时做到。</p>
+<p>分区容错的意思是，区间通信可能失败。比如，一台服务器放在中国，另一台服务器放在美国，这就是两个区，它们之间可能无法通信。一般来说，分区容错无法避免，因此可以认为 CAP 的 P 总是成立。CAP 定理告诉我们，剩下的 C 和 A 无法同时做到。（要么是CP, 要么是AP）</p>
+<p><strong>Consistency 和 Availability 的矛盾</strong></p>
+<p>一致性和可用性，为什么不可能同时成立？答案很简单，因为可能通信失败（即出现分区容错）。</p>
+<p>如果保证 P2 的一致性，那么 P1 必须在写操作时，锁定 P2 的读操作和写操作。只有数据同步后，才能重新开放读写。锁定期间，P2 不能读写，没有可用性不。</p>
+<p>如果保证 P2 的可用性，那么势必不能锁定 P2，所以一致性不成立。</p>
+<h4 id="BASE理论"><a href="#BASE理论" class="headerlink" title="BASE理论"></a>BASE理论</h4><p>BA：Basically Available 基本可用，分布式系统在出现故障的时候，允许损失部分可用性，即保证核心可用。<br>S：Soft State 软状态，允许系统存在中间状态，而该中间状态不会影响系统整体可用性。<br>E：Consistency 最终一致性，系统中的所有数据副本经过一定时间后，最终能够达到一致的状态。<br>BASE 理论本质上是对 CAP 理论的延伸，是对 CAP 中 AP 方案的一个补充。</p>
+<h4 id="TCC-Try-Confirm-Cancel"><a href="#TCC-Try-Confirm-Cancel" class="headerlink" title="TCC(Try Confirm Cancel)"></a>TCC(Try Confirm Cancel)</h4><p>Try阶段：尝试执行，预留业务资源。（eg: 库存表本来只有一个库存数字段，TCC方案可以多给他一个冻结库存数字段。本来商品库存为10，在用户下单完成支付这个流程中，假设买了一个商品，原来的逻辑就得改一下。正常正常你买1个商品，那库存就是10-1=9 咯，所以将库存数改为9。而在TCC下，<strong>你就不将他改为9，而是在冻结库存数上+1</strong>，即数据库状态变为 库存数10，冻结库存数1、那么在其他的用户购买时，你返回给前端的库存数应该就是 库存数10 减去 冻结库存数1 等于现在<strong>只有9个库存能够被使用。</strong>）</p>
+<p>Confirm阶段：确认。将库存字段真正减掉，也就是将10库存真正减1。</p>
+<p>Cancel阶段：回滚。</p>
+<h4 id="如何实现接口幂等性"><a href="#如何实现接口幂等性" class="headerlink" title="如何实现接口幂等性"></a>如何实现接口幂等性</h4><p>创建订单时，第一次调用服务超时，再次调用是否产生两笔订单？</p>
+<p>订单支付时，服务端扣钱成功，但是接口反馈超时，此时再次调用支付，是否会多扣一笔呢？</p>
+<p>服务方需要使用幂等的方式保证一次和多次的请求结果一致！</p>
+<p>实验方式：</p>
+<p>1.数据库去重表</p>
+<p>在往数据库中插入数据的时候，利用数据库唯一索引特性，保证数据唯一。比如订单的流水号，也可以是多个字段的组合。</p>
+<p>2.TOKEN机制</p>
+<p>针对客户端连续点击或者调用方的超时重试等情况，例如提交订单，此种操作就可以用Token的机制实现防止重复提交。</p>
+<p><img src="https://gitee.com/chenjiabing666/Blog-file/raw/master/repeat/1.png" alt=""></p>
+<p>主要的流程步骤如下：</p>
+<ul>
+<li>客户端先发送获取token的请求，服务端会生成一个全局唯一的ID保存在redis中，同时把这个ID返回给客户端。</li>
+<li>客户端调用业务请求的时候必须携带这个token，一般放在请求头上。</li>
+<li>服务端会校验这个Token，如果校验成功，则执行业务。</li>
+<li>如果校验失败，则表示重复操作，直接返回指定的结果给客户端。</li>
+</ul>
+<p>通过以上的流程分析，唯一的重点就是这个全局唯一ID如何生成，在分布式服务中往往都会有一个生成全局ID的服务来保证ID的唯一性，但是工程量和实现难度比较大，UUID的数据量相对有些大，此处陈某选择的是雪花算法生成全局唯一ID，不了解雪花算法的读者下一篇文章会着重介绍。</p>
 
       
     </div>
@@ -861,7 +889,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">Redis实现分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redisson"><span class="nav-number">2.</span> <span class="nav-text">Redisson</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">3.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决缓存与数据库不一致？"><span class="nav-number">3.0.1.</span> <span class="nav-text">如何解决缓存与数据库不一致？</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis和ElasticSearch"><span class="nav-number">4.</span> <span class="nav-text">Redis和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis优缺点"><span class="nav-number">4.1.</span> <span class="nav-text">redis优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES-ElasticSearch"><span class="nav-number">4.2.</span> <span class="nav-text">ES(ElasticSearch)</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis实现分布式锁"><span class="nav-number">1.</span> <span class="nav-text">Redis实现分布式锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redisson"><span class="nav-number">2.</span> <span class="nav-text">Redisson</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#读写锁"><span class="nav-number">2.1.</span> <span class="nav-text">读写锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#缓存"><span class="nav-number">3.</span> <span class="nav-text">缓存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#如何解决缓存与数据库不一致？"><span class="nav-number">3.0.1.</span> <span class="nav-text">如何解决缓存与数据库不一致？</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis和ElasticSearch"><span class="nav-number">4.</span> <span class="nav-text">Redis和ElasticSearch</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#redis优缺点"><span class="nav-number">4.1.</span> <span class="nav-text">redis优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ES-ElasticSearch"><span class="nav-number">4.2.</span> <span class="nav-text">ES(ElasticSearch)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分布式事务"><span class="nav-number">5.</span> <span class="nav-text">分布式事务</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#BASE理论"><span class="nav-number">5.0.1.</span> <span class="nav-text">BASE理论</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#TCC-Try-Confirm-Cancel"><span class="nav-number">5.0.2.</span> <span class="nav-text">TCC(Try Confirm Cancel)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何实现接口幂等性"><span class="nav-number">5.0.3.</span> <span class="nav-text">如何实现接口幂等性</span></a></li></ol></li></div>
             
 
           </div>
