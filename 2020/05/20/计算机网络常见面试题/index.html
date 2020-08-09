@@ -187,7 +187,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_TCP&UDP.jpg?raw=true">
-<meta property="og:updated_time" content="2020-07-21T10:53:27.632Z">
+<meta property="og:updated_time" content="2020-08-06T08:44:30.062Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络常见面试题">
 <meta name="twitter:description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
@@ -521,7 +521,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-07-21 18:53:27" itemprop="dateModified" datetime="2020-07-21T18:53:27+08:00">2020-07-21</time>
+                <time title="修改时间：2020-08-06 16:44:30" itemprop="dateModified" datetime="2020-08-06T16:44:30+08:00">2020-08-06</time>
               
             
           </span>
@@ -634,6 +634,201 @@
 <li>POST 用于修改服务器上的数据，有副作用，<strong>非幂等</strong>，不可缓存。数据不显示在URL中。比get更安全。</li>
 </ul>
 <h4 id="3-什么是子网掩码？"><a href="#3-什么是子网掩码？" class="headerlink" title="3.什么是子网掩码？"></a>3.什么是子网掩码？</h4><p>子网掩码，它是一种用来指明一个IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码。子网掩码不能单独存在，它必须结合IP地址一起使用。子网掩码只有一个作用，就是将某个IP地址划分成<strong>网络地址</strong>和<strong>主机地址</strong>两部分。</p>
+<h4 id="4-HTTP状态码"><a href="#4-HTTP状态码" class="headerlink" title="4.HTTP状态码"></a>4.HTTP状态码</h4><p>1XX: 信息状态码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">100</td>
+<td style="text-align:center">继续</td>
+<td style="text-align:center">初始的请求已经接受，请客户端继续发送剩余部分</td>
+</tr>
+<tr>
+<td style="text-align:center">101</td>
+<td style="text-align:center">切换协议</td>
+<td style="text-align:center">请求这要求服务器切换协议，服务器已确定切换</td>
+</tr>
+</tbody>
+</table>
+<p>2XX: 成功状态码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">200</td>
+<td style="text-align:center">成功</td>
+<td style="text-align:center">服务器已成功处理了请求</td>
+</tr>
+<tr>
+<td style="text-align:center">201</td>
+<td style="text-align:center">已创建</td>
+<td style="text-align:center">请求成功并且服务器创建了新的资源</td>
+</tr>
+<tr>
+<td style="text-align:center">202</td>
+<td style="text-align:center">已接受</td>
+<td style="text-align:center">服务器已接受请求，但尚未处理</td>
+</tr>
+<tr>
+<td style="text-align:center">203</td>
+<td style="text-align:center">非授权信息</td>
+<td style="text-align:center">服务器已成功处理请求，但返回的信息可能来自另一个来源</td>
+</tr>
+<tr>
+<td style="text-align:center">204</td>
+<td style="text-align:center">无内容</td>
+<td style="text-align:center">服务器成功处理了请求，但没有返回任何内容</td>
+</tr>
+<tr>
+<td style="text-align:center">205</td>
+<td style="text-align:center">重置内容</td>
+<td style="text-align:center">服务器处理成功，用户终端应重置文档视图</td>
+</tr>
+<tr>
+<td style="text-align:center">206</td>
+<td style="text-align:center">部分内容</td>
+<td style="text-align:center">服务器成功处理了部分GET请求</td>
+</tr>
+</tbody>
+</table>
+<p>3XX: 重定向状态码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">300</td>
+<td style="text-align:center">多种选择</td>
+<td style="text-align:center">针对请求，服务器可执行多种操作</td>
+</tr>
+<tr>
+<td style="text-align:center">301</td>
+<td style="text-align:center">永久移动</td>
+<td style="text-align:center">请求的页面已永久跳转到新的url</td>
+</tr>
+<tr>
+<td style="text-align:center">302</td>
+<td style="text-align:center">临时移动</td>
+<td style="text-align:center">服务器目前从不同位置的网页响应请求，但请求仍继续使用原有位置来进行以后的请求</td>
+</tr>
+<tr>
+<td style="text-align:center">305</td>
+<td style="text-align:center">使用代理</td>
+<td style="text-align:center">请求者只能使用代理访问请求的网页</td>
+</tr>
+<tr>
+<td style="text-align:center">307</td>
+<td style="text-align:center">临时重定向</td>
+<td style="text-align:center">服务器目前从不同位置的网页响应请求，但请求者应继续使用原有位置来进行以后的请求</td>
+</tr>
+</tbody>
+</table>
+<p>4XX: 客户端错误状态码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">400</td>
+<td style="text-align:center">错误请求</td>
+<td style="text-align:center">服务器不理解请求的语法</td>
+</tr>
+<tr>
+<td style="text-align:center">401</td>
+<td style="text-align:center">未授权</td>
+<td style="text-align:center">请求要求用户的身份验证</td>
+</tr>
+<tr>
+<td style="text-align:center">403</td>
+<td style="text-align:center">禁止</td>
+<td style="text-align:center">服务器拒绝请求</td>
+</tr>
+<tr>
+<td style="text-align:center">404</td>
+<td style="text-align:center">未找到</td>
+<td style="text-align:center">服务器找不到请求的页面</td>
+</tr>
+<tr>
+<td style="text-align:center">405</td>
+<td style="text-align:center">方法禁用</td>
+<td style="text-align:center">禁用请求中指定的方法</td>
+</tr>
+<tr>
+<td style="text-align:center">408</td>
+<td style="text-align:center">请求超时</td>
+<td style="text-align:center">服务器等候请求时发生超时</td>
+</tr>
+<tr>
+<td style="text-align:center">410</td>
+<td style="text-align:center">已删除</td>
+<td style="text-align:center">客户端请求的资源已经不存在</td>
+</tr>
+</tbody>
+</table>
+<p>5XX: 服务端错误状态码</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">状态码</th>
+<th style="text-align:center">含义</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">500</td>
+<td style="text-align:center">服务器错误</td>
+<td style="text-align:center">服务器内部错误，无法完成请求</td>
+</tr>
+<tr>
+<td style="text-align:center">501</td>
+<td style="text-align:center">尚未实施</td>
+<td style="text-align:center">服务器不具备完成请求的功能</td>
+</tr>
+<tr>
+<td style="text-align:center">502</td>
+<td style="text-align:center">错误网关</td>
+<td style="text-align:center">服务器作为网关或代理出现错误</td>
+</tr>
+<tr>
+<td style="text-align:center">503</td>
+<td style="text-align:center">服务不可用</td>
+<td style="text-align:center">服务器目前无法使用</td>
+</tr>
+<tr>
+<td style="text-align:center">504</td>
+<td style="text-align:center">网关超时</td>
+<td style="text-align:center">网关或代理服务器，未及时获取请求</td>
+</tr>
+<tr>
+<td style="text-align:center">505</td>
+<td style="text-align:center">不支持版本</td>
+<td style="text-align:center">服务器不支持请求中使用的HTTP协议版本</td>
+</tr>
+</tbody>
+</table>
 
       
     </div>
@@ -885,7 +1080,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP状态码"><span class="nav-number">8.0.4.</span> <span class="nav-text">4.HTTP状态码</span></a></li></ol></li></div>
             
 
           </div>
