@@ -187,7 +187,7 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_TCP&UDP.jpg?raw=true">
-<meta property="og:updated_time" content="2020-08-06T08:44:30.062Z">
+<meta property="og:updated_time" content="2020-08-19T02:55:37.133Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络常见面试题">
 <meta name="twitter:description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
@@ -521,7 +521,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-06 16:44:30" itemprop="dateModified" datetime="2020-08-06T16:44:30+08:00">2020-08-06</time>
+                <time title="修改时间：2020-08-19 10:55:37" itemprop="dateModified" datetime="2020-08-19T10:55:37+08:00">2020-08-19</time>
               
             
           </span>
@@ -604,6 +604,8 @@
 <li>服务器-关闭与客户端的连接，发送一个FIN给客户端</li>
 <li>客户端-发回 ACK 报文确认，并将确认序号设置为收到序号加1</li>
 </ul>
+<p>CLOSE_WAIT: 被动关闭方收到FIN, 发送ack后进入CLOSE_WAIT</p>
+<p>TIME_WAIT:  TIME_WAIT 是主动关闭链接时形成的，等待2MSL时间，约4分钟。主要是防止最后一个ACK丢失。 由于TIME_WAIT 的时间会非常长，因此server端应尽量减少主动关闭连接</p>
 <p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入半关闭状态。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。</p>
 <p>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
 <h2 id="TCP和UDP协议的区别"><a href="#TCP和UDP协议的区别" class="headerlink" title="TCP和UDP协议的区别"></a>TCP和UDP协议的区别</h2><p><img src="https://github.com/hac135/my_images/blob/master/20200603_TCP&amp;UDP.jpg?raw=true" alt=""></p>
@@ -612,7 +614,7 @@
 <h3 id="为什么说UDP是面向报文的，而TCP是面向字节流的？"><a href="#为什么说UDP是面向报文的，而TCP是面向字节流的？" class="headerlink" title="为什么说UDP是面向报文的，而TCP是面向字节流的？"></a>为什么说UDP是面向报文的，而TCP是面向字节流的？</h3><p>发送方的UDP 对应用程序交下来的报文，在添加首部后就向下交付IP 层。UDP对应用层交下来的报文，<strong>既不合并，也不拆分</strong>，而是保留这些报文的边界。这就是说，应用层交给UDP 多长的报文， UDP 就照样发送，即一次发送一个报文。</p>
 <p>在接收方的UDP, 对IP 层交上来的UDP 用户数据报，在去除首部后就原封不动地交付上层的应用进程。也就是说， <strong>UDP 一次交付一个完整的报文</strong>。因此，应用程序必须选择合适大小的报文。若报文太长， UDP 把它交给IP 层后， IP 层在传送时可能要进行分片，这会降低IP层的效率。反之，若报文太短， UDP 把它交给IP 层后，会使IP 数据报的首部的相对长度太大，这也降低了IP 层的效率。</p>
 <p>TCP通过字节流传输，即TCP将应用程序看成是一连串的无结构的字节流。每个TCP套接口有一个发送缓冲区，如果字节流太长时，<strong>TCP会将其拆分进行发送</strong>,当字节流太短时，TCP会等待缓冲区中的字节流达到一定程度时再构成报文发送出去</p>
-<h2 id="ARQ协议"><a href="#ARQ协议" class="headerlink" title="ARQ协议"></a>ARQ协议</h2><p><strong>自动重传请求</strong>（Automatic Repeat-reQuest，ARQ）是OSI模型中数据链路层和传输层的错误纠正协议之一。它通过使用确认和超时这两个机制，在不可靠服务的基础上实现可靠的信息传输。如果发送方在发送后一段时间之内没有收到确认帧，它通常会重新发送。ARQ包括停止等待ARQ协议和连续ARQ协议。</p>
+<h2 id="ARQ协议"><a href="#ARQ协议" class="headerlink" title="ARQ协议"></a>ARQ协议</h2><p><strong>自动重传请求</strong>（Automatic Repeat-reQuest，ARQ）是OSI模型中数据链路层和传输层的错误纠正协议之一。它通过使用确认和超时这两个机制，在不可靠服务的基础上实现<strong>可靠</strong>的信息传输。如果发送方在发送后一段时间之内没有收到确认帧，它通常会重新发送。ARQ包括停止等待ARQ协议和连续ARQ协议。</p>
 <h4 id="停止等待ARQ协议"><a href="#停止等待ARQ协议" class="headerlink" title="停止等待ARQ协议"></a>停止等待ARQ协议</h4><ul>
 <li>停止等待协议是为了实现<strong>可靠传输</strong>的，它的基本原理就是每发完一个分组就停止发送，等待对方确认（回复ACK）。如果过了一段时间（超时时间后），还是没有收到 ACK 确认，说明没有发送成功，需要重新发送，直到收到确认后再发下一个分组；</li>
 <li>在停止等待协议中，若接收方收到重复分组，就丢弃该分组，但同时还要发送确认；</li>
@@ -622,6 +624,16 @@
 <h4 id="连续ARQ协议"><a href="#连续ARQ协议" class="headerlink" title="连续ARQ协议"></a>连续ARQ协议</h4><p>连续 ARQ 协议可提高信道利用率。发送方维持一个发送窗口，凡位于发送窗口内的分组可以连续发送出去，而不需要等待对方确认。接收方一般采用累计确认，对按序到达的最后一个分组发送确认，表明到这个分组为止的所有分组都已经正确收到了。</p>
 <p><strong>优点：</strong> 信道利用率高，容易实现，即使确认丢失，也不必重传。</p>
 <p><strong>缺点：</strong> 不能向发送方反映出接收方已经正确收到的所有分组的信息。 比如：发送方发送了 5条 消息，中间第三条丢失（3号），这时接收方只能对前两个发送确认。发送方无法知道后三个分组的下落，而只好把后三个全部重传一次。这也叫 Go-Back-N（回退 N），表示需要退回来重传已经发送过的 N 个消息。</p>
+<h4 id="如何保证有序"><a href="#如何保证有序" class="headerlink" title="如何保证有序"></a>如何保证有序</h4><ol>
+<li><p>主机每次发送数据时，TCP就给<strong>每个数据包分配一个序列号</strong>并且在一个特定的时间内等待接收主机对分配的这个序列号<strong>进行确认</strong>，</p>
+</li>
+<li><p>如果发送主机在一个特定时间内没有收到接收主机的确认，则发送主机会重传此数据包。</p>
+</li>
+<li><p>接收主机利用序列号对接收的数据进行确认，以便检测对方发送的数据是否有丢失或者乱序等</p>
+</li>
+<li><p>接收主机一旦收到已经顺序化的数据，它就将这些数据按正确的顺序重组成数据流并传递到高层进行处理</p>
+</li>
+</ol>
 <h2 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h2><p><strong>拥塞控制</strong>就是为了防止过多的数据注入到网络中，这样就可以使网络中的路由器或链路不致过载。<strong>拥塞控制</strong>所要做的都有一个前提，就是网络能够承受现有的网络负荷。拥塞控制是一个<strong>全局性</strong>的过程，涉及到所有的主机，所有的路由器，以及与降低网络传输性能有关的所有因素。相反，<strong>流量控制</strong>往往是点对点通信量的控制，是个<strong>端到端</strong>的问题。流量控制所要做到的就是抑制发送端发送数据的速率，以便使接收端来得及接收。</p>
 <p><strong>慢开始</strong>：当拥塞窗口cwnd&lt;慢开始门限ssthresh时，采用慢开始算法，每经过一个<strong>传输轮次</strong>，拥塞窗口cwnd就加倍。用这样的方法逐步增大发送方的拥塞窗口cwnd,可以使分组注入到网络的速率更加合理。</p>
 <p><strong>拥塞避免</strong>：为了防止拥塞窗口cwnd增长过大引起网络拥塞，当cwnd&gt;ssthresh 时，停止使用慢开始算法而改用拥塞避免算法。即每经过一个<strong>往返时间RTT</strong>,就把发送方的拥塞窗口cwnd加1,而不是加倍。这样，拥塞窗口cwnd按线性规律缓慢增长（<strong>加法增大</strong>）</p>
@@ -1080,7 +1092,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP状态码"><span class="nav-number">8.0.4.</span> <span class="nav-text">4.HTTP状态码</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">3.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">3.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">3.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">3.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">4.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">5.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">5.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">6.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">6.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">6.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何保证有序"><span class="nav-number">6.0.3.</span> <span class="nav-text">如何保证有序</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">7.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">8.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">8.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-PUT和POST有什么不同"><span class="nav-number">8.0.2.</span> <span class="nav-text">2.HTTP PUT和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">8.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP状态码"><span class="nav-number">8.0.4.</span> <span class="nav-text">4.HTTP状态码</span></a></li></ol></li></div>
             
 
           </div>
