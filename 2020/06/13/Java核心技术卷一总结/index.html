@@ -184,7 +184,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200611.jpg?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200330_javabase.png?raw=true">
-<meta property="og:updated_time" content="2020-08-20T07:38:27.164Z">
+<meta property="og:updated_time" content="2020-08-21T07:37:46.598Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java核心技术卷一总结">
 <meta name="twitter:description" content="实例域private修饰和public public : 允许程序中的任何方法对其进行修改和读取 private: 只有该类自身的方法能够访问这些实例域 私有方法：除了类自身方法，还可以通过反射访问。反射访问私有方法 static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。 12345public class Math&amp;#123;public static final doubl">
@@ -518,7 +518,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-20 15:38:27" itemprop="dateModified" datetime="2020-08-20T15:38:27+08:00">2020-08-20</time>
+                <time title="修改时间：2020-08-21 15:37:46" itemprop="dateModified" datetime="2020-08-21T15:37:46+08:00">2020-08-21</time>
               
             
           </span>
@@ -642,6 +642,8 @@
 <p>Override: 子类重写父类的方法，方法名相同，参数相同，返回类型相同。具体实现不同。</p>
 <h4 id="请说明一下final-finally-finalize的区别。"><a href="#请说明一下final-finally-finalize的区别。" class="headerlink" title="请说明一下final, finally, finalize的区别。"></a>请说明一下final, finally, finalize的区别。</h4><p>final 用于声明属性，方法和类，分别表示属性不可变，方法不可重写，类不可继承。<br>finally是异常处理语句结构的一部分，表示总是执行。<br>finalize是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，例如关闭文件等。</p>
 <h4 id="String为什么是不可变对象"><a href="#String为什么是不可变对象" class="headerlink" title="String为什么是不可变对象"></a>String为什么是不可变对象</h4><p>String底层实现是final修饰的char数组，不可变。同时String类也被final修饰，不可被继承。</p>
+<p>StringBuilder 底层是一个可变的char数组。初始长度为16，存在扩容。</p>
+<p>StringBuffer 同StringBuilder，经过Synchronized修饰</p>
 <h4 id="Default关键字"><a href="#Default关键字" class="headerlink" title="Default关键字"></a><strong>Default关键字</strong></h4><p>1.在switch语句的时候使用default</p>
 <p>2.在定义接口的时候使用default来修饰具体的方法</p>
 <h4 id="Java八种基本数据类型，各占多少字节"><a href="#Java八种基本数据类型，各占多少字节" class="headerlink" title="Java八种基本数据类型，各占多少字节"></a>Java八种基本数据类型，各占多少字节</h4><p>byte 1字节;short 2字节；int 4字节；long 8字节；char 2字节，可以存储一个汉字。float 4字节；double 8字节；boolean false/true(理论上占用1bit,1/8字节，bai实际处理按1byte处理)</p>
@@ -657,6 +659,43 @@
 <h4 id="Integer和int的初始化值"><a href="#Integer和int的初始化值" class="headerlink" title="Integer和int的初始化值"></a>Integer和int的初始化值</h4><p>引用类型的初始化值为null</p>
 <p>int类型的为0</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lee2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span>  Integer age1;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> age2;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">        System.out.println(age1);<span class="comment">//null</span></span><br><span class="line">        System.out.println(age2);<span class="comment">//0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Collections-sort和Arrays-sort排序原理"><a href="#Collections-sort和Arrays-sort排序原理" class="headerlink" title="Collections.sort和Arrays.sort排序原理"></a>Collections.sort和Arrays.sort排序原理</h4><p>Collections.sort方法底层就是调用的Arrays.sort方法，而Arrays.sort使用了三种排序方法，插入排序，快速排序和优化的归并排序。</p>
+<p>快速排序主要是对那些<strong>基本类型数据</strong>（int,short,long等）排序， 而归并排序用于对<strong>Object类型</strong>进行排序。</p>
+<p> 总结：<br>  首先先判断需要排序的数据量是否大于60。<br>  小于60：使用插入排序，插入排序是稳定的<br>  大于60的数据量会根据数据类型选择排序方式：<br>     基本类型：使用快速排序。因为基本类型。1、2都是指向同一个常量池不需要考虑稳定性。<br>     Object类型：使用归并排序。因为归并排序具有稳定性。<br>  注意：不管是快速排序还是归并排序。在二分的时候小于60的数据量依旧会使用插入排序</p>
+<h4 id="Java创建对象的几种方式"><a href="#Java创建对象的几种方式" class="headerlink" title="Java创建对象的几种方式"></a>Java创建对象的几种方式</h4><ol>
+<li>new关键字</li>
+<li>反射，newInstance</li>
+<li>clone()方法</li>
+<li>反序列化</li>
+</ol>
+<h4 id="常见的编译时异常和运行时异常"><a href="#常见的编译时异常和运行时异常" class="headerlink" title="常见的编译时异常和运行时异常"></a>常见的编译时异常和运行时异常</h4><ul>
+<li>运行时异常<ol>
+<li>NullPointerException</li>
+<li>StringIndexOutOfBoundsException    String a = “abc”   System.out.println(a.substring(1)); //正常，显示“bc”     System.out.println(a.substring(4)); //错误，java.lang.StringIndexOutOfBoundsException: String index out of range: -1 因为一共只有3个字母。）</li>
+<li>ArithmeticException ：当出现异常的运算条件时，抛出此异常。如除0异常</li>
+<li>ArrayIndexOutOfBoundsException  int[] nums = new int[3]; System.out.println(nums[4]);</li>
+</ol>
+</li>
+<li>编译时异常<ol>
+<li>ClassNotFoundException ：找不到具有指定名称的类的定义。</li>
+<li>FileNotFoundException ：当试图打开指定路径名表示的文件失败时，抛出此异常。</li>
+<li>SQLException  比如SQL语句写错，访问的表不存在，连接数据库失败等等</li>
+</ol>
+</li>
+</ul>
+<h4 id="java-JDBC编程流程步骤"><a href="#java-JDBC编程流程步骤" class="headerlink" title="java JDBC编程流程步骤"></a>java JDBC编程流程步骤</h4><p>第1步：注冊驱动 (仅仅做一次)</p>
+<p><code>Class.forName(“com.mysql.jdbc.Driver”);</code></p>
+<p>第2步：建立连接(Connection)</p>
+<p><code>Connection conn =DriverManager.getConnection(url, user, password);</code></p>
+<p>第3步：创建运行SQL的语句(Statement)</p>
+<p><code>Statement st = connection.createStatement();</code></p>
+<p>Statement接口类还派生出两个接口类PreparedStatement和CallableStatement。PreparedStatement能够对SQL语句进行预编译，这样防止了  SQL注入，提高了安全性。<code>PreparedStatement ps=connection.prepareStatement( &quot;update user set id=? where username=?”)</code></p>
+<p>第4步：运行语句</p>
+<p><code>ResultSet rs =st.executeQuery(sql);</code></p>
+<p>第5步：处理运行结果(ResultSet)</p>
+<p><code>while(rs.next()){System.out.println(rs.getString(&quot;name&quot;))}</code></p>
+<p>第6步：释放资源</p>
+<p>rs.close(); conn.close()</p>
 
       
     </div>
@@ -908,7 +947,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">1.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">1.1.</span> <span class="nav-text">抽象类和接口的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM-JDK-和-JRE-最详细通俗的解答"><span class="nav-number">1.2.</span> <span class="nav-text">JVM JDK 和 JRE 最详细通俗的解答</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM"><span class="nav-number">1.3.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是字节码-采用字节码的好处是什么"><span class="nav-number">1.4.</span> <span class="nav-text">什么是字节码?采用字节码的好处是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK-和-JRE"><span class="nav-number">1.5.</span> <span class="nav-text">JDK 和 JRE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-多态"><span class="nav-number">1.6.</span> <span class="nav-text">Java 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（Overload）和（Override）的区别"><span class="nav-number">1.7.</span> <span class="nav-text">重载（Overload）和（Override）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请说明一下final-finally-finalize的区别。"><span class="nav-number">1.8.</span> <span class="nav-text">请说明一下final, finally, finalize的区别。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String为什么是不可变对象"><span class="nav-number">1.9.</span> <span class="nav-text">String为什么是不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Default关键字"><span class="nav-number">1.10.</span> <span class="nav-text">Default关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java八种基本数据类型，各占多少字节"><span class="nav-number">1.11.</span> <span class="nav-text">Java八种基本数据类型，各占多少字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型和引用类型的区别"><span class="nav-number">1.12.</span> <span class="nav-text">基本类型和引用类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int和Integer装箱和拆箱"><span class="nav-number">1.13.</span> <span class="nav-text">int和Integer装箱和拆箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化的优缺点（implements-Serializbale）"><span class="nav-number">1.14.</span> <span class="nav-text">序列化的优缺点（implements Serializbale）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integer和int的初始化值"><span class="nav-number">1.15.</span> <span class="nav-text">Integer和int的初始化值</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">1.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">1.1.</span> <span class="nav-text">抽象类和接口的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM-JDK-和-JRE-最详细通俗的解答"><span class="nav-number">1.2.</span> <span class="nav-text">JVM JDK 和 JRE 最详细通俗的解答</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM"><span class="nav-number">1.3.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是字节码-采用字节码的好处是什么"><span class="nav-number">1.4.</span> <span class="nav-text">什么是字节码?采用字节码的好处是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK-和-JRE"><span class="nav-number">1.5.</span> <span class="nav-text">JDK 和 JRE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-多态"><span class="nav-number">1.6.</span> <span class="nav-text">Java 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（Overload）和（Override）的区别"><span class="nav-number">1.7.</span> <span class="nav-text">重载（Overload）和（Override）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请说明一下final-finally-finalize的区别。"><span class="nav-number">1.8.</span> <span class="nav-text">请说明一下final, finally, finalize的区别。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String为什么是不可变对象"><span class="nav-number">1.9.</span> <span class="nav-text">String为什么是不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Default关键字"><span class="nav-number">1.10.</span> <span class="nav-text">Default关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java八种基本数据类型，各占多少字节"><span class="nav-number">1.11.</span> <span class="nav-text">Java八种基本数据类型，各占多少字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型和引用类型的区别"><span class="nav-number">1.12.</span> <span class="nav-text">基本类型和引用类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int和Integer装箱和拆箱"><span class="nav-number">1.13.</span> <span class="nav-text">int和Integer装箱和拆箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化的优缺点（implements-Serializbale）"><span class="nav-number">1.14.</span> <span class="nav-text">序列化的优缺点（implements Serializbale）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integer和int的初始化值"><span class="nav-number">1.15.</span> <span class="nav-text">Integer和int的初始化值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections-sort和Arrays-sort排序原理"><span class="nav-number">1.16.</span> <span class="nav-text">Collections.sort和Arrays.sort排序原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java创建对象的几种方式"><span class="nav-number">1.17.</span> <span class="nav-text">Java创建对象的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的编译时异常和运行时异常"><span class="nav-number">1.18.</span> <span class="nav-text">常见的编译时异常和运行时异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-JDBC编程流程步骤"><span class="nav-number">1.19.</span> <span class="nav-text">java JDBC编程流程步骤</span></a></li></ol></li></ol></div>
             
 
           </div>
