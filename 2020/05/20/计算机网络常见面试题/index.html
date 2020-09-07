@@ -175,12 +175,12 @@
 
 
 
-  <meta name="description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
+  <meta name="description" content="OSI五层模型为什么要分层 点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机网络常见面试题">
 <meta property="og:url" content="http://yoursite.com/2020/05/20/计算机网络常见面试题/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
-<meta property="og:description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
+<meta property="og:description" content="OSI五层模型为什么要分层 点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E7%82%B9%E5%87%BBurl.jpg?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200605_HTTPS.png?raw=true">
@@ -192,10 +192,10 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E5%9B%9B%E6%AC%A1%E6%8C%A5%E6%89%8B.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200603_TCP&UDP.jpg?raw=true">
-<meta property="og:updated_time" content="2020-08-24T10:13:50.639Z">
+<meta property="og:updated_time" content="2020-09-01T14:04:02.894Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络常见面试题">
-<meta name="twitter:description" content="点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那么在进入TCP报文之前对HT">
+<meta name="twitter:description" content="OSI五层模型为什么要分层 点击url发生了什么 总体来说分为以下几个过程:  DNS解析 TCP连接 发送HTTP请求 服务器处理请求并返回HTTP报文 浏览器解析渲染页面 连接结束  HTTPS和HTTP的区别HTTP报文是包裹在TCP报文中发送的，服务器端收到TCP报文时会解包提取出HTTP报文。但是这个过程中存在一定的风险，HTTP报文是明文，如果中间被截取的话会存在一些信息泄露的风险。那">
 <meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200603_%E7%82%B9%E5%87%BBurl.jpg?raw=true">
 
 
@@ -526,7 +526,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-24 18:13:50" itemprop="dateModified" datetime="2020-08-24T18:13:50+08:00">2020-08-24</time>
+                <time title="修改时间：2020-09-01 22:04:02" itemprop="dateModified" datetime="2020-09-01T22:04:02+08:00">2020-09-01</time>
               
             
           </span>
@@ -559,7 +559,8 @@
       
 
       
-        <h2 id="点击url发生了什么"><a href="#点击url发生了什么" class="headerlink" title="点击url发生了什么"></a><strong>点击url发生了什么</strong></h2><p><img src="https://github.com/hac135/my_images/blob/master/20200603_%E7%82%B9%E5%87%BBurl.jpg?raw=true" alt=""></p>
+        <h2 id="OSI五层模型"><a href="#OSI五层模型" class="headerlink" title="OSI五层模型"></a>OSI五层模型</h2><p><strong>为什么要分层</strong></p>
+<h2 id="点击url发生了什么"><a href="#点击url发生了什么" class="headerlink" title="点击url发生了什么"></a><strong>点击url发生了什么</strong></h2><p><img src="https://github.com/hac135/my_images/blob/master/20200603_%E7%82%B9%E5%87%BBurl.jpg?raw=true" alt=""></p>
 <p>总体来说分为以下几个过程:</p>
 <ol>
 <li>DNS解析</li>
@@ -624,6 +625,9 @@
 <p>TIME_WAIT:  TIME_WAIT 是主动关闭链接时形成的，等待2MSL时间，约4分钟。主要是防止最后一个ACK丢失。 由于TIME_WAIT 的时间会非常长，因此server端应尽量减少主动关闭连接</p>
 <p>任何一方都可以在数据传送结束后发出连接释放的通知，待对方确认后进入半关闭状态。当另一方也没有数据再发送的时候，则发出连接释放通知，对方确认后就完全关闭了TCP连接。</p>
 <p>举个例子：A 和 B 打电话，通话即将结束后，A 说“我没啥要说的了”，B回答“我知道了”，但是 B 可能还会有要说的话，A 不能要求 B 跟着自己的节奏结束通话，于是 B 可能又巴拉巴拉说了一通，最后 B 说“我说完了”，A 回答“知道了”，这样通话才算结束。</p>
+<p><strong>TCP第四次挥手为什么要等待2MSL</strong></p>
+<p>1、为了保证客户端发送的最后一个ACK报文段能够到达服务器。因为这个ACK有可能丢失，从而导致处在LAST-ACK状态的服务器收不到对FIN-ACK的确认报文。服务器会超时重传这个FIN-ACK，接着客户端再重传一次确认，重新启动时间等待计时器。最后客户端和服务器都能正常的关闭。假设客户端不等待2MSL，而是在发送完ACK之后直接释放关闭，一但这个ACK丢失的话，服务器就无法正常的进入关闭连接状态。</p>
+<p>2、他还可以防止已失效的报文段。客户端在发送最后一个ACK之后，再经过经过2MSL，就可以使本链接持续时间内所产生的所有报文段都从网络中消失。从保证在关闭连接后不会有还在网络中滞留的报文段去骚扰服务器。</p>
 <h2 id="TCP和UDP协议的区别"><a href="#TCP和UDP协议的区别" class="headerlink" title="TCP和UDP协议的区别"></a>TCP和UDP协议的区别</h2><p><img src="https://github.com/hac135/my_images/blob/master/20200603_TCP&amp;UDP.jpg?raw=true" alt=""></p>
 <p>UDP 在传送数据之前<strong>不需要先建立连接</strong>，远地主机在收到 UDP 报文后，不<strong>需要给出任何确认</strong>。虽然 UDP <strong>不提供可靠交付</strong>，但在某些情况下 UDP 确是一种最有效的工作方式（一般用于即时通信），比如： QQ 语音、 QQ 视频 、直播等等</p>
 <p>TCP 提供面向连接的服务。在传送数据之前必须先建立连接，数据传送结束后要释放连接。 TCP 不提供广播或多播服务。由于 TCP 要提供可靠的，面向连接的传输服务（TCP的可靠体现在TCP在传递数据之前，会有三次握手来建立连接，而且在数据传递时，有确认、窗口、重传、拥塞控制机制，在数据传完后，还会断开连接用来节约系统资源），这一难以避免增加了许多开销，如确认，流量控制，计时器以及连接管理等。这不仅使协议数据单元的首部增大很多，还要占用许多处理机资源。TCP 一般用于文件传输、发送和接收邮件、远程登录等场景。</p>
@@ -1108,7 +1112,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">1.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">2.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字签名"><span class="nav-number">3.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">4.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">4.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">4.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">4.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DoS-DDoS-SYN泛洪攻击"><span class="nav-number">4.4.</span> <span class="nav-text">DoS, DDoS, SYN泛洪攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">5.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">6.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">6.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">7.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">7.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">7.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何保证有序"><span class="nav-number">7.0.3.</span> <span class="nav-text">如何保证有序</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">8.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">9.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">9.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-GET和POST有什么不同"><span class="nav-number">9.0.2.</span> <span class="nav-text">2.HTTP GET和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">9.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP状态码"><span class="nav-number">9.0.4.</span> <span class="nav-text">4.HTTP状态码</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#OSI五层模型"><span class="nav-number">1.</span> <span class="nav-text">OSI五层模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点击url发生了什么"><span class="nav-number">2.</span> <span class="nav-text">点击url发生了什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HTTPS和HTTP的区别"><span class="nav-number">3.</span> <span class="nav-text">HTTPS和HTTP的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数字签名"><span class="nav-number">4.</span> <span class="nav-text">数字签名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三次握手"><span class="nav-number">5.</span> <span class="nav-text">三次握手</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要三次握手"><span class="nav-number">5.1.</span> <span class="nav-text">为什么要三次握手</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#假如没有三次握手，可能会出现什么情况"><span class="nav-number">5.2.</span> <span class="nav-text">假如没有三次握手，可能会出现什么情况</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第2次握手传回了ACK，为什么还要传回SYN？"><span class="nav-number">5.3.</span> <span class="nav-text">第2次握手传回了ACK，为什么还要传回SYN？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DoS-DDoS-SYN泛洪攻击"><span class="nav-number">5.4.</span> <span class="nav-text">DoS, DDoS, SYN泛洪攻击</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四次挥手"><span class="nav-number">6.</span> <span class="nav-text">四次挥手</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TCP和UDP协议的区别"><span class="nav-number">7.</span> <span class="nav-text">TCP和UDP协议的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么说UDP是面向报文的，而TCP是面向字节流的？"><span class="nav-number">7.1.</span> <span class="nav-text">为什么说UDP是面向报文的，而TCP是面向字节流的？</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARQ协议"><span class="nav-number">8.</span> <span class="nav-text">ARQ协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#停止等待ARQ协议"><span class="nav-number">8.0.1.</span> <span class="nav-text">停止等待ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#连续ARQ协议"><span class="nav-number">8.0.2.</span> <span class="nav-text">连续ARQ协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#如何保证有序"><span class="nav-number">8.0.3.</span> <span class="nav-text">如何保证有序</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#拥塞控制"><span class="nav-number">9.</span> <span class="nav-text">拥塞控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">10.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-传输层协议有哪些，常见的应用层协议有哪些"><span class="nav-number">10.0.1.</span> <span class="nav-text">1.传输层协议有哪些，常见的应用层协议有哪些?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-HTTP-GET和POST有什么不同"><span class="nav-number">10.0.2.</span> <span class="nav-text">2.HTTP GET和POST有什么不同?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-什么是子网掩码？"><span class="nav-number">10.0.3.</span> <span class="nav-text">3.什么是子网掩码？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-HTTP状态码"><span class="nav-number">10.0.4.</span> <span class="nav-text">4.HTTP状态码</span></a></li></ol></li></div>
             
 
           </div>
