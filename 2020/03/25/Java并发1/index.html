@@ -175,20 +175,20 @@
 
 
 
-  <meta name="description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独立存在。 举个例子：">
+  <meta name="description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位（CPU四核八线程） 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java并发1">
 <meta property="og:url" content="http://yoursite.com/2020/03/25/Java并发1/index.html">
 <meta property="og:site_name" content="liuminggui&#39;s home">
-<meta property="og:description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独立存在。 举个例子：">
+<meta property="og:description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位（CPU四核八线程） 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95.png?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E7%BA%BF%E7%A8%8B%E6%B1%A0%E6%B5%81%E7%A8%8B.png?raw=true">
-<meta property="og:updated_time" content="2020-08-19T15:16:43.281Z">
+<meta property="og:updated_time" content="2020-09-11T09:54:54.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java并发1">
-<meta name="twitter:description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独立存在。 举个例子：">
+<meta name="twitter:description" content="说说并发与并行的区别? 并发： 同一时间段，多个任务都在执行 (单位时间内不一定同时执行)；  并行： 单位时间内，多个任务同时执行。   进程和线程的区别1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题 2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位（CPU四核八线程） 3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独">
 <meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200325_%E4%B8%8A%E4%B8%8B%E6%96%87%E5%88%87%E6%8D%A2.png?raw=true">
 
 
@@ -519,7 +519,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-08-19 23:16:43" itemprop="dateModified" datetime="2020-08-19T23:16:43+08:00">2020-08-19</time>
+                <time title="修改时间：2020-09-11 17:54:54" itemprop="dateModified" datetime="2020-09-11T17:54:54+08:00">2020-09-11</time>
               
             
           </span>
@@ -559,7 +559,7 @@
 </li>
 </ul>
 <h3 id="进程和线程的区别"><a href="#进程和线程的区别" class="headerlink" title="进程和线程的区别"></a>进程和线程的区别</h3><p>1.多进程之间不共享资源，多线程之间共享资源，那么就会存在资源竞争的问题</p>
-<p>2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位</p>
+<p>2.进程是操作系统资源分配的最小单位，线程是CPU调度的最小单位（CPU四核八线程）</p>
 <p>3.进程里面默认有一个主线程，进程里面可以有多个线程，线程必须依赖进行而存在，不能独立存在。</p>
 <p>举个例子：一个工厂相当于一个进程，一个工人相当于一个线程，一个工厂里面可以存在多个工人。</p>
 <h3 id="什么是上下文切换"><a href="#什么是上下文切换" class="headerlink" title="什么是上下文切换?"></a>什么是上下文切换?</h3><p>多线程编程中一般线程的个数都大于 CPU 核心的个数，而一个 CPU 核心在任意时刻只能被一个线程使用，为了让这些线程都能得到有效执行，CPU 采取的策略是为每个线程分配时间片并轮转的形式。当一个线程的时间片用完的时候就会重新处于就绪状态让给其他线程使用，这个过程就属于一次上下文切换。</p>
