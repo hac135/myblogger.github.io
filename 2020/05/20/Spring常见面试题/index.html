@@ -187,7 +187,8 @@
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200520_mvc%E7%AE%80%E5%8D%95.jpg?raw=true">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/mvc%E6%B5%81%E7%A8%8B.png?raw=true">
 <meta property="og:image" content="https://picb.zhimg.com/v2-abe8d96f198a33fcfd51bb2108b00004_r.jpg">
-<meta property="og:updated_time" content="2020-09-08T02:27:23.185Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/hac135/my_images/master/20210315_spring.springmvc.springboot.png">
+<meta property="og:updated_time" content="2021-03-15T07:29:11.180Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spring常见面试题">
 <meta name="twitter:description" content="RESTful API介绍REST,即 REpresentational State Transfer 的缩写。这个词组的翻译过来就是”表现层状态转化”。这样理解起来甚是晦涩，实际上 REST 的全称是 Resource Representational State Transfe ，直白地翻译过来就是 “资源”在网络传输中以某种“表现形式”进行“状态转移” 。  资源（Resource） ：我们">
@@ -521,7 +522,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-08 10:27:23" itemprop="dateModified" datetime="2020-09-08T10:27:23+08:00">2020-09-08</time>
+                <time title="修改时间：2021-03-15 15:29:11" itemprop="dateModified" datetime="2021-03-15T15:29:11+08:00">2021-03-15</time>
               
             
           </span>
@@ -748,7 +749,7 @@
 <p><img src="https://github.com/hac135/my_images/blob/master/mvc%E6%B5%81%E7%A8%8B.png?raw=true" alt=""></p>
 <p>具体步骤：</p>
 <p>第一步：发起请求到前端控制器(DispatcherServlet)</p>
-<p>第二步：前端控制器请求HandlerMapping查找 Handler （可以根据xml配置、注解进行查找）</p>
+<p>第二步：前端控制器请求HandlerMapping查找 Handler (就是Cotroller对象和请求方式组合的一个Object对象)（可以根据xml配置、注解进行查找）</p>
 <p>第三步：处理器映射器HandlerMapping向前端控制器返回Handler，HandlerMapping会把请求映射为HandlerExecutionChain对象（包含一个Handler处理器（页面控制器）对象，多个HandlerInterceptor拦截器对象），通过这种策略模式，很容易添加新的映射策略</p>
 <p>第四步：前端控制器调用处理器适配器去执行Handler</p>
 <p>第五步：处理器适配器HandlerAdapter将会根据适配的结果去执行Handler</p>
@@ -816,6 +817,23 @@
 <p>简单理解：复杂的接口，根据业务拆分成多个简单接口；（对于有些业务的拆分多看看适配器的应用）</p>
 <p>5.<strong>迪米特原则</strong>：最少知道原则，尽量降低类与类之间的耦合；</p>
 <p>6.<strong>开闭原则</strong>：用抽象构建架构，用实现扩展原则；（总纲）</p>
+<h4 id="6-Spring，SpringMVC，SprinBoot有什么区别？"><a href="#6-Spring，SpringMVC，SprinBoot有什么区别？" class="headerlink" title="6.Spring，SpringMVC，SprinBoot有什么区别？"></a>6.Spring，SpringMVC，SprinBoot有什么区别？</h4><ul>
+<li>Spring</li>
+</ul>
+<p>Spring是一个开源容器框架，可以接管web层，业务层，dao层，持久层的组件，并且可以配置各种bean,和维护bean与bean之间的关系。其核心就是控制反转(IOC),和面向切面(AOP),简单的说就是一个分层的轻量级开源框架。</p>
+<ul>
+<li>SpringMVC</li>
+</ul>
+<p>SpringMVC是基于Spring功能之上添加的<strong>Web框架</strong>，想用SpringMVC必须先依赖Spring。</p>
+<ul>
+<li>SpringBoot</li>
+</ul>
+<p>实现自动配置，去除大量xml配置文件。</p>
+<p>Maven快速整合第三方框架，如spring-boot-<strong>starter</strong>-web</p>
+<p>自带tomcat服务器</p>
+<p><strong>关系</strong></p>
+<p><img src="https://raw.githubusercontent.com/hac135/my_images/master/20210315_spring.springmvc.springboot.png" alt=""></p>
+<p><strong>Spring MVC和Spring Boot都属于Spring，Spring MVC 是基于Spring的一个 MVC 框架，而Spring Boot 是基于Spring的一套快速开发整合包</strong></p>
 
       
     </div>
@@ -1067,7 +1085,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post的区别"><span class="nav-number">2.1.</span> <span class="nav-text">get和post的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring中的单例bean的线程安全问题了解吗？"><span class="nav-number">3.2.</span> <span class="nav-text">spring中的单例bean的线程安全问题了解吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean和-Component的区别是什么？"><span class="nav-number">3.3.</span> <span class="nav-text">@Bean和@Component的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring中的Bean生命周期"><span class="nav-number">3.4.</span> <span class="nav-text">Spring中的Bean生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式（IOC容器创建对象的方式，底层都是通过反射）："><span class="nav-number">3.5.</span> <span class="nav-text">Spirng依赖注入的两种注入方式（IOC容器创建对象的方式，底层都是通过反射）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.6.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.6.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.6.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态代理"><span class="nav-number">4.1.</span> <span class="nav-text">动态代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态代理（看廖雪峰比较容易理解）"><span class="nav-number">4.2.</span> <span class="nav-text">静态代理（看廖雪峰比较容易理解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK和CGLIB动态"><span class="nav-number">4.3.</span> <span class="nav-text">JDK和CGLIB动态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring设计模式"><span class="nav-number">6.</span> <span class="nav-text">Spring设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">7.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring-框架中用到了哪些设计模式？"><span class="nav-number">7.1.</span> <span class="nav-text">1.Spring 框架中用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-介绍一下单例模式，都怎么实现"><span class="nav-number">7.2.</span> <span class="nav-text">2.介绍一下单例模式，都怎么实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-工厂模式都有哪几种？怎么实现？"><span class="nav-number">7.3.</span> <span class="nav-text">3.工厂模式都有哪几种？怎么实现？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-spring如何解决循环依赖"><span class="nav-number">7.4.</span> <span class="nav-text">4.spring如何解决循环依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-设计模式六大原则"><span class="nav-number">7.5.</span> <span class="nav-text">5.设计模式六大原则</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#RESTful-API介绍"><span class="nav-number">1.</span> <span class="nav-text">RESTful API介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#REST-接口规范"><span class="nav-number">2.</span> <span class="nav-text">REST 接口规范</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#get和post的区别"><span class="nav-number">2.1.</span> <span class="nav-text">get和post的区别</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下IOC"><span class="nav-number">3.</span> <span class="nav-text">介绍一下IOC</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean的作用域"><span class="nav-number">3.1.</span> <span class="nav-text">Bean的作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#spring中的单例bean的线程安全问题了解吗？"><span class="nav-number">3.2.</span> <span class="nav-text">spring中的单例bean的线程安全问题了解吗？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Bean和-Component的区别是什么？"><span class="nav-number">3.3.</span> <span class="nav-text">@Bean和@Component的区别是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spring中的Bean生命周期"><span class="nav-number">3.4.</span> <span class="nav-text">Spring中的Bean生命周期</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Spirng依赖注入的两种注入方式（IOC容器创建对象的方式，底层都是通过反射）："><span class="nav-number">3.5.</span> <span class="nav-text">Spirng依赖注入的两种注入方式（IOC容器创建对象的方式，底层都是通过反射）：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用注解"><span class="nav-number">3.6.</span> <span class="nav-text">常用注解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#用于创建对象的"><span class="nav-number">3.6.1.</span> <span class="nav-text">用于创建对象的</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#用于注入数据的"><span class="nav-number">3.6.2.</span> <span class="nav-text">用于注入数据的</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AOP"><span class="nav-number">4.</span> <span class="nav-text">AOP</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#动态代理"><span class="nav-number">4.1.</span> <span class="nav-text">动态代理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#静态代理（看廖雪峰比较容易理解）"><span class="nav-number">4.2.</span> <span class="nav-text">静态代理（看廖雪峰比较容易理解）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK和CGLIB动态"><span class="nav-number">4.3.</span> <span class="nav-text">JDK和CGLIB动态</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#介绍一下MVC及其优缺点"><span class="nav-number">5.</span> <span class="nav-text">介绍一下MVC及其优缺点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spring设计模式"><span class="nav-number">6.</span> <span class="nav-text">Spring设计模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">7.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-Spring-框架中用到了哪些设计模式？"><span class="nav-number">7.1.</span> <span class="nav-text">1.Spring 框架中用到了哪些设计模式？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-介绍一下单例模式，都怎么实现"><span class="nav-number">7.2.</span> <span class="nav-text">2.介绍一下单例模式，都怎么实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-工厂模式都有哪几种？怎么实现？"><span class="nav-number">7.3.</span> <span class="nav-text">3.工厂模式都有哪几种？怎么实现？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-spring如何解决循环依赖"><span class="nav-number">7.4.</span> <span class="nav-text">4.spring如何解决循环依赖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-设计模式六大原则"><span class="nav-number">7.5.</span> <span class="nav-text">5.设计模式六大原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-Spring，SpringMVC，SprinBoot有什么区别？"><span class="nav-number">7.6.</span> <span class="nav-text">6.Spring，SpringMVC，SprinBoot有什么区别？</span></a></li></ol></li></ol></div>
             
 
           </div>
