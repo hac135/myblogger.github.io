@@ -183,7 +183,7 @@
 <meta property="og:description" content="死锁1.产生死锁的四个必要条件 互斥条件：进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。 请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。 不可抢占：进程已获得的资源在未使用完之前，不能被抢占，只能在使用完时由自己释放。 循环等待：循环等待环形链。  2.预防(避免)死锁我上面说了产生死锁的四个必要条件，为了避免死锁，我们只要破坏产生死锁的四个条件中">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200730_%E5%86%85%E6%A0%B8.png?raw=true">
-<meta property="og:updated_time" content="2020-09-14T09:50:12.295Z">
+<meta property="og:updated_time" content="2021-03-21T01:51:10.304Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统">
 <meta name="twitter:description" content="死锁1.产生死锁的四个必要条件 互斥条件：进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。 请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。 不可抢占：进程已获得的资源在未使用完之前，不能被抢占，只能在使用完时由自己释放。 循环等待：循环等待环形链。  2.预防(避免)死锁我上面说了产生死锁的四个必要条件，为了避免死锁，我们只要破坏产生死锁的四个条件中">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2020-09-14 17:50:12" itemprop="dateModified" datetime="2020-09-14T17:50:12+08:00">2020-09-14</time>
+                <time title="修改时间：2021-03-21 09:51:10" itemprop="dateModified" datetime="2021-03-21T09:51:10+08:00">2021-03-21</time>
               
             
           </span>
@@ -680,6 +680,41 @@
 <li>优先级调度：为每个进程分配优先级。相同优先级先来先服务。</li>
 <li>多级反馈队列调度算法：公认的一种较好的进程调度算法，既照顾高优先级队列，也照顾短作业。</li>
 </ul>
+<h3 id="常用的Linux命令"><a href="#常用的Linux命令" class="headerlink" title="常用的Linux命令"></a>常用的Linux命令</h3><p><strong>top  显示当前系统中耗费资源最多的进程</strong></p>
+<p>kill   杀死一个进程  kill -9 强制杀死</p>
+<p><strong>ps   该命令用于将某个时间点的进程运行情况选取下来并输出，process之意，它的常用参数如下</strong></p>
+<p>chmod 修改目录或文件的权限</p>
+<p>chown  修改文件的所属用户和组</p>
+<p><strong>grep  根据文件的内容查找  比如在日志文件中查找某个ip地址</strong></p>
+<p><strong>find  根据文件内容查找  比如查找.txt结尾的文件</strong></p>
+<p><strong>locate  让使用者可以很快速的搜寻某个路径, 如locate /etc/sh 搜索etc目录下所有以sh开头的文件</strong> </p>
+<p>wc        统计文本中行数、字数、字符数</p>
+<p>touch  创建文件</p>
+<p>df -h  显示已经挂载的分区列表</p>
+<p>du  一般用于统计文件和目录所占用的空间大小</p>
+<p>ifconfig  查看ip,网卡等信息</p>
+<p><strong>Linux 常见目录</strong></p>
+<p>/ 根目录</p>
+<p>/bin 命令保存目录（普通用户就可以读取的命令）</p>
+<p>/boot 启动目录，启动相关文件</p>
+<p>/dev 设备文件保存目录</p>
+<p><strong>/etc 配置文件保存目录</strong></p>
+<p>/home 普通用户的家目录</p>
+<p>/lib 系统库保存目录</p>
+<p>/mnt 系统挂载目录</p>
+<p>/media 挂载目录</p>
+<p>/root 超级用户的家目录</p>
+<p>/tmp 临时目录</p>
+<p>/sbin 命令保存目录（超级用户才能使用的目录）</p>
+<p>/proc 直接写入内存的</p>
+<p>/sys 将内核的一些信息映射，可供应用程序所用</p>
+<p>/usr 系统软件资源目录</p>
+<p>/usr/bin/ 系统命令（普通用户）</p>
+<p>/usr/sbin/ 系统命令（超级用户）</p>
+<p>/var 系统相关文档内容</p>
+<p>/var/log/ 系统日志位置</p>
+<p>/var/spool/mail/ 系统默认邮箱位置</p>
+<p>/var/lib/ 默认安装的库文件目录</p>
 
       
     </div>
@@ -798,7 +833,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-count">45</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -931,7 +966,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">1.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-产生死锁的四个必要条件"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.产生死锁的四个必要条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-预防-避免-死锁"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.预防(避免)死锁</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#内存管理"><span class="nav-number">2.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存管理主要是做什么？"><span class="nav-number">2.0.1.</span> <span class="nav-text">内存管理主要是做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的几种内存管理机制"><span class="nav-number">2.0.2.</span> <span class="nav-text">常见的几种内存管理机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快表和多级页表"><span class="nav-number">2.0.3.</span> <span class="nav-text">快表和多级页表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页式管理和段式管理的共同点和区别"><span class="nav-number">2.0.4.</span> <span class="nav-text">页式管理和段式管理的共同点和区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟内存"><span class="nav-number">3.</span> <span class="nav-text">虚拟内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是虚拟内存？"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.什么是虚拟内存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-局部性原理"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.局部性原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-虚拟存储器"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.虚拟存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-页面置换算法"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.页面置换算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">4.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-用户态和内核态的区别"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.用户态和内核态的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内核"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-进程间的通信方式"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.进程间的通信方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-线程间的同步方式"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.线程间的同步方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-进程的调度算法"><span class="nav-number">4.0.5.</span> <span class="nav-text">5.进程的调度算法</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#死锁"><span class="nav-number">1.</span> <span class="nav-text">死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-产生死锁的四个必要条件"><span class="nav-number">1.0.1.</span> <span class="nav-text">1.产生死锁的四个必要条件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-预防-避免-死锁"><span class="nav-number">1.0.2.</span> <span class="nav-text">2.预防(避免)死锁</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#内存管理"><span class="nav-number">2.</span> <span class="nav-text">内存管理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#内存管理主要是做什么？"><span class="nav-number">2.0.1.</span> <span class="nav-text">内存管理主要是做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的几种内存管理机制"><span class="nav-number">2.0.2.</span> <span class="nav-text">常见的几种内存管理机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#快表和多级页表"><span class="nav-number">2.0.3.</span> <span class="nav-text">快表和多级页表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页式管理和段式管理的共同点和区别"><span class="nav-number">2.0.4.</span> <span class="nav-text">页式管理和段式管理的共同点和区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟内存"><span class="nav-number">3.</span> <span class="nav-text">虚拟内存</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-什么是虚拟内存？"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.什么是虚拟内存？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-局部性原理"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.局部性原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-虚拟存储器"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.虚拟存储器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-页面置换算法"><span class="nav-number">3.0.4.</span> <span class="nav-text">4.页面置换算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见面试题"><span class="nav-number">4.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-用户态和内核态的区别"><span class="nav-number">4.0.1.</span> <span class="nav-text">1.用户态和内核态的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内核"><span class="nav-number">4.0.2.</span> <span class="nav-text">2.内核</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-进程间的通信方式"><span class="nav-number">4.0.3.</span> <span class="nav-text">3.进程间的通信方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-线程间的同步方式"><span class="nav-number">4.0.4.</span> <span class="nav-text">4.线程间的同步方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-进程的调度算法"><span class="nav-number">4.0.5.</span> <span class="nav-text">5.进程的调度算法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用的Linux命令"><span class="nav-number">4.1.</span> <span class="nav-text">常用的Linux命令</span></a></li></div>
             
 
           </div>
