@@ -183,7 +183,7 @@
 <meta property="og:description" content="死锁1.产生死锁的四个必要条件 互斥条件：进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。 请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。 不可抢占：进程已获得的资源在未使用完之前，不能被抢占，只能在使用完时由自己释放。 循环等待：循环等待环形链。  2.预防(避免)死锁我上面说了产生死锁的四个必要条件，为了避免死锁，我们只要破坏产生死锁的四个条件中">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200730_%E5%86%85%E6%A0%B8.png?raw=true">
-<meta property="og:updated_time" content="2021-03-21T01:51:10.304Z">
+<meta property="og:updated_time" content="2021-03-22T07:34:22.113Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="操作系统">
 <meta name="twitter:description" content="死锁1.产生死锁的四个必要条件 互斥条件：进程要求对所分配的资源进行排它性控制，即在一段时间内某资源仅为一进程所占用。 请求和保持条件：当进程因请求资源而阻塞时，对已获得的资源保持不放。 不可抢占：进程已获得的资源在未使用完之前，不能被抢占，只能在使用完时由自己释放。 循环等待：循环等待环形链。  2.预防(避免)死锁我上面说了产生死锁的四个必要条件，为了避免死锁，我们只要破坏产生死锁的四个条件中">
@@ -517,7 +517,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2021-03-21 09:51:10" itemprop="dateModified" datetime="2021-03-21T09:51:10+08:00">2021-03-21</time>
+                <time title="修改时间：2021-03-22 15:34:22" itemprop="dateModified" datetime="2021-03-22T15:34:22+08:00">2021-03-22</time>
               
             
           </span>
@@ -578,7 +578,7 @@
 <li>解决虚拟地址空间大，页表也会很大的问题。——–多级页表</li>
 </ol>
 <p><strong>快表</strong></p>
-<p>为了解决虚拟地址到物理地址的转换速度，操作系统在 <strong>页表方案</strong> 基础之上引入了 <strong>快表</strong> 来加速虚拟地址到物理地址的转换。我们可以把块表理解为一种特殊的高速缓冲存储器（Cache），其中的内容是页表的一部分或者全部内容。作为页表的 Cache，它的作用与页表相似，但是提高了访问速率。由于采用页表做地址转换，读写内存数据时 CPU 要访问两次主存。<strong>有了快表</strong>，<strong>有时只要访问一次高速缓冲存储器，一次主存</strong>，这样可加速查找并提高指令执行速度。</p>
+<p>为了解决虚拟地址到物理地址的转换速度，操作系统在 <strong>页表方案</strong> 基础之上引入了 <strong>快表</strong>（存放在单独的寄存器中） 来加速虚拟地址到物理地址的转换。我们可以把块表理解为一种特殊的高速缓冲存储器（Cache），其中的内容是页表的一部分或者全部内容。作为页表的 Cache，它的作用与页表相似，但是提高了访问速率。由于采用页表做地址转换，读写内存数据时 CPU 要访问两次主存。<strong>有了快表</strong>，<strong>有时只要访问一次高速缓冲存储器，一次主存</strong>，这样可加速查找并提高指令执行速度。</p>
 <p>使用快表之后的地址转换流程是这样的：</p>
 <ol>
 <li>根据虚拟地址中的页号查快表；</li>
