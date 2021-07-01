@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+<html class="theme-next pisces use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+<style>
+    .pace .pace-progress {
+        background: #999999; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+  <script>
+  (function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/0f81ff2f.js","daovoice")
+  daovoice('init', {
+      app_id: "68e741bb"
+    });
+  daovoice('update');
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.5.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.5.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.5.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.5.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '6.5.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    fastclick: false,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="实例域private修饰和public public : 允许程序中的任何方法对其进行修改和读取 private: 只有该类自身的方法能够访问这些实例域 私有方法：除了类自身方法，还可以通过反射访问。反射访问私有方法 static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。 12345public class Math&amp;#123;public static final doubl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java核心技术卷一总结">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/Java核心技术卷一总结/index.html">
+<meta property="og:site_name" content="liuminggui&#39;s home">
+<meta property="og:description" content="实例域private修饰和public public : 允许程序中的任何方法对其进行修改和读取 private: 只有该类自身的方法能够访问这些实例域 私有方法：除了类自身方法，还可以通过反射访问。反射访问私有方法 static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。 12345public class Math&amp;#123;public static final doubl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200611.jpg?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/20200330_javabase.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/BIO.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/%E7%BA%BF%E7%A8%8B%E6%B1%A0BIO.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/selector.png?raw=true">
+<meta property="og:image" content="https://github.com/hac135/my_images/blob/master/buffer.png?raw=true">
+<meta property="og:updated_time" content="2020-09-14T14:25:18.153Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java核心技术卷一总结">
+<meta name="twitter:description" content="实例域private修饰和public public : 允许程序中的任何方法对其进行修改和读取 private: 只有该类自身的方法能够访问这些实例域 私有方法：除了类自身方法，还可以通过反射访问。反射访问私有方法 static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。 12345public class Math&amp;#123;public static final doubl">
+<meta name="twitter:image" content="https://github.com/hac135/my_images/blob/master/20200611.jpg?raw=true">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/06/13/Java核心技术卷一总结/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java核心技术卷一总结 | liuminggui's home</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+
+
+  </head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+<link rel="stylesheet" href="/dist/APlayer.min.css">
+<div id="aplayer"></div>
+
+<script type="text/javascript" src="/dist/APlayer.min.js"></script>
+<script type="text/javascript" src="/dist/music.js"></script>
+
+  
+  
+    
+  
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">liuminggui's home</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-photos">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/photos" rel="section"><i class="menu-item-icon fa fa-fw fa-image"></i> <br>相册</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/13/Java核心技术卷一总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="liuminggui">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/mycat.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="liuminggui's home">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java核心技术卷一总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-06-13 16:03:24" itemprop="dateCreated datePublished" datetime="2020-06-13T16:03:24+08:00">2020-06-13</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-09-14 22:25:18" itemprop="dateModified" datetime="2020-09-14T22:25:18+08:00">2020-09-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><strong>实例域private修饰和public</strong></p>
+<p>public : 允许程序中的<strong>任何方法</strong>对其进行修改和读取</p>
+<p>private: 只有该<strong>类自身的方法</strong>能够访问这些实例域</p>
+<p>私有方法：除了类自身方法，还可以通过反射访问。<a href="https://jingyan.baidu.com/article/ca00d56c279babe99eebcf18.html" target="_blank" rel="noopener">反射访问私有方法</a></p>
+<p>static修饰实例域：这个类的实例共享这个实例域，它属于类，不属于对象。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Math</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.1415926</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//程序可以使用Math.PI获得这个常量，如果忽略static，PI就变成了Math类的一个实例域。需要通过Math类的对象访问PI，而且每一个Math对象都有它自己的一份PI拷贝</span></span><br></pre></td></tr></table></figure>
+<p>static修饰方法：不能访问非静态域，只可以访问静态域。不带隐式参数this</p>
+<p>static修饰类：静态内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//静态内部类实现单例模式</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Singleton</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">   <span class="comment">// 声明为 private 避免调用默认构造方法创建对象</span></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">Singleton</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">   <span class="comment">// 声明为 private 表明静态内部该类只能在该 Singleton 类中被访问</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonHolder</span> </span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Singleton INSTANCE = <span class="keyword">new</span> Singleton();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Singleton <span class="title">getUniqueInstance</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> SingletonHolder.INSTANCE;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*当 Singleton 类加载时，静态内部类 SingletonHolder 没有被加载进内存。</span></span><br><span class="line"><span class="comment">只有当调用 getUniqueInstance()方法从而触发 SingletonHolder.INSTANCE 时 SingletonHolder 才会被加载，</span></span><br><span class="line"><span class="comment">此时初始化 INSTANCE 实例，并且 JVM 能确保 INSTANCE 只被实例化一次。*/</span></span><br></pre></td></tr></table></figure>
+<p><strong>构造器</strong></p>
+<p>构造器总是伴随着<strong>new</strong>操作符的执行被调用</p>
+<p>java方法总是<strong>按值传递</strong>，也就是说，方法得到的是所有参数值的一份拷贝。</p>
+<p>所以：</p>
+<p>1.一个方法不能修改一个基本数据类型的参数</p>
+<p>2.一个方法可以改变一个对象参数的状态（改变的是对象的拷贝（引用的拷贝）的状态，两个引用执行一个对象）</p>
+<p>3.一个方法不能让对象参数引用一个新的对象（如不能交换两个存储在a和b对象的引用，因为交换的是这两个的拷贝）</p>
+<p>​      </p>
+<p><strong>动态绑定</strong></p>
+<p>当程序运行，并且采用动态绑定调用方法时，虚拟机一定调用与x所引用对象的实际类型最适合的那个类的方法。</p>
+<p>编译器在每次调用方法时都要进行搜索，时间开销相当大。因此虚拟机会预先为每个类创建一个方发表（method table），其中列出了所有方法的签名和实际调用的方法。  </p>
+<p>Java用于控制可见性的4个访问修饰符：</p>
+<p>1）仅对本类可见—-private</p>
+<p>2）对所有类可见—-public</p>
+<p>3）对本包和所有子类可见—-protected</p>
+<p>4）对本包可见—-默认，不需要修饰符</p>
+<p>Object：所有类的父类</p>
+<p>在Java中，只有基本类型不是对象，所有的数组类型，和其它的都继承自Object类</p>
+<h3 id="反射"><a href="#反射" class="headerlink" title="反射"></a><strong>反射</strong></h3><p><strong>Class类</strong>: Java运行时系统始终为所有的对象维护一个被称为运行时的类型标识，这个信息跟踪着每个对象所属的类。一个类中这些成员，成员方法、构造方法、在加入类中都有<strong>一个类</strong>来描述。</p>
+<p>熟悉一下加载的时候：Class对象的由来是将class文件读入内存，并为之创建一个Class对象。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200611.jpg?raw=true" alt=""></p>
+<p>Java虚拟机为每个类型管理一个Class对象，<strong>获取Class类对象的三种方法</strong></p>
+<p>1）</p>
+<p>Empolyee e;</p>
+<p>Class c1 = e.getClass();</p>
+<p>2）</p>
+<p>Class c1 = Class.forName(“java.util.Random”);</p>
+<p>3）</p>
+<p>Class c1 = Random.class;</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Random e = <span class="keyword">new</span> Random();</span><br><span class="line">Class c1 = e.getClass();</span><br><span class="line">Class c2 = Class.forName(<span class="string">"java.util.Random"</span>);</span><br><span class="line">Class c3 = Random.class;</span><br><span class="line">System.out.println(c1==c2);<span class="comment">//true </span></span><br><span class="line">System.out.println(c2==c3);<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><strong>LoadClass和forName的区别</strong></p>
+<p>class.forName()除了将类的.class文件加载到JVM中之外，还会对类进行解释，执行类中的static块。<br>而classLoader只干一件事情，就是将.class文件加载到JVM中，不会执行static中的内容,只有在newInstance才会去执行static块。</p>
+<p><strong>创建一个与e具有相同类类型的实例</strong></p>
+<p>1）调用c2.newInstance()方法</p>
+<p>此方法调用默认的构造器（无参构造器）初始化新创建的对象，如果这个类没有无参构造器，会抛异常。</p>
+<p>2）Constructor类中的newInstance方法可以向类的构造器提供参数。</p>
+<p>在java.lang.reflect包有三个类Field,Method和Constructor分别用于描述类的域，方法和构造器。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Employee e = <span class="keyword">new</span> Employee(<span class="string">"harry"</span>,<span class="number">21</span>,<span class="string">'M'</span>);</span><br><span class="line">Class c1 = e.getClass();</span><br><span class="line">Field f = c1.getDeclaredField(<span class="string">"name"</span>);<span class="comment">//获取feiled</span></span><br><span class="line">Object v = f.get(harry);<span class="comment">// the v: "harry"</span></span><br><span class="line"></span><br><span class="line">Method m = c1.getDeclaredMethod(<span class="string">"getName"</span>);<span class="comment">//获取方法</span></span><br><span class="line">String name = m.invoke(e);<span class="comment">//harry</span></span><br><span class="line"><span class="comment">//invoke方法，如果调用的是静态方法，第一个隐式参数可以被忽略，即可以将它设置为null</span></span><br><span class="line"><span class="comment">//如 m = Math.class.getMethod("sqrt", double.class);</span></span><br><span class="line"><span class="comment">//double y = m.invoke(null,x);</span></span><br></pre></td></tr></table></figure>
+<p><strong>接口</strong></p>
+<p>接口中的方法都自动的设置为public</p>
+<p>接口中不能包含实例域，却可以包含常量，接口中的域将自动设为public static final</p>
+<p><strong>clone</strong></p>
+<p>浅拷贝：没有克隆对象中引用的其它对象</p>
+<p>深拷贝：克隆对象中引用的其它对象</p>
+<p><strong>动态代理</strong></p>
+<p><a href="[http://liuminggui.top/2020/05/20/Spring%E5%B8%B8%E8%A7%81%E9%9D%A2%E8%AF%95%E9%A2%98/#AOP](http://liuminggui.top/2020/05/20/Spring常见面试题/#AOP">见Spring总结</a>)</p>
+<h3 id="常见面试题"><a href="#常见面试题" class="headerlink" title="常见面试题"></a>常见面试题</h3><h4 id="抽象类和接口的区别"><a href="#抽象类和接口的区别" class="headerlink" title="抽象类和接口的区别"></a>抽象类和接口的区别</h4><p> 接口和抽象类都是继承树的上层，他们的共同点如下：<br>1)    都是<strong>上层的抽象层</strong>。<br>2)    都<strong>不能被实例化</strong><br>3)    都能包含抽象的方法，这些抽象的方法用于描述类具备的功能，但是不比提供具体的实现。<br>他们的区别如下：<br>1)    在<strong>抽象类中可以写非抽象的方法</strong>，从而避免在子类中重复书写他们，这样可以提高代码的复用性，这是抽象类的优势；<strong>接口中只能有抽象的方法</strong>（default关键字修饰除外）。<br>2)    <strong>一个类只能继承一个直接父类</strong>，这个父类可以是具体的类也可是抽象类；但是<strong>一个类可以实现多个接口</strong>。</p>
+<p>ps:如果要继承多个类的多个方法，可以采用内部类。或直接就用接口。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> <span class="keyword">extends</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">InnerA</span> <span class="keyword">extends</span> <span class="title">C</span></span>&#123;</span><br><span class="line">    <span class="comment">//在这里扩充类C</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="JVM-JDK-和-JRE-最详细通俗的解答"><a href="#JVM-JDK-和-JRE-最详细通俗的解答" class="headerlink" title="JVM JDK 和 JRE 最详细通俗的解答"></a>JVM JDK 和 JRE 最详细通俗的解答</h4><ul>
+<li><h4 id="JVM"><a href="#JVM" class="headerlink" title="JVM"></a>JVM</h4></li>
+</ul>
+<p>Java 虚拟机（JVM）是运行 Java 字节码的虚拟机。JVM 有针对不同系统的特定实现（Windows，Linux，macOS），目的是使用相同的字节码，它们都会给出相同的结果。</p>
+<h4 id="什么是字节码-采用字节码的好处是什么"><a href="#什么是字节码-采用字节码的好处是什么" class="headerlink" title="什么是字节码?采用字节码的好处是什么?"></a><strong>什么是字节码?采用字节码的好处是什么?</strong></h4><p>在 Java 中，JVM 可以理解的代码就叫做<code>字节码</code>（即扩展名为 <code>.class</code> 的文件），它不面向任何特定的处理器，只面向虚拟机。Java 语言通过字节码的方式，在一定程度上解决了传统解释型语言执行效率低的问题，同时又保留了解释型语言可移植的特点。所以 Java 程序运行时比较高效，而且，由于字节码并不针对一种特定的机器，因此，Java 程序无须重新编译便可在多种不同操作系统的计算机上运行。</p>
+<p><strong>Java 程序从源代码到运行一般有下面 3 步：</strong></p>
+<p><img src="https://github.com/hac135/my_images/blob/master/20200330_javabase.png?raw=true" alt=""></p>
+<ul>
+<li><h4 id="JDK-和-JRE"><a href="#JDK-和-JRE" class="headerlink" title="JDK 和 JRE"></a>JDK 和 JRE</h4></li>
+</ul>
+<p>JDK 是 Java Development Kit，它是功能齐全的 Java SDK。它拥有 JRE 所拥有的一切，还有编译器（javac）和工具（如 javadoc 和 jdb）。它能够创建和编译程序。</p>
+<p>JRE 是 Java 运行时环境。它是运行已编译 Java 程序所需的所有内容的集合，包括 Java 虚拟机（JVM），Java 类库，java 命令和其他的一些基础构件。但是，它<strong>不能用于创建新程序</strong>。</p>
+<p>如果你只是为了<strong>运行一下 Java 程序</strong>的话，那么你只需要安装 JRE 就可以了。如果你需要进行一些 Java 编程方面的工作，那么你就需要安装 JDK 了。但是，这不是绝对的。有时，即使您不打算在计算机上进行任何 Java 开发，仍然需要安装 JDK。例如，如果要使用 JSP 部署 Web 应用程序，那么从技术上讲，您只是在应用程序服务器中运行 Java 程序。那你为什么需要 JDK 呢？因为应用程序服务器会将 JSP 转换为 Java servlet，并且需要使用 JDK 来编译 servlet。</p>
+<h4 id="Java-多态"><a href="#Java-多态" class="headerlink" title="Java 多态"></a>Java 多态</h4><p>用最简单的一句话就是：<strong>父类型的引用指向子类型的对象</strong>。用一句比较通俗的话：同一操作作用于不同的对象，可以产生不同的效果。这就是多态。</p>
+<p>多态是同一个行为具有多个不同表现形式或形态的能力。</p>
+<p><strong>多态的优点</strong></p>
+<ul>
+<li>消除类型之间的耦合关系</li>
+<li>可替换性</li>
+<li>可扩充性</li>
+<li>接口性</li>
+<li>灵活性</li>
+<li>简化性</li>
+</ul>
+<p><strong>多态存在的三个必要条件</strong></p>
+<ul>
+<li>继承</li>
+<li>子类对父类方法的重写</li>
+<li>父类引用指向子类对象</li>
+</ul>
+<h4 id="重载（Overload）和（Override）的区别"><a href="#重载（Overload）和（Override）的区别" class="headerlink" title="重载（Overload）和（Override）的区别"></a>重载（Overload）和（Override）的区别</h4><p>Overload: 同一个类或子类中，具有相同的方法名，但是方法的参数不同（类型，个数，顺序）。返回值可以相同也可以不同。</p>
+<p>Override: 子类重写父类的方法，方法名相同，参数相同，返回类型相同。具体实现不同。</p>
+<h4 id="请说明一下final-finally-finalize的区别。"><a href="#请说明一下final-finally-finalize的区别。" class="headerlink" title="请说明一下final, finally, finalize的区别。"></a>请说明一下final, finally, finalize的区别。</h4><p>final 用于声明属性，方法和类，分别表示属性不可变，方法不可重写，类不可继承。<br>finally是异常处理语句结构的一部分，表示总是执行。<br>finalize是Object类的一个方法，在垃圾收集器执行的时候会调用被回收对象的此方法，可以覆盖此方法提供垃圾收集时的其他资源回收，例如关闭文件等。</p>
+<h4 id="String为什么是不可变对象"><a href="#String为什么是不可变对象" class="headerlink" title="String为什么是不可变对象"></a>String为什么是不可变对象</h4><p>String底层实现是final修饰的char数组，不可变。同时String类也被final修饰，不可被继承。</p>
+<p>StringBuilder 底层是一个可变的char数组。初始长度为16，存在扩容。</p>
+<p>StringBuffer 同StringBuilder，经过Synchronized修饰</p>
+<h4 id="Default关键字"><a href="#Default关键字" class="headerlink" title="Default关键字"></a><strong>Default关键字</strong></h4><p>1.在switch语句的时候使用default</p>
+<p>2.在定义接口的时候使用default来修饰具体的方法</p>
+<h4 id="Java八种基本数据类型，各占多少字节"><a href="#Java八种基本数据类型，各占多少字节" class="headerlink" title="Java八种基本数据类型，各占多少字节"></a>Java八种基本数据类型，各占多少字节</h4><p>byte 1字节;short 2字节；int 4字节；long 8字节；char 2字节，可以存储一个汉字。float 4字节；double 8字节；boolean false/true(理论上占用1bit,1/8字节，bai实际处理按1byte处理)</p>
+<h4 id="基本类型和引用类型的区别"><a href="#基本类型和引用类型的区别" class="headerlink" title="基本类型和引用类型的区别"></a>基本类型和引用类型的区别</h4><p><strong>基本数据类型在被创建时，在栈上给其划分一块内存，将数值直接存储在栈上。</strong></p>
+<p><strong>引用数据类型在被创建时，首先要在栈上给其引用（句柄）分配一块内存，而对象的具体信息都存储在堆内存上，然后由栈上面的引用指向堆中对象的地址。</strong></p>
+<h4 id="int和Integer装箱和拆箱"><a href="#int和Integer装箱和拆箱" class="headerlink" title="int和Integer装箱和拆箱"></a>int和Integer装箱和拆箱</h4><p>装箱时调用valueOf方法将原始类型值转换成对象</p>
+<p>拆箱时调用intValue()方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"> Integer a=<span class="number">300</span>;</span><br><span class="line"> <span class="keyword">int</span> b=<span class="number">300</span>;</span><br><span class="line"> System.out.println(a==b);<span class="comment">//true,自动装，拆箱</span></span><br><span class="line"></span><br><span class="line"> Integer a=<span class="number">300</span>;</span><br><span class="line"> Integer b=<span class="number">300</span>;</span><br><span class="line"> Integer c=<span class="number">100</span>;</span><br><span class="line"> Integer d=<span class="number">100</span>;</span><br><span class="line"> System.out.println(a==b);<span class="comment">//false,比较的是引用</span></span><br><span class="line"> System.out.println(c==d);<span class="comment">//true,-128和127之间,有一个cache整型数组，用来放在缓存中。</span></span><br><span class="line"><span class="comment">//这样也就是说任意一个相同数值的Integer的数，如果在-128和127之间，那么它们之间的内存地址是相同的</span></span><br></pre></td></tr></table></figure>
+<h4 id="序列化的优缺点（implements-Serializbale）"><a href="#序列化的优缺点（implements-Serializbale）" class="headerlink" title="序列化的优缺点（implements Serializbale）"></a>序列化的优缺点（implements Serializbale）</h4><p>序列化机制允许将实现序列化的<strong>Java对象</strong>转换成<strong>字节序列</strong>，这些字节序列可以保存在磁盘上，或通过网络传输，以备以后重新恢复成原来的对象。序列化机制使得对象可以脱离程序的运行而独立存在。</p>
+<p>缺点：</p>
+<p>1.Java序列化技术是Java语言内部的私有协议，其他语言无法进行反序列化。</p>
+<p>2.序列化的性能较低(耗时)</p>
+<p>3.码流太大（耗空间）</p>
+<h4 id="Integer和int的初始化值"><a href="#Integer和int的初始化值" class="headerlink" title="Integer和int的初始化值"></a>Integer和int的初始化值</h4><p>引用类型的初始化值为null</p>
+<p>int类型的为0</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Lee2</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span>  Integer age1;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> age2;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">        System.out.println(age1);<span class="comment">//null</span></span><br><span class="line">        System.out.println(age2);<span class="comment">//0</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Collections-sort和Arrays-sort排序原理"><a href="#Collections-sort和Arrays-sort排序原理" class="headerlink" title="Collections.sort和Arrays.sort排序原理"></a>Collections.sort和Arrays.sort排序原理</h4><p>Collections.sort方法底层就是调用的Arrays.sort方法，而Arrays.sort使用了三种排序方法，插入排序，快速排序和优化的归并排序。</p>
+<p>快速排序主要是对那些<strong>基本类型数据</strong>（int,short,long等）排序， 而归并排序用于对<strong>Object类型</strong>进行排序。</p>
+<p> 总结：<br>  首先先判断需要排序的数据量是否大于60。<br>  小于60：使用插入排序，插入排序是稳定的<br>  大于60的数据量会根据数据类型选择排序方式：<br>     基本类型：使用快速排序。因为基本类型。1、2都是指向同一个常量池不需要考虑稳定性。<br>     Object类型：使用归并排序。因为归并排序具有稳定性。<br>  注意：不管是快速排序还是归并排序。在二分的时候小于60的数据量依旧会使用插入排序</p>
+<h4 id="Java创建对象的几种方式"><a href="#Java创建对象的几种方式" class="headerlink" title="Java创建对象的几种方式"></a>Java创建对象的几种方式</h4><ol>
+<li>new关键字</li>
+<li>反射，newInstance</li>
+<li>clone()方法</li>
+<li>反序列化</li>
+</ol>
+<h4 id="常见的编译时异常和运行时异常"><a href="#常见的编译时异常和运行时异常" class="headerlink" title="常见的编译时异常和运行时异常"></a>常见的编译时异常和运行时异常</h4><ul>
+<li>运行时异常<ol>
+<li>NullPointerException</li>
+<li>StringIndexOutOfBoundsException    String a = “abc”   System.out.println(a.substring(1)); //正常，显示“bc”     System.out.println(a.substring(4)); //错误，java.lang.StringIndexOutOfBoundsException: String index out of range: -1 因为一共只有3个字母。）</li>
+<li>ArithmeticException ：当出现异常的运算条件时，抛出此异常。如除0异常</li>
+<li>ArrayIndexOutOfBoundsException  int[] nums = new int[3]; System.out.println(nums[4]);</li>
+</ol>
+</li>
+<li>编译时异常<ol>
+<li>ClassNotFoundException ：找不到具有指定名称的类的定义。</li>
+<li>FileNotFoundException ：当试图打开指定路径名表示的文件失败时，抛出此异常。</li>
+<li>SQLException  比如SQL语句写错，访问的表不存在，连接数据库失败等等</li>
+</ol>
+</li>
+</ul>
+<h4 id="java-JDBC编程流程步骤"><a href="#java-JDBC编程流程步骤" class="headerlink" title="java JDBC编程流程步骤"></a>java JDBC编程流程步骤</h4><p>第1步：注冊驱动 (仅仅做一次)</p>
+<p><code>Class.forName(“com.mysql.jdbc.Driver”);</code></p>
+<p>第2步：建立连接(Connection)</p>
+<p><code>Connection conn =DriverManager.getConnection(url, user, password);</code></p>
+<p>第3步：创建运行SQL的语句(Statement)</p>
+<p><code>Statement st = connection.createStatement();</code></p>
+<p>Statement接口类还派生出两个接口类PreparedStatement和CallableStatement。PreparedStatement能够对SQL语句进行预编译，这样防止了  SQL注入，提高了安全性。<code>PreparedStatement ps=connection.prepareStatement( &quot;update user set id=? where username=?”)</code></p>
+<p>第4步：运行语句</p>
+<p><code>ResultSet rs =st.executeQuery(sql);</code></p>
+<p>第5步：处理运行结果(ResultSet)</p>
+<p><code>while(rs.next()){System.out.println(rs.getString(&quot;name&quot;))}</code></p>
+<p>第6步：释放资源</p>
+<p>rs.close(); conn.close()</p>
+<h4 id="Java-关于强引用，软引用，弱引用的区别与用法"><a href="#Java-关于强引用，软引用，弱引用的区别与用法" class="headerlink" title="Java 关于强引用，软引用，弱引用的区别与用法"></a>Java 关于强引用，软引用，弱引用的区别与用法</h4><ul>
+<li><p><strong>强引用</strong>  </p>
+<p><strong>我们使用的大部分引用实际上都是强引用，这是使用最普遍的引用</strong>。如果一个对象具有强引用，那就类似于必不可少的生活用品，垃圾回收器绝不会回收它。<strong>当内存空间不足，Java虚拟机宁愿抛出OutOfMemoryError错误，使程序异常终止，也不会靠随意回收具有强引用的对象来解决内存不足问题</strong>。</p>
+</li>
+<li><p><strong>软引用</strong></p>
+<p><strong>如果内存空间足够，垃圾回收器就不会回收它，如果内存空间不足了，就会回收这些对象的内存。</strong></p>
+<p>应用：<strong>浏览器的后退按钮</strong></p>
+<blockquote>
+<p>（1）如果一个网页在浏览结束时就进行内容的回收，则按后退查看前面浏览过的页面时，需要重新构建</p>
+<p>（2）如果将浏览过的网页存储到内存中会造成内存的大量浪费，甚至会造成内存溢出</p>
+<p>这时候就可以使用软引用</p>
+</blockquote>
+</li>
+<li><p><strong>弱引用</strong></p>
+<p><strong>弱引用与软引用的区别在于：只具有弱引用的对象拥有更短暂的生命周期。在垃圾回收器线程扫描它 所管辖的内存区域的过程中，一旦发现了只具有弱引用的对象，不管当前内存空间足够与否，都会回收它的内存</strong></p>
+</li>
+</ul>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>泛型本质是参数化类型，解决不确定对象具体类型的问题。</p>
+<p>泛型的好处：① 类型安全，不存在 ClassCastException。② 提升可读性，编码阶段就显式知道泛型集合、泛型方法等处理的数据类型。</p>
+<p>泛型用于<strong>编译阶段</strong>，编译后的字节码文件不包含泛型类型信息，因为虚拟机没有泛型类型对象，所有对象都属于普通类。例如定义 <code>List&lt;Object&gt;</code> 或 <code>List&lt;String&gt;</code>，在编译后都会变成 <code>List</code> 。</p>
+<h4 id="IO流"><a href="#IO流" class="headerlink" title="IO流"></a>IO流</h4><p>Java 中的 BIO、NIO和 AIO 理解为是 Java 语言对操作系统的各种 IO 模型的封装。程序员在使用这些 API 的时候，不需要关心操作系统层面的知识，也不需要根据不同操作系统编写不同的代码。只需要使用Java的API就可以了。</p>
+<p><strong>同步与异步</strong></p>
+<ul>
+<li><strong>同步：</strong> 同步就是发起一个调用后，被调用者未处理完请求之前，调用不返回。</li>
+<li><strong>异步：</strong> 异步就是发起一个调用后，立刻得到被调用者的回应表示已接收到请求，但是被调用者并没有返回结果，此时我们可以处理其他的请求，被调用者通常依靠<strong>事件，回调等机制</strong>来通知调用者其返回结果。</li>
+</ul>
+<p>同步和异步的区别最大在于异步的话调用者不需要等待处理结果，被调用者会通过回调等机制来通知调用者其返回结果。</p>
+<p><strong>阻塞和非阻塞</strong></p>
+<ul>
+<li><strong>阻塞：</strong> 阻塞就是发起一个请求，调用者一直等待请求结果返回，也就是当前线程会被挂起，无法从事其他任务，只有当条件就绪才能继续。</li>
+<li><strong>非阻塞：</strong> 非阻塞就是发起一个请求，调用者不用一直等着结果返回，可以先去干其他事情。</li>
+</ul>
+<p><strong>那么同步阻塞、同步非阻塞和异步非阻塞又代表什么意思呢？</strong></p>
+<p>举个生活中简单的例子，你妈妈让你烧水，小时候你比较笨啊，在哪里傻等着水开（<strong>同步阻塞</strong>）。等你稍微再长大一点，你知道每次烧水的空隙可以去干点其他事，然后只需要时不时来看看水开了没有（<strong>同步非阻塞</strong>）。后来，你们家用上了水开了会发出声音的壶，这样你就只需要听到响声后就知道水开了，在这期间你可以随便干自己的事情，你需要去倒水了（<strong>异步非阻塞</strong>）。</p>
+<ul>
+<li><p><strong>BIO</strong>(Blocking I/O)</p>
+<p>同步阻塞I/O模式，数据的读取写入必须阻塞在一个线程内等待其完成。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/BIO.png?raw=true" style="zoom: 80%;"></p>
+<p>采用 <strong>BIO 通信模型</strong> 的服务端，通常由一个独立的 Acceptor 线程负责监听客户端的连接。我们一般通过在 <code>while(true)</code> 循环中服务端会调用 <code>accept()</code> 方法等待接收客户端的连接的方式监听请求，请求一旦接收到一个连接请求，就可以建立通信套接字在这个通信套接字上进行读写操作，此时不能再接收其他客户端连接请求，只能等待同当前连接的客户端的操作执行完成， 不过可以通过多线程来支持多个客户端的连接，如上图所示。</p>
+<p>如果要让 <strong>BIO 通信模型</strong> 能够同时处理多个客户端请求，就必须使用多线程（主要原因是 <code>socket.accept()</code>、 <code>socket.read()</code>、 <code>socket.write()</code> 涉及的三个主要函数都是同步阻塞的），也就是说它在接收到客户端连接请求之后为每个客户端创建一个新的线程进行链路处理，处理完成之后，通过输出流返回应答给客户端，线程销毁。这就是典型的 <strong>一请求一应答通信模型</strong> 。我们可以设想一下如果这个连接不做任何事情的话就会造成不必要的线程开销，不过可以通过 <strong>线程池机制</strong> 改善，线程池还可以让线程的创建和回收成本相对较低。使用<code>FixedThreadPool</code> 可以有效的控制了线程的最大数量，保证了系统有限的资源的控制，实现了N(客户端请求数量):M(处理客户端请求的线程数量)的伪异步I/O模型（N 可以远远大于 M）。如下图。</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/%E7%BA%BF%E7%A8%8B%E6%B1%A0BIO.png?raw=true" style="zoom:80%;"></p>
+<p>采用线程池和任务队列可以实现一种叫做伪异步的 I/O 通信框架，它的模型图如上图所示。当有新的客户端接入时，将客户端的 Socket 封装成一个Task（该任务实现java.lang.Runnable接口）投递到后端的线程池中进行处理，JDK 的线程池维护一个消息队列和 N 个活跃线程，对消息队列中的任务进行处理。由于线程池可以设置消息队列的大小和最大线程数，因此，它的资源占用是可控的，无论多少个客户端并发访问，都不会导致资源的耗尽和宕机。</p>
+<p>伪异步I/O通信框架采用了线程池实现，因此避免了为每个请求都创建一个独立线程造成的线程资源耗尽问题。不过因为它的底层任然是同步阻塞的BIO模型，因此无法从根本上解决问题。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>NIO</strong></p>
+<p>1) NIO的特性/NIO与IO的区别</p>
+<p><strong>1.IO流是阻塞的，NIO流是不阻塞的。</strong></p>
+<p>Java NIO使我们可以进行非阻塞IO操作。比如说，单线程中从通道读取数据到buffer，同时可以继续做别的事情，当数据读取到buffer中后，线程再继续处理数据。写数据也是一样的。另外，非阻塞写也是如此。一个线程请求写入一些数据到某通道，但不需要等待它完全写入，这个线程同时可以去做别的事情。</p>
+<p>Java IO的各种流是阻塞的。这意味着，当一个线程调用 <code>read()</code> 或 <code>write()</code> 时，该线程被阻塞，直到有一些数据被读取，或数据完全写入。该线程在此期间不能再干任何事情了</p>
+<p><strong>2.IO 面向流(Stream oriented)，而 NIO 面向缓冲区(Buffer oriented)。</strong></p>
+<p>Buffer是一个对象，它包含一些要写入或者要读出的数据。在NIO类库中加入Buffer对象，体现了新库与原I/O的一个重要区别。在面向流的I/O中·可以将数据直接写入或者将数据直接读到 Stream 对象中。虽然 Stream 中也有 Buffer 开头的扩展类，但只是流的包装类，还是从流读到缓冲区，而 NIO 却是直接读到 Buffer 中进行操作。</p>
+<p>在NIO厍中，所有数据都是用缓冲区处理的。在读取数据时，它是直接读到缓冲区中的; 在写入数据时，写入到缓冲区中。任何时候访问NIO中的数据，都是通过缓冲区进行操作。</p>
+<p>最常用的缓冲区是 ByteBuffer,一个 ByteBuffer 提供了一组功能用于操作 byte 数组。除了ByteBuffer,还有其他的一些缓冲区，事实上，每一种Java基本类型（除了Boolean类型）都对应有一种缓冲区。</p>
+<p><strong>3.NIO 通过Channel（通道） 进行读写</strong></p>
+<p>通道是双向的，可读也可写，而流的读写是单向的。无论读写，通道只能和Buffer交互。因为 Buffer，通道可以异步地读写。</p>
+<p><strong>4.Selectors(选择器)</strong></p>
+<p>NIO有选择器，而IO没有。</p>
+<p>多路复用器，轮询检查多个 Channel 的状态，判断 Channel 是否处于可读或可写状态。使用前需要将 Channel 注册到 Selector，注册后会得到一个 SelectionKey，通过 SelectionKey 获取 Channel 和 Selector 相关信息。</p>
+<p>选择器用于使用单个线程处理多个通道。因此，它需要较少的线程来处理这些通道。线程之间的切换对于操作系统来说是昂贵的。 因此，为了提高系统效率选择器是有用的。<br><img src="https://github.com/hac135/my_images/blob/master/selector.png?raw=true" alt=""></p>
+<p><strong>NIO 读数据和写数据方式</strong></p>
+<p>通常来说NIO中的所有IO都是从 Channel（通道） 开始的。</p>
+<ul>
+<li>从通道进行数据读取 ：创建一个缓冲区，然后请求通道读取数据。</li>
+<li>从通道进行数据写入 ：创建一个缓冲区，填充数据，并要求通道写入数据。</li>
+</ul>
+<p>数据读取和写入操作图示：</p>
+<p><img src="https://github.com/hac135/my_images/blob/master/buffer.png?raw=true" alt=""></p>
+</li>
+<li><p><strong>AIO</strong></p>
+</li>
+</ul>
+<p>AIO 也就是 NIO 2。在 Java 7 中引入了 NIO 的改进版 NIO 2,它是异步非阻塞的IO模型。异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+       
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/05/23/mybatis面试题/" rel="next" title="mybatis面试题">
+                <i class="fa fa-chevron-left"></i> mybatis面试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/08/01/操作系统/" rel="prev" title="操作系统">
+                操作系统 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div id="gitalk-container">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/mycat.jpg" alt="liuminggui">
+            
+              <p class="site-author-name" itemprop="name">liuminggui</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">45</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">6</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="mailto:1406654070@qq.com" title="E-Mail &rarr; mailto:1406654070@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://weibo.com/FFWFWFWE" title="Weibo &rarr; https://weibo.com/FFWFWFWE" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://github.com/hac135" title="Github &rarr; https://github.com/hac135" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>Github</a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                    
+                  
+                  
+                    
+                  
+                  <a href="https://zhihu.com/people/hac123" title="Zhihu &rarr; https://zhihu.com/people/hac123" rel="noopener" target="_blank"><i class="fa fa-fw fa-battery-half"></i>Zhihu</a>
+                </span>
+              
+            </div>
+          
+
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-block">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                友情链接
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://noth1n9.com/" title="http://noth1n9.com/" rel="noopener" target="_blank">邵华哥</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://sigmoid.top/" title="http://sigmoid.top/" rel="noopener" target="_blank">胡哥</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://syncdev.top/" title="http://syncdev.top/" rel="noopener" target="_blank">煌彬哥</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://space.bilibili.com/232524593/" title="https://space.bilibili.com/232524593/" rel="noopener" target="_blank">猛神</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射"><span class="nav-number">1.</span> <span class="nav-text">反射</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常见面试题"><span class="nav-number">2.</span> <span class="nav-text">常见面试题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#抽象类和接口的区别"><span class="nav-number">2.1.</span> <span class="nav-text">抽象类和接口的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM-JDK-和-JRE-最详细通俗的解答"><span class="nav-number">2.2.</span> <span class="nav-text">JVM JDK 和 JRE 最详细通俗的解答</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JVM"><span class="nav-number">2.3.</span> <span class="nav-text">JVM</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是字节码-采用字节码的好处是什么"><span class="nav-number">2.4.</span> <span class="nav-text">什么是字节码?采用字节码的好处是什么?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#JDK-和-JRE"><span class="nav-number">2.5.</span> <span class="nav-text">JDK 和 JRE</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-多态"><span class="nav-number">2.6.</span> <span class="nav-text">Java 多态</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#重载（Overload）和（Override）的区别"><span class="nav-number">2.7.</span> <span class="nav-text">重载（Overload）和（Override）的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#请说明一下final-finally-finalize的区别。"><span class="nav-number">2.8.</span> <span class="nav-text">请说明一下final, finally, finalize的区别。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#String为什么是不可变对象"><span class="nav-number">2.9.</span> <span class="nav-text">String为什么是不可变对象</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Default关键字"><span class="nav-number">2.10.</span> <span class="nav-text">Default关键字</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java八种基本数据类型，各占多少字节"><span class="nav-number">2.11.</span> <span class="nav-text">Java八种基本数据类型，各占多少字节</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基本类型和引用类型的区别"><span class="nav-number">2.12.</span> <span class="nav-text">基本类型和引用类型的区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int和Integer装箱和拆箱"><span class="nav-number">2.13.</span> <span class="nav-text">int和Integer装箱和拆箱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#序列化的优缺点（implements-Serializbale）"><span class="nav-number">2.14.</span> <span class="nav-text">序列化的优缺点（implements Serializbale）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Integer和int的初始化值"><span class="nav-number">2.15.</span> <span class="nav-text">Integer和int的初始化值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Collections-sort和Arrays-sort排序原理"><span class="nav-number">2.16.</span> <span class="nav-text">Collections.sort和Arrays.sort排序原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java创建对象的几种方式"><span class="nav-number">2.17.</span> <span class="nav-text">Java创建对象的几种方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常见的编译时异常和运行时异常"><span class="nav-number">2.18.</span> <span class="nav-text">常见的编译时异常和运行时异常</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#java-JDBC编程流程步骤"><span class="nav-number">2.19.</span> <span class="nav-text">java JDBC编程流程步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Java-关于强引用，软引用，弱引用的区别与用法"><span class="nav-number">2.20.</span> <span class="nav-text">Java 关于强引用，软引用，弱引用的区别与用法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#泛型"><span class="nav-number">2.21.</span> <span class="nav-text">泛型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IO流"><span class="nav-number">2.22.</span> <span class="nav-text">IO流</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">liuminggui</span>
+
+  
+
+  
+  <br>
+  <div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+	  <script src="http://hac135.github.io/live2d-widget/autoload.js"></script>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lazyload@2.0.0-beta.2/lazyload.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+  
+
+
+  
+
+
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.5.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.5.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.5.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+  <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
+   <script type="text/javascript">
+        var gitalk = new Gitalk({
+          clientID: 'dabf16486e15eee437bb',
+          clientSecret: 'b43b6f74919a9b657aba14efe129792e9c636f3a',
+          repo: 'hac135.github.io',
+          owner: 'hac135',
+          admin: ['hac135'],
+          id: md5(window.location.pathname),
+          distractionFreeMode: 'true'
+        })
+        gitalk.render('gitalk-container')
+       </script>
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+</body>
+</html>
+  <script type="text/javascript" src="https://unpkg.com/minigrid@3.1.1/dist/minigrid.min.js"></script>
+  
+  
+
+<!-- 页面点击小红心 -->
+<script type="text/javascript" src="/js/src/clicklove.js"></script>
+
+
+
