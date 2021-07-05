@@ -1,4 +1,13 @@
 photo ={
+	!function(){
+		var protocol = window.location.protocol;
+		if (protocol == "https:") {
+			window.location.href = window.location.href.replace("https","http");
+		}
+	}();
+
+	
+	
     page: 1,
     //offset 用于设置照片数量的上限
     offset: 80,
