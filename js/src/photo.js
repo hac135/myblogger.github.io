@@ -1,7 +1,7 @@
 photo ={
     page: 1,
     //offset 用于设置照片数量的上限
-    offset: 120,
+    offset: 180,
     init: function () {
         var that = this;
         //这里设置的是刚才生成的 json 文件路径,注意自己的域名地址
